@@ -1,0 +1,18 @@
+[2018-04-12 14:13:00.325] [exthost1] [info] extension host started
+[2018-04-12 14:13:00.369] [exthost1] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"activationEvent":"*"}
+[2018-04-12 14:13:00.370] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/emmet/out/extension
+[2018-04-12 14:13:00.516] [exthost1] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2018-04-12 14:13:00.516] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/git/out/main
+[2018-04-12 14:13:00.768] [exthost1] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2018-04-12 14:13:00.768] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/merge-conflict/out/extension
+[2018-04-12 14:13:00.799] [exthost1] [info] ExtensionService#_doActivateExtension PKief.material-icon-theme {"startup":true,"activationEvent":"*"}
+[2018-04-12 14:13:00.799] [exthost1] [info] ExtensionService#loadCommonJSModule /home/odina/.vscode/extensions/PKief.material-icon-theme-3.3.0/out/src/extension
+[2018-04-12 14:13:00.902] [exthost1] [info] ExtensionService#_doActivateExtension ms-vscode.node-debug2 {"startup":true,"activationEvent":"workspaceContains:./node_modules/react-native/package.json"}
+[2018-04-12 14:13:00.902] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/ms-vscode.node-debug2/out/src/extension
+[2018-04-12 14:13:00.905] [exthost1] [info] eager extensions activated
+[2018-04-12 14:13:00.908] [exthost1] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features {"startup":false,"activationEvent":"onLanguage:javascript"}
+[2018-04-12 14:13:00.908] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/typescript/out/extension
+[2018-04-12 14:13:01.196] [exthost1] [info] ExtensionService#_doActivateExtension vsmobile.vscode-react-native {"startup":true,"activationEvent":"workspaceContains:./node_modules/react-native/package.json"}
+[2018-04-12 14:13:01.196] [exthost1] [info] ExtensionService#loadCommonJSModule /home/odina/.vscode/extensions/vsmobile.vscode-react-native-0.6.6/src/extension/rn-extension
+[2018-04-12 14:13:20.441] [exthost1] [info] ExtensionService#_doActivateExtension vscode.extension-editing {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2018-04-12 14:13:20.441] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/extension-editing/out/extension

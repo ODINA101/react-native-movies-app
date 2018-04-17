@@ -1,0 +1,196 @@
+[2018-04-15 14:00:49.042] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:04:30.567] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:05:01.126] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:07:26.088] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:11:03.981] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:12:54.434] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:15:38.881] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:22:04.213] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:22:24.592] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:22:49.835] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:24:43.141] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:25:32.216] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:25:37.579] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:25:48.325] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:29:42.040] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:31:02.049] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:46:25.649] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:50:08.596] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:50:23.008] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:50:40.466] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:52:21.297] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:52:24.267] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:55:22.859] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:56:53.311] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:58:13.617] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:58:30.847] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:58:39.568] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:58:48.946] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:59:16.382] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 14:59:31.334] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:00:40.529] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:00:45.703] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:00:50.994] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:00:53.506] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:03:49.608] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:07:53.961] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:13:55.777] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:14:10.357] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:19:05.427] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:23:07.327] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:23:23.310] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:25:10.160] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:27:29.708] [renderer1] [error] Cannot read property 'match' of undefined: TypeError: Cannot read property 'match' of undefined
+	at new MyCompletionItem (/usr/share/code/resources/app/extensions/typescript/out/features/completionItemProvider.js:54:34)
+	at TypeScriptCompletionItemProvider.provideCompletionItems (/usr/share/code/resources/app/extensions/typescript/out/features/completionItemProvider.js:232:26)
+	at <anonymous>
+[2018-04-15 15:27:32.385] [renderer1] [error] Cannot read property 'match' of undefined: TypeError: Cannot read property 'match' of undefined
+	at new MyCompletionItem (/usr/share/code/resources/app/extensions/typescript/out/features/completionItemProvider.js:54:34)
+	at TypeScriptCompletionItemProvider.provideCompletionItems (/usr/share/code/resources/app/extensions/typescript/out/features/completionItemProvider.js:232:26)
+	at <anonymous>
+[2018-04-15 15:28:11.976] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:28:15.120] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 15:28:32.312] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 16:21:49.748] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 16:21:59.435] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 16:22:26.779] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 16:54:14.412] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:00:28.097] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
+[2018-04-15 17:01:47.530] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
+[2018-04-15 17:01:48.832] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
+[2018-04-15 17:09:48.301] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
+[2018-04-15 17:14:56.486] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:21:06.324] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:25:49.407] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
+[2018-04-15 17:29:39.979] [renderer1] [error] Cannot read property 'match' of undefined: TypeError: Cannot read property 'match' of undefined
+	at new MyCompletionItem (/usr/share/code/resources/app/extensions/typescript/out/features/completionItemProvider.js:54:34)
+	at TypeScriptCompletionItemProvider.provideCompletionItems (/usr/share/code/resources/app/extensions/typescript/out/features/completionItemProvider.js:232:26)
+	at <anonymous>
+[2018-04-15 17:30:03.187] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:30:14.353] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:30:19.484] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:30:31.570] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:30:36.978] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:32:27.232] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:32:41.568] [renderer1] [error] Cannot read property 'match' of undefined: TypeError: Cannot read property 'match' of undefined
+	at new MyCompletionItem (/usr/share/code/resources/app/extensions/typescript/out/features/completionItemProvider.js:54:34)
+	at TypeScriptCompletionItemProvider.provideCompletionItems (/usr/share/code/resources/app/extensions/typescript/out/features/completionItemProvider.js:232:26)
+	at <anonymous>
+[2018-04-15 17:33:01.027] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:42:37.679] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:42:48.747] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:43:55.813] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:44:13.752] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:44:32.704] [renderer1] [error] Cannot read property 'match' of undefined: TypeError: Cannot read property 'match' of undefined
+	at new MyCompletionItem (/usr/share/code/resources/app/extensions/typescript/out/features/completionItemProvider.js:54:34)
+	at TypeScriptCompletionItemProvider.provideCompletionItems (/usr/share/code/resources/app/extensions/typescript/out/features/completionItemProvider.js:232:26)
+	at <anonymous>
+[2018-04-15 17:44:55.204] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:47:58.559] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:48:11.495] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:49:54.313] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:50:08.938] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:50:17.900] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:50:26.552] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:51:45.845] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 17:52:03.775] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 18:17:25.212] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 18:22:10.900] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 18:22:20.062] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 18:22:27.840] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 18:38:44.137] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
+[2018-04-15 18:40:10.486] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
+[2018-04-15 18:40:19.185] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
+[2018-04-15 18:44:54.222] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 18:55:46.161] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 18:58:16.146] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 18:58:42.188] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-15 19:44:56.047] [renderer1] [error] An unknown error occurred. Please consult the log for more details.

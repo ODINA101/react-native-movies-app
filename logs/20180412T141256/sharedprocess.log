@@ -1,0 +1,31 @@
+[2018-04-12 14:12:57.417] [sharedprocess] [info] main {"machineId":"fba60a6f03b62f661d047839410f71d3236e7917f365cdb85dac48f27fb6bc38"}
+[2018-04-12 14:12:57.528] [sharedprocess] [info] Scanned user extensions: 15
+[2018-04-12 14:12:57.630] [sharedprocess] [info] Deleted from disk Mikael.angular-beastcode-6.0.8
+[2018-04-12 14:12:57.630] [sharedprocess] [info] Deleted from disk cstrap.python-snippets-0.1.0
+[2018-04-12 14:12:57.656] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-12 14:12:58.573] [sharedprocess] [info] Scanned user extensions: 15
+[2018-04-12 14:12:58.575] [sharedprocess] [info] Scanned user extensions: 15
+[2018-04-12 14:12:58.599] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-12 14:13:01.710] [sharedprocess] [info] Scanned user extensions: 15
+[2018-04-12 14:13:02.046] [sharedprocess] [info] Installing extension: Angular-BeastCode
+[2018-04-12 14:13:02.049] [sharedprocess] [info] Installing extension: vscode-maven
+[2018-04-12 14:13:03.898] [sharedprocess] [info] Downloaded extension: vscode-maven
+[2018-04-12 14:13:04.611] [sharedprocess] [info] Downloaded extension: Angular-BeastCode
+[2018-04-12 14:13:04.843] [sharedprocess] [info] Extracted extension to /home/odina/.vscode/extensions/Mikael.angular-beastcode-6.0.10: Mikael.angular-beastcode-6.0.10
+[2018-04-12 14:13:04.858] [sharedprocess] [info] Updated metadata of the extension: Mikael.angular-beastcode-6.0.10
+[2018-04-12 14:13:04.858] [sharedprocess] [info] Extensions installed successfully: Mikael.angular-beastcode
+[2018-04-12 14:13:04.969] [sharedprocess] [info] Extracted extension to /home/odina/.vscode/extensions/vscjava.vscode-maven-0.7.0: vscjava.vscode-maven-0.7.0
+[2018-04-12 14:13:04.982] [sharedprocess] [info] Updated metadata of the extension: vscjava.vscode-maven-0.7.0
+[2018-04-12 14:13:04.982] [sharedprocess] [info] Extensions installed successfully: vscjava.vscode-maven
+[2018-04-12 14:13:05.168] [sharedprocess] [info] Scanned user extensions: 15
+[2018-04-12 14:13:05.182] [sharedprocess] [info] Scanned user extensions: 15
+[2018-04-12 14:13:05.236] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-12 14:13:05.243] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-12 14:13:37.427] [sharedprocess] [info] Starting to clean up unused language packs.
+[2018-04-12 14:18:01.814] [sharedprocess] [info] Scanned user extensions: 15
+[2018-04-12 14:23:02.061] [sharedprocess] [info] Scanned user extensions: 15
+[2018-04-12 14:28:02.198] [sharedprocess] [info] Scanned user extensions: 15
+[2018-04-12 14:33:02.287] [sharedprocess] [info] Scanned user extensions: 15
+[2018-04-12 14:38:02.494] [sharedprocess] [info] Scanned user extensions: 15
+[2018-04-12 14:43:02.676] [sharedprocess] [info] Scanned user extensions: 15
+[2018-04-12 14:48:02.738] [sharedprocess] [info] Scanned user extensions: 15

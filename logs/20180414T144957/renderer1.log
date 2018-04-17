@@ -1,0 +1,77 @@
+[2018-04-14 15:08:15.755] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 16:06:28.794] [renderer1] [error] Error: listener failed
+    at file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:3212:241
+    at Object.g [as _notify] (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:144:971)
+    at Object.enter (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:148:277)
+    at n.Class.derive._oncancel._run (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:150:84)
+    at n.Class.derive._oncancel._completed (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:149:523)
+    at e.resolveOk (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:2779:781)
+    at e._receiveReply (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:2823:799)
+    at e._receiveOneMessage (file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:2823:143)
+    at file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:2822:139
+    at file:///usr/share/code/resources/app/out/vs/workbench/workbench.main.js:2824:1008
+[2018-04-14 16:06:49.569] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
+[2018-04-14 16:06:51.194] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
+[2018-04-14 16:33:23.583] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
+[2018-04-14 16:33:37.555] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
+[2018-04-14 17:38:03.654] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 18:17:15.814] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 18:18:01.618] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 18:30:53.583] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 18:30:56.272] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 18:36:58.457] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 18:39:26.513] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 18:46:57.536] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 18:48:06.334] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 18:48:22.518] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 18:50:33.435] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 19:08:53.675] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 19:09:02.312] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 19:17:30.106] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 19:17:40.862] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 19:19:29.796] [renderer1] [error] An unknown error occurred. Please consult the log for more details.
+[2018-04-14 19:22:13.841] [renderer1] [error] An unknown error occurred. Please consult the log for more details.

@@ -1,0 +1,9 @@
+INDEX VERSION 1.131+/home/odina/Desktop/moviec/React-native-movieApp/User/workspaceStorage/0066e54cfa6140ecdb53fe77bc169f0f/redhat.java/jdt_ws/.metadata/.plugins/org.eclipse.jdt.core
+3659689434.index
+2750652808.index
+2343376237.index
+1896304941.index
+4013607337.index
+3842426239.index
+3537146001.index
+1811446670.index

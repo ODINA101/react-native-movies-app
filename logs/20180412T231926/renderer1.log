@@ -1,0 +1,12 @@
+[2018-04-12 23:46:44.224] [renderer1] [error] Invalid arguments: Error: Invalid arguments
+	at new e (/usr/share/code/resources/app/out/vs/workbench/node/extensionHostProcess.js:459:194)
+	at asRange (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:41:16)
+	at asLocation (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:211:59)
+	at item.map (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:43)
+	at Array.map (native)
+	at asDefinitionResult (/root/.vscode/extensions/redhat.java-0.22.0/node_modules/vscode-languageclient/lib/protocolConverter.js:201:25)
+	at propagateAslWrapper (/root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:502:23)
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/index.js:539:70
+	at /root/.vscode/extensions/vscjava.vscode-java-test-0.5.0/node_modules/async-listener/glue.js:188:31
+	at <anonymous>
