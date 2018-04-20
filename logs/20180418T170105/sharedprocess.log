@@ -1,0 +1,70 @@
+[2018-04-18 17:01:06.660] [sharedprocess] [info] main {"machineId":"fba60a6f03b62f661d047839410f71d3236e7917f365cdb85dac48f27fb6bc38"}
+[2018-04-18 17:01:06.835] [sharedprocess] [info] Scanned user extensions: 17
+[2018-04-18 17:01:06.969] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:01:07.997] [sharedprocess] [info] Scanned user extensions: 17
+[2018-04-18 17:01:08.000] [sharedprocess] [info] Scanned user extensions: 17
+[2018-04-18 17:01:08.031] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:01:11.304] [sharedprocess] [info] Scanned user extensions: 17
+[2018-04-18 17:01:11.705] [sharedprocess] [info] Installing extension: java
+[2018-04-18 17:01:11.717] [sharedprocess] [info] Installing extension: ReactSnippets
+[2018-04-18 17:01:13.705] [sharedprocess] [info] Downloaded extension: ReactSnippets
+[2018-04-18 17:01:14.018] [sharedprocess] [info] Extracted extension to /root/.vscode/extensions/xabikos.reactsnippets-2.1.0: xabikos.reactsnippets-2.1.0
+[2018-04-18 17:01:14.029] [sharedprocess] [info] Updated metadata of the extension: xabikos.reactsnippets-2.1.0
+[2018-04-18 17:01:14.029] [sharedprocess] [info] Extensions installed successfully: xabikos.reactsnippets
+[2018-04-18 17:01:14.223] [sharedprocess] [info] Scanned user extensions: 17
+[2018-04-18 17:01:14.281] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:01:22.993] [sharedprocess] [info] Downloaded extension: java
+[2018-04-18 17:01:24.395] [sharedprocess] [info] Scanned user extensions: 17
+[2018-04-18 17:01:24.413] [sharedprocess] [info] Scanned user extensions: 17
+[2018-04-18 17:01:24.420] [sharedprocess] [info] Scanned user extensions: 17
+[2018-04-18 17:01:24.526] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:01:24.540] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:01:25.896] [sharedprocess] [info] Extracted extension to /root/.vscode/extensions/redhat.java-0.23.0: redhat.java-0.23.0
+[2018-04-18 17:01:25.955] [sharedprocess] [info] Updated metadata of the extension: redhat.java-0.23.0
+[2018-04-18 17:01:25.957] [sharedprocess] [info] Extensions installed successfully: redhat.java
+[2018-04-18 17:01:26.199] [sharedprocess] [info] Scanned user extensions: 17
+[2018-04-18 17:01:26.270] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:01:33.311] [sharedprocess] [info] Installing extension: vim
+[2018-04-18 17:01:34.786] [sharedprocess] [info] Downloaded extension: vim
+[2018-04-18 17:01:39.502] [sharedprocess] [info] Extracted extension to /root/.vscode/extensions/vscodevim.vim-0.11.4: vscodevim.vim-0.11.4
+[2018-04-18 17:01:39.529] [sharedprocess] [info] Updated metadata of the extension: vscodevim.vim-0.11.4
+[2018-04-18 17:01:39.529] [sharedprocess] [info] Extensions installed successfully: vscodevim.vim
+[2018-04-18 17:01:39.701] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:01:39.737] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:01:46.675] [sharedprocess] [info] Starting to clean up unused language packs.
+[2018-04-18 17:01:49.424] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:01:49.436] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:01:49.452] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:01:49.472] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:01:49.484] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:01:49.584] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:01:49.588] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:01:49.595] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:01:52.808] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:06:52.942] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:11:52.982] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:16:53.076] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:21:53.143] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:26:53.170] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:31:53.601] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:36:53.890] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:40:36.421] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:40:36.506] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:40:48.153] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:40:48.174] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:40:48.249] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:40:48.256] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:40:48.316] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:40:48.516] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:40:48.549] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:40:48.577] [sharedprocess] [info] Scanned system extensions: 65
+[2018-04-18 17:40:51.670] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:45:51.892] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:50:51.993] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 17:55:52.066] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 18:00:52.134] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 18:05:52.448] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 18:10:52.491] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 18:15:52.536] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 18:20:52.581] [sharedprocess] [info] Scanned user extensions: 18
+[2018-04-18 18:25:52.671] [sharedprocess] [info] Scanned user extensions: 18

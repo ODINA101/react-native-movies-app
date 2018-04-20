@@ -77,6 +77,8 @@ this.getData("მთავარი")
      })
    })
    store.dispatch({type:"database",payload:databaseItems.reverse()})
+   store.dispatch({type:"databaseNum",payload:snapshot.numChildren()})
+   
   })
 
 

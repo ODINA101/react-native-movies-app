@@ -47,7 +47,7 @@
         "workbench.action.openGlobalSettings": {
             "id": "workbench.action.openGlobalSettings",
             "label": "Ctrl+,",
-            "isNative": true
+            "isNative": false
         },
         "workbench.action.openGlobalKeybindings": {
             "id": "workbench.action.openGlobalKeybindings",
@@ -142,7 +142,7 @@
         "editor.action.commentLine": {
             "id": "editor.action.commentLine",
             "label": "Ctrl+/",
-            "isNative": true
+            "isNative": false
         },
         "editor.action.blockComment": {
             "id": "editor.action.blockComment",
@@ -247,7 +247,7 @@
         "workbench.action.terminal.toggleTerminal": {
             "id": "workbench.action.terminal.toggleTerminal",
             "label": "Ctrl+`",
-            "isNative": true
+            "isNative": false
         },
         "workbench.actions.view.problems": {
             "id": "workbench.actions.view.problems",
@@ -272,7 +272,7 @@
         "workbench.action.splitEditor": {
             "id": "workbench.action.splitEditor",
             "label": "Ctrl+\\",
-            "isNative": true
+            "isNative": false
         },
         "workbench.action.toggleEditorGroupLayout": {
             "id": "workbench.action.toggleEditorGroupLayout",
@@ -297,12 +297,12 @@
         "workbench.action.zoomIn": {
             "id": "workbench.action.zoomIn",
             "label": "Ctrl+=",
-            "isNative": true
+            "isNative": false
         },
         "workbench.action.zoomOut": {
             "id": "workbench.action.zoomOut",
             "label": "Ctrl+-",
-            "isNative": true
+            "isNative": false
         },
         "workbench.action.zoomReset": {
             "id": "workbench.action.zoomReset",
@@ -312,12 +312,12 @@
         "workbench.action.navigateBack": {
             "id": "workbench.action.navigateBack",
             "label": "Ctrl+Alt+-",
-            "isNative": true
+            "isNative": false
         },
         "workbench.action.navigateForward": {
             "id": "workbench.action.navigateForward",
             "label": "Ctrl+Shift+-",
-            "isNative": true
+            "isNative": false
         },
         "workbench.action.nextEditor": {
             "id": "workbench.action.nextEditor",

@@ -34,6 +34,7 @@ export default class fullseries extends Component {
       AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
       AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());
 
+
       firebase.database().ref().child("series").child(this.props.navigation.state.params.key).child("parts").on("value",snapshot => {
         databaseItems = [];
 

@@ -10,7 +10,8 @@ const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
     contentSize.height - paddingToBottom;
 };
 import {Spinner} from "native-base";
-
+import * as Animatable from 'react-native-animatable'
+var he = 50;
 
 export default class Home extends React.Component {
 
@@ -20,9 +21,11 @@ export default class Home extends React.Component {
  this.state = {
    items:[],
    currentItems:[],
-   x:8,
-   loader:false
- }
+   x:18,
+   loader:false,
+   maxItems:0
+   
+  }
  store.dispatch({type:"setNav",payload:props.navigation})
 
 
@@ -33,12 +36,18 @@ this.setState({currentItems:[]})
 if(this.state.items !== store.getState().database) {
 setTimeout(
 ()=>{
-  this.setState({items:store.getState().database,x:8})
-  this.setState({currentItems:this.state.items.slice().splice(0,8)})
+  this.setState({items:store.getState().database,x:18})
+  this.setState({currentItems:this.state.items.slice().splice(0,18)})
   if(this.state.currentItems > 0) {
     this.refs.scrollView.scrollTo(0);
 
   }
+  this.setState({maxItems:store.getState().databaseNum})
+
+if(this.state.currentItems >= this.state.maxItems) {
+he=0;
+}
+
 //   console.warn(
 //     this.state.items[0]      
 // )
@@ -90,19 +99,24 @@ setTimeout(()=>{
 },1000)
       }
 
+
+if(this.state.currentItems >= this.state.maxItems) {
+he=0;
+}
     }
     }} >
 
 {
 
 store.getState().page == "სერიალები"? (
-  <GridView
+           <GridView                                                                                                                                                                                                    
            itemDimension={130}
            items={this.state.currentItems}
            style={styles.gridView}
            renderItem={item => (
-                  
                  <SingleItem photo={item.photo} series={true} id={item.key} des={item.des} url={item.sd} title={item.title} navigation={this.props.navigation}/>
+          
+          
            )}
          />
   
@@ -120,7 +134,7 @@ store.getState().page == "სერიალები"? (
 
 }
 
-       <Spinner/>
+       <Spinner  />
        </ScrollView>
            </View>
    </View>

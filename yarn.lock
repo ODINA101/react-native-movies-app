@@ -4657,6 +4657,10 @@ react-native-animatable@^1.2.4:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-app-intro-slider@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/react-native-app-intro-slider/-/react-native-app-intro-slider-0.2.4.tgz#e85e5aab826fd6c131f197ab7878d6686e7b468f"
+
 react-native-awesome-alert@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/react-native-awesome-alert/-/react-native-awesome-alert-0.4.0.tgz#b6aed8d5bb20d757235f981f0d599b3c596e8db7"

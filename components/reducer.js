@@ -8,7 +8,8 @@ const initialState = {
    fullOpened:false,
    openDrawer:"",
    fetching:true,
-   database:[]
+   database:[],
+   databaseNum:0
 
 
 }
@@ -19,6 +20,10 @@ export default  (state=initialState,action) => {
 
 
     switch(action.type) {
+        case "databaseNum":
+        state.databaseNum = action.payload
+        return state
+        break;
        case "fetch": 
        state.fetching = action.payload
        return state;

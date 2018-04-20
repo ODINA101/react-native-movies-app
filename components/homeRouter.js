@@ -8,7 +8,7 @@ import Full from "./full"
 import Movie from "./movie"
 import fullseries from './seriesFull';
 
-
+import Tutorial from "./tut"
 
 
 
@@ -25,6 +25,9 @@ export default StackNavigator({
     },
     fullseries:{
         screen:fullseries
+    },
+    tut:{
+      screen:Tutorial
     }
 
 },{

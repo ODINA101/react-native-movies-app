@@ -1,0 +1,22 @@
+[2018-04-19 14:18:02.724] [exthost1] [info] extension host started
+[2018-04-19 14:18:02.770] [exthost1] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"activationEvent":"*"}
+[2018-04-19 14:18:02.771] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/emmet/out/extension
+[2018-04-19 14:18:02.969] [exthost1] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2018-04-19 14:18:02.969] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/git/out/main
+[2018-04-19 14:18:03.397] [exthost1] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2018-04-19 14:18:03.397] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/merge-conflict/out/extension
+[2018-04-19 14:18:03.428] [exthost1] [info] ExtensionService#_doActivateExtension HookyQR.beautify {"startup":true,"activationEvent":"*"}
+[2018-04-19 14:18:03.428] [exthost1] [info] ExtensionService#loadCommonJSModule /root/.vscode/extensions/HookyQR.beautify-1.3.0/extension
+[2018-04-19 14:18:03.582] [exthost1] [info] ExtensionService#_doActivateExtension ms-vscode.node-debug2 {"startup":true,"activationEvent":"workspaceContains:./node_modules/react-native/package.json"}
+[2018-04-19 14:18:03.582] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/ms-vscode.node-debug2/out/src/extension
+[2018-04-19 14:18:03.585] [exthost1] [info] eager extensions activated
+[2018-04-19 14:18:03.593] [exthost1] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features {"startup":false,"activationEvent":"onLanguage:javascript"}
+[2018-04-19 14:18:03.593] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/typescript/out/extension
+[2018-04-19 14:18:03.886] [exthost1] [info] ExtensionService#_doActivateExtension AndrewRazumovsky.vscode-styled-jsx-languageserver {"startup":false,"activationEvent":"onLanguage:javascript"}
+[2018-04-19 14:18:03.886] [exthost1] [info] ExtensionService#loadCommonJSModule /root/.vscode/extensions/AndrewRazumovsky.vscode-styled-jsx-languageserver-1.0.0/client/out/extension
+[2018-04-19 14:18:04.012] [exthost1] [info] ExtensionService#_doActivateExtension NuclleaR.vscode-extension-auto-import {"startup":false,"activationEvent":"onLanguage:javascript"}
+[2018-04-19 14:18:04.012] [exthost1] [info] ExtensionService#loadCommonJSModule /root/.vscode/extensions/NuclleaR.vscode-extension-auto-import-1.4.1/out/src/extension
+[2018-04-19 14:18:04.508] [exthost1] [info] ExtensionService#_doActivateExtension vsmobile.vscode-react-native {"startup":true,"activationEvent":"workspaceContains:./node_modules/react-native/package.json"}
+[2018-04-19 14:18:04.508] [exthost1] [info] ExtensionService#loadCommonJSModule /root/.vscode/extensions/vsmobile.vscode-react-native-0.6.6/src/extension/rn-extension
+[2018-04-19 14:19:21.033] [exthost1] [info] ExtensionService#_doActivateExtension vscode.extension-editing {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2018-04-19 14:19:21.033] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/extension-editing/out/extension

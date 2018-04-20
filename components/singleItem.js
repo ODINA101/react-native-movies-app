@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {View,Text,StyleSheet,Image,TouchableNativeFeedback} from "react-native";
 import Ripple from 'react-native-material-ripple';
 import store from './store';
-
 export default class SingleItem extends Component {
 
 
@@ -53,7 +52,7 @@ openPage() {
 <Text>{this.props.title}</Text>
  </View>
         </View>
-
+ 
             </View>
 
 
