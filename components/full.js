@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text,View,ScrollView,StyleSheet,BackHandler,Image,Animated,TouchableOpacity,Linking} from 'react-native';
+import { Text,View,ScrollView,StyleSheet,BackHandler,Image,Animated,TouchableOpacity,Linking,AsyncStorage} from 'react-native';
 import SingleItem from './singleItem';
 import Toolbar from './toolbar';
 import store from './store';
@@ -29,6 +29,10 @@ export default class Full extends React.Component {
      }
 
      this.download = this.download.bind(this)
+     this.openuri = this.openuri.bind(this)
+    store.dispatch({type:"OpenUri",payload:this.openuri})
+
+
     }
 
 
@@ -43,31 +47,60 @@ componentDidMount() {
           return false;
       });
 }
-download() {
 
 
- this.props.navigation.navigate('tut');
+openuri() {
+    const url = this.props.navigation.state.params.url;
+    Linking.canOpenURL(url).then(supported => {
+  if (supported) {
+    Linking.openURL(url);
+  }
 
-  //   RNFS.getFSInfo()
-  //
-  //   .then ((info) => {
-  // if(parseInt((info.freeSpace / 1024)/1024) > 0) {
-  //     const url = this.props.navigation.state.params.url;
-  //     Linking.canOpenURL(url).then(supported => {
-  //   if (supported) {
-  //     Linking.openURL(url);
-  //   }
-  //
-  // });
-  //
-  // }else{
-  //  this.setState({free:parseInt((info.freeSpace / 1024)/1024)})
-  //   this._toggleModal()
-  //
-  // }
-  //   });
+});
+}
+
+async download() {
+ //////////////////////////////////
+   // await AsyncStorage.removeItem('firstTime');
+      
+////////////////////////////////
+     RNFS.getFSInfo().then(async (info) => {
+   if(parseInt((info.freeSpace / 1024)/1024) > 0) {
+
+    const value = await AsyncStorage.getItem('firstTime');
+    if (value !== 'yes'){
+      console.log(value);
+    try {
+        await AsyncStorage.setItem('firstTime', 'yes');
+
+        this.props.navigation.navigate('tut');
+
+      } catch (error) {
+      }
+
+    }else{
+     
+this.openuri()
+        
+    }
+
+     
+
+
+
+  }else{
+   this.setState({free:parseInt((info.freeSpace / 1024)/1024)})
+    this._toggleModal()
+  
+  }
+    });
 
 }
+
+
+
+
+
 _toggleModal = () =>
 this.setState({ isModalVisible: !this.state.isModalVisible });
 

@@ -2,6 +2,10 @@ import React from 'react';
 import { StyleSheet, View,Dimensions } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import store from './store';
+
+
+
 const styles = StyleSheet.create({
   buttonCircle: {
     width: 40,
@@ -12,8 +16,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height
+    width: 540,
+    height: 960
   },
   text: {
    color: '#FFF',
@@ -26,10 +30,7 @@ const styles = StyleSheet.create({
 const slides = [
   {
     key: 'somethun',
-    text: 'The component is also super customizable, so you can ad wants.',
-
-    title: 'Quick setup, good defaults',
-   image: require('../scrs/scr3.png'),
+   image: require('../scrs/1.png'),
     colors: ['#63E2FF', '#B066FE'],
      imageStyle: styles.image,
      textStyle:styles.text
@@ -37,17 +38,19 @@ const slides = [
   },
   {
     key: 'somethun1',
-    title: 'Super customizable',
-    text: 'The component is also super customizable, so you can adapt it to cover your needs and wants.',
-    image: require('../scrs/scr1.png'),
+    image: require('../scrs/2.png'),
     colors: ['#FFF', '#FFF'],
      imageStyle: styles.image,
   },
   {
     key: 'somethun2',
-    title: 'No need to buy me beer',
-    text: 'Usage is all free',
-    image: require('../scrs/scr2.png'),
+    image: require('../scrs/4.png'),
+    colors: ['#29ABE2', '#4F00BC'],
+     imageStyle: styles.image,
+  },
+  {
+    key: 'somethun2',
+    image: require('../scrs/3.png'),
     colors: ['#29ABE2', '#4F00BC'],
      imageStyle: styles.image,
   },
@@ -55,6 +58,20 @@ const slides = [
 
 
 export default class Tutorial extends React.Component {
+ constructor(props) {
+   super(props)
+
+if(Dimensions.get('window').width < 540) {
+  this.styles.image.width = Dimensions.get('window').width
+  this.styles.image.height = Dimensions.get('window').height
+  
+}else{
+  
+}
+
+ }
+ 
+
   _renderNextButton = () => {
     return (
       <View style={styles.buttonCircle}>
@@ -69,7 +86,7 @@ export default class Tutorial extends React.Component {
   }
   _renderDoneButton = () => {
     return (
-      <View style={styles.buttonCircle}>
+      <View style={styles.buttonCircle} >
         <Ionicons
           name="md-checkmark"
           color="rgba(255, 255, 255, .9)"
@@ -83,6 +100,7 @@ export default class Tutorial extends React.Component {
     return (
       <AppIntroSlider
         slides={slides}
+        onDone={async () =>  { this.props.navigation.pop();await store.getState().openuri() }}
         renderDoneButton={this._renderDoneButton}
         renderNextButton={this._renderNextButton}
       />
