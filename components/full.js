@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text,View,ScrollView,StyleSheet,BackHandler,Image,Animated,TouchableOpacity,Linking,AsyncStorage} from 'react-native';
-import SingleItem from './singleItem';
+import SingleItem from './singleItem'
 import Toolbar from './toolbar';
 import store from './store';
 import Entypo  from 'react-native-vector-icons/Entypo';
@@ -9,8 +9,8 @@ import RNFetchBlob from 'react-native-fetch-blob';
 import Ripple from "react-native-material-ripple"
 import RNFS from 'react-native-fs'
 import Modal from "react-native-modal";
- import * as Animatable from 'react-native-animatable'
-
+import * as Animatable from 'react-native-animatable'
+ 
 
 import {
     AdMobInterstitial,
@@ -30,7 +30,7 @@ export default class Full extends React.Component {
 
      this.download = this.download.bind(this)
      this.openuri = this.openuri.bind(this)
-    store.dispatch({type:"OpenUri",payload:this.openuri})
+   // store.dispatch({type:"OpenUri",payload:this.openuri})
 
 
     }
@@ -65,15 +65,14 @@ async download() {
       
 ////////////////////////////////
      RNFS.getFSInfo().then(async (info) => {
-   if(parseInt((info.freeSpace / 1024)/1024) > 0) {
+   if(parseInt((info.freeSpace / 1024)/1024) > 1000) {
 
     const value = await AsyncStorage.getItem('firstTime');
-    if (value !== 'yes'){
-      console.log(value);
+    if (!value){
     try {
         await AsyncStorage.setItem('firstTime', 'yes');
 
-        this.props.navigation.navigate('tut');
+        this.props.navigation.navigate('tut',{OpenUri:this.openuri});
 
       } catch (error) {
       }

@@ -23,7 +23,7 @@ export default class Home extends React.Component {
    currentItems:[],
    x:18,
    loader:false,
-   maxItems:0
+   maxItems:0,
    
   }
  store.dispatch({type:"setNav",payload:props.navigation})
@@ -48,21 +48,21 @@ if(this.state.currentItems >= this.state.maxItems) {
 he=0;
 }
 
-//   console.warn(
-//     this.state.items[0]      
-// )
+ 
 },1000
 )
  
 
 }
+
+
+
   
 
   
    })
 
     }
-
 
 render() {
 
@@ -121,14 +121,18 @@ store.getState().page == "სერიალები"? (
          />
   
 ):(
-  <GridView
-           itemDimension={130}
-           items={this.state.currentItems}
-           style={styles.gridView}
-           renderItem={item => (
-                 <SingleItem photo={item.photo} series={false} id={item.key} des={item.des} url={item.sd} title={item.title} navigation={this.props.navigation}/>
-           )}
-         />
+
+  <View>
+  
+    <GridView
+    itemDimension={130}
+    items={this.state.currentItems}
+    style={styles.gridView}
+    renderItem={item => (
+          <SingleItem photo={item.photo} series={false} id={item.key} des={item.des} url={item.sd} title={item.title} navigation={this.props.navigation}/>
+    )}
+  />
+    </View>     
   
 )
 

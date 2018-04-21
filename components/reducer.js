@@ -10,7 +10,9 @@ const initialState = {
    fetching:true,
    database:[],
    databaseNum:0,
-   openuri:''
+   openuri:'',
+   searching:false,
+   searchTxt:''
 
 
 }
@@ -21,6 +23,13 @@ export default  (state=initialState,action) => {
 
 
     switch(action.type) {
+        case "search": 
+        state.searchTxt = action.payload
+        return state;
+        case "searching":
+        state.searching = !state.searching
+        return state;
+
         case "OpenUri": 
         state.openuri = action.payload
         return state;

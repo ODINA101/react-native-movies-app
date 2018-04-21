@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: 540,
-    height: 960
+    width:  Dimensions.get('window').width,
+    height: Dimensions.get('window').height
   },
   text: {
    color: '#FFF',
@@ -61,13 +61,7 @@ export default class Tutorial extends React.Component {
  constructor(props) {
    super(props)
 
-if(Dimensions.get('window').width < 540) {
-  this.styles.image.width = Dimensions.get('window').width
-  this.styles.image.height = Dimensions.get('window').height
-  
-}else{
-  
-}
+ 
 
  }
  
@@ -100,7 +94,7 @@ if(Dimensions.get('window').width < 540) {
     return (
       <AppIntroSlider
         slides={slides}
-        onDone={async () =>  { this.props.navigation.pop();await store.getState().openuri() }}
+        onDone={() =>  { this.props.navigation.pop(); this.props.navigation.state.params.OpenUri() }}
         renderDoneButton={this._renderDoneButton}
         renderNextButton={this._renderNextButton}
       />

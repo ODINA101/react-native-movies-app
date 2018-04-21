@@ -7,7 +7,7 @@ import Home from './home';
 import Full from "./full"
 import Movie from "./movie"
 import fullseries from './seriesFull';
-
+import Gridlayout from "./grid"
 import Tutorial from "./tut"
 
 
@@ -28,6 +28,9 @@ export default StackNavigator({
     },
     tut:{
       screen:Tutorial
+    },
+    grid:{
+        screen:Gridlayout
     }
 
 },{
