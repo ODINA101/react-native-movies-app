@@ -10,7 +10,8 @@ import Ripple from "react-native-material-ripple"
 import RNFS from 'react-native-fs'
 import Modal from "react-native-modal";
 import * as Animatable from 'react-native-animatable'
- 
+import StarRating from 'react-native-star-rating';
+import Ionicons from "react-native-vector-icons/Ionicons"
 
 import {
     AdMobInterstitial,
@@ -150,7 +151,30 @@ render() {
  <Animatable.Image animation="zoomInUp" style={{width:120,height:200,marginTop:-180,marginLeft:25 }}  source={{uri:this.props.navigation.state.params.photo}}/>
 <View style={{backgroundColor:"#FFF",padding:20,marginTop:25,}}>
 
-<Text style={{fontSize:16,color:"black"}}>აღწერა</Text>
+<View>
+<StarRating
+
+
+        disabled={true}
+        emptyStar={'ios-star-outline'}
+        fullStar={'ios-star'}
+        halfStar={'ios-star-half'}
+        iconSet={'Ionicons'}
+        maxStars={5}
+        rating={parseFloat(this.props.navigation.state.params.imdb*(1/2))}
+        fullStarColor={'red'}
+        starSize={50}
+      />
+
+ </View> 
+
+
+
+<View style={{flexDirection:'row',marginTop:20}}>
+  <Text style={{color:"black"}}>გამოშვების წელი: </Text>
+<Text>{this.props.navigation.state.params.year}</Text>
+</View> 
+<Text style={{fontSize:16,color:"black",marginTop:10}} >აღწერა</Text>
 <Text>{this.props.navigation.state.params.des}</Text>
 </View>
 </ScrollView>
@@ -160,3 +184,6 @@ render() {
 }
 
 }
+
+
+

@@ -129,7 +129,7 @@ store.getState().page == "სერიალები"? (
     items={this.state.currentItems}
     style={styles.gridView}
     renderItem={item => (
-          <SingleItem photo={item.photo} series={false} id={item.key} des={item.des} url={item.sd} title={item.title} navigation={this.props.navigation}/>
+          <SingleItem photo={item.photo} imdb={item.imdb} year={item.year} series={false} id={item.key} des={item.des} url={item.sd} title={item.title} navigation={this.props.navigation}/>
     )}
   />
     </View>     

@@ -12,7 +12,7 @@ import {
 
 } from 'react-native';
 import Orientation from 'react-native-orientation';
-
+import {Provider } from "react-redux"
 import HomeRouter from "./components/homeRouter";
 import { Container, Header, Content, Button  } from 'native-base';
 import store from "./components/store";
@@ -20,6 +20,11 @@ import Toolbar from './components/toolbar';
 import * as firebase from "firebase";
 import fbconfig from "./components/fbconfig";
 import FCM, {FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType} from 'react-native-fcm';
+
+
+
+
+
 export default class App extends Component {
 
  constructor() {
@@ -73,6 +78,8 @@ this.getData("მთავარი")
        des:snap.child("des").val(),
        photo:snap.child("photo").val(),
        sd:snap.child("sd").val(),
+       imdb:snap.child("imdb").val(),
+       year:snap.child("year").val(),
        key:snap.key
      })
    })
@@ -197,9 +204,11 @@ this.getData(title)
 
      drawerPosition={DrawerLayoutAndroid.positions.Left}
      renderNavigationView={() => navigationView}>
+     <Provider store={store}>
      <View style={{flex: 1,}}>
      <HomeRouter title={this.state.title} func={this.openDrawer}/>
       </View>
+      </Provider>
    </DrawerLayoutAndroid>
    );
  }

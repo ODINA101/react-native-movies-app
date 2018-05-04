@@ -6,13 +6,14 @@ import Icon from 'react-native-vector-icons/Entypo';
 import store from "./store";
 
 import { StackNavigator } from 'react-navigation';
+import {connect} from "react-redux";
 
-import Feather from "react-native-vector-icons/Feather"
 import Ionicons from "react-native-vector-icons/Ionicons"
 import Search from "./search"
+import Feather from "react-native-vector-icons/Feather"
 
 
-export default class Toolbar extends Component {
+ class Toolbar extends Component {
 constructor() {
     super();
 
@@ -89,7 +90,7 @@ return(
     
     this.props.home?(
     
-    <TouchableNativeFeedback background={this.background} onPress={() => store.getState().openDrawer()} >
+    <TouchableNativeFeedback background={this.background} onPress={() => this.props.redux.openDrawer()} >
     <View style={{backgroundColor:"transparent",width:32}}>
     <Icon name="menu" color="white" size={32} />
     </View>
@@ -123,7 +124,7 @@ this.props.search?(
 
    {
 this.props.home?(
-      store.getState().page
+      this.props.redux.page
 ):(
      this.props.title
 )
@@ -186,3 +187,18 @@ this.props.home?(
 
 
 }
+
+
+function mapStateToProps(state) {
+  return {redux:state}
+} 
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    test:()=>{}
+  }
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Toolbar)
