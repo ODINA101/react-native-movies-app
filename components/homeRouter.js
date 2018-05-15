@@ -35,11 +35,5 @@ export default StackNavigator({
 
 },{
     headerMode:"hidden",
-    animationEnabled: true,
-   lazy: true,
-   transitionConfig: () => ({
-     transitionSpec: {
-       duration: 0,
-     },
-   }),
+  
 })

@@ -78,6 +78,7 @@ this.getData("მთავარი")
        des:snap.child("des").val(),
        photo:snap.child("photo").val(),
        sd:snap.child("sd").val(),
+       hd:snap.child("hd").val(),
        imdb:snap.child("imdb").val(),
        year:snap.child("year").val(),
        key:snap.key

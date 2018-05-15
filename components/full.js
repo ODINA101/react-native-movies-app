@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text,View,ScrollView,StyleSheet,BackHandler,Image,Animated,TouchableOpacity,Linking,AsyncStorage} from 'react-native';
+import { Text,View,ScrollView,StyleSheet,BackHandler,Image,Animated,TouchableOpacity,TouchableNativeFeedback,Linking,AsyncStorage} from 'react-native';
 import SingleItem from './singleItem'
 import Toolbar from './toolbar';
 import store from './store';
@@ -12,13 +12,22 @@ import Modal from "react-native-modal";
 import * as Animatable from 'react-native-animatable'
 import StarRating from 'react-native-star-rating';
 import Ionicons from "react-native-vector-icons/Ionicons"
+import Orientation from 'react-native-orientation';
+import ActionSheet from 'react-native-actionsheet'
 
 import {
     AdMobInterstitial,
     PublisherBanner,
   } from 'react-native-admob'
   import downloadManager from 'react-native-simple-download-manager';
-
+ 
+  const options = [
+    'Cancel', 
+    'Apple', 
+    <Text style={{color: 'yellow'}}>Banana</Text>,
+    'Watermelon', 
+    <Text style={{color: 'red'}}>Durian</Text>
+  ]
 export default class Full extends React.Component {
 
     constructor(props) {
@@ -28,26 +37,41 @@ export default class Full extends React.Component {
          isModalVisible: false,
          free:""
      }
-
+     this.playMovie = this.playMovie.bind(this)
      this.download = this.download.bind(this)
      this.openuri = this.openuri.bind(this)
    // store.dispatch({type:"OpenUri",payload:this.openuri})
 
+   const initial = Orientation.getInitialOrientation();
+   if (initial === 'PORTRAIT') {
+     // do something
+   } else {
+     Orientation.lockToPortrait();
 
+   }
     }
 
+   playMovie() {
+
+    this.ActionSheet.show()
+    //
 
 
+
+   }
 componentDidMount() {
 
+ 
 
-
-    AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
+setTimeout(()=> {
+  AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
     AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());
     BackHandler.addEventListener('hardwareBackPress', function() {
           return false;
       });
-}
+
+},3000)
+  }
 
 
 openuri() {
@@ -113,11 +137,11 @@ render() {
   <Toolbar home={false} nav={this.props.navigation} title={this.props.navigation.state.params.title}/>
 <ScrollView style={{flex:1}}>
 <View style={{height:300 }}>
-<Image  animation="zoomInUp" style={{flex:1,}}  blurRadius={5} source={{uri:this.props.navigation.state.params.photo}}/>
+<Image   style={{flex:1,}}  blurRadius={5} source={{uri:this.props.navigation.state.params.photo}}/>
 <View style={{marginBottom:-200,backgroundColor:"#FFF",height:200,width:1000,marginLeft:-50,transform:[{rotate:"15deg"}]}}/>
 
  </View>
-<Ripple onPress={()=> this.props.navigation.navigate("movie",{url:this.props.navigation.state.params.url})} rippleContainerBorderRadius={100} style={{elevation:5,marginTop:-75,marginRight:40,width:50,height:50,backgroundColor:"#609DE2",borderRadius:100,flexDirection:"row",justifyContent:"center",alignItems:"center",alignContent:"center",alignSelf:"flex-end"}}>
+<Ripple onPress={this.playMovie} rippleContainerBorderRadius={100} style={{elevation:5,marginTop:-75,marginRight:40,width:50,height:50,backgroundColor:"#609DE2",borderRadius:100,flexDirection:"row",justifyContent:"center",alignItems:"center",alignContent:"center",alignSelf:"flex-end"}}>
  <Entypo name="controller-play" size={32} color="#FFFFFF" />
 </Ripple>
 <Modal isVisible={this.state.isModalVisible}>
@@ -147,10 +171,11 @@ render() {
  <Entypo name="download" size={32} color="#FFFFFF" />
 </Ripple>
 
-
- <Animatable.Image animation="zoomInUp" style={{width:120,height:200,marginTop:-180,marginLeft:25 }}  source={{uri:this.props.navigation.state.params.photo}}/>
+ <Image  style={{width:120,height:200,marginTop:-180,marginLeft:25 }}  source={{uri:this.props.navigation.state.params.photo}}/>
 <View style={{backgroundColor:"#FFF",padding:20,marginTop:25,}}>
+{
 
+this.props.navigation.state.params.imdb?(
 <View>
 <StarRating
 
@@ -167,17 +192,44 @@ render() {
       />
 
  </View> 
+):(<View />)
+
+}
 
 
-
-<View style={{flexDirection:'row',marginTop:20}}>
+{
+this.props.navigation.state.params.year?(
+  <View style={{flexDirection:'row',marginTop:20}}>
   <Text style={{color:"black"}}>გამოშვების წელი: </Text>
 <Text>{this.props.navigation.state.params.year}</Text>
-</View> 
+</View>
+):(<View/>)
+}
+
+
 <Text style={{fontSize:16,color:"black",marginTop:10}} >აღწერა</Text>
 <Text>{this.props.navigation.state.params.des}</Text>
 </View>
 </ScrollView>
+<ActionSheet
+          ref={o => this.ActionSheet = o}
+          title={'აირჩიეთ'}
+          options={['მაღალი ხარისხი', 'დაბალი ხარისხი', 'უკან']}
+          cancelButtonIndex={2}
+          onPress={(index) => {
+
+           switch(index) {
+             case 0: 
+             this.props.navigation.navigate("movie",{url:this.props.navigation.state.params.hdurl})
+             break;
+             case 1: 
+             this.props.navigation.navigate("movie",{url:this.props.navigation.state.params.sdurl})
+             
+             break;
+           }
+
+          }}
+        />
 </View>
 
     )

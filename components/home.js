@@ -36,7 +36,7 @@ this.setState({currentItems:[]})
 if(this.state.items !== store.getState().database) {
 setTimeout(
 ()=>{
-  this.setState({items:store.getState().database,x:18})
+  this.setState({items:store.getState().database,x:16})
   this.setState({currentItems:this.state.items.slice().splice(0,18)})
   if(this.state.currentItems > 0) {
     this.refs.scrollView.scrollTo(0);
@@ -129,7 +129,7 @@ store.getState().page == "სერიალები"? (
     items={this.state.currentItems}
     style={styles.gridView}
     renderItem={item => (
-          <SingleItem photo={item.photo} imdb={item.imdb} year={item.year} series={false} id={item.key} des={item.des} url={item.sd} title={item.title} navigation={this.props.navigation}/>
+          <SingleItem photo={item.photo} imdb={item.imdb} year={item.year} series={false} id={item.key} des={item.des} sdurl={item.sd} hdurl={item.hd} title={item.title} navigation={this.props.navigation}/>
     )}
   />
     </View>     
