@@ -47,25 +47,27 @@ setData() {
 return store.getState().database 
  }
 
-  fetc(text)  {
-    
-    this.setState({searchTxt:text})
-   
+fetc(text) {
+
+    this.setState({searchTxt: text})
+
     var test = [];
-    
-    if(this.state.loaded) {
-        this.state.items.forEach((itm) => { 
-            
-            if(itm.title.includes(text))
-            {
-                test.push(itm)
-            
-            }  })
-    this.setState({searched:test})
-            
+
+    if (this.state.loaded) {
+        this
+            .state
+            .items
+            .forEach((itm) => {
+
+                if (itm.title.includes(text)) {
+                    test.push(itm)
+
+                }
+            })
+        this.setState({searched: test})
+
     }
-    
-    
+
          
      }
 

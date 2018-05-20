@@ -3,6 +3,7 @@ import { Text,View,ScrollView,StyleSheet,StatusBar} from 'react-native';
 import SingleItem from './singleItem';
 import Toolbar from './toolbar';
 import store from "./store"
+
 import GridView from 'react-native-super-grid';
 const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
   const paddingToBottom = 20;
@@ -64,6 +65,49 @@ he=0;
 
     }
 
+
+
+
+
+
+
+checkTitle(data) {
+  if(data.title_ge !== "") {
+    return(data.title_ge);
+  }else{
+    return(data.title_en);
+  }
+}
+
+
+
+
+checkImdb(data) {
+  if((parseFloat(data.data_rating).toFixed(1)) !== parseFloat(0.0).toFixed(1)) {
+    return(data.data_rating);
+  }else{
+    return(null);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 render() {
 
 
@@ -86,7 +130,29 @@ if(this.state.currentItems.length == 0) {
 
           <ScrollView ref="scrollView" onScroll={({nativeEvent}) => {
 
-      if (isCloseToBottom(nativeEvent)) {
+     
+if (isCloseToBottom(nativeEvent)) {
+if(store.getState().page == "სერიალები") {
+  if(!this.state.loader){
+    this.setState({loader:true});
+   
+   setTimeout(()=>{
+    var changed = this.state.currentItems;
+    fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=" + (this.state.x + 10) + "&startYear=1900&endYear=2018&offset=" + (this.state.x + 10) + "&isnew=0&needtags=0&orderBy=date&order%5Border%5D=data&order%5Bdata%5D=published&language=false&country=false&game=0&softs=0&episode=1&trailers=0&tvshow=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&flashgames=0")
+    .then(res => res.json())
+    .then(res => {
+      changed = changed.concat(res.data);
+     console.log(changed)
+     this.setState({currentItems:changed,x:this.state.x+10,loader:false})
+     
+    });
+
+
+ 
+
+   },1000)
+         }
+}else{
     if(!this.state.loader){
  this.setState({loader:true});
 
@@ -103,7 +169,13 @@ setTimeout(()=>{
 if(this.state.currentItems >= this.state.maxItems) {
 he=0;
 }
-    }
+}
+
+}
+
+
+
+
     }} >
 
 {
@@ -113,11 +185,17 @@ store.getState().page == "სერიალები"? (
            itemDimension={130}
            items={this.state.currentItems}
            style={styles.gridView}
-           renderItem={item => (
-                 <SingleItem photo={item.photo} series={true} id={item.key} des={item.des} url={item.sd} title={item.title} navigation={this.props.navigation}/>
+           renderItem={item => 
+            
+                      (
+                 <SingleItem  id={item.id} views={item.views} photo={item.poster} year={item.release_date} imdb={this.checkImdb(item)} series={true} des={item.description}  title={this.checkTitle(item)} navigation={this.props.navigation}/>
           
           
-           )}
+                        )
+          
+          
+          
+          }
          />
   
 ):(

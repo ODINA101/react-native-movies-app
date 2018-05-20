@@ -198,12 +198,17 @@ this.props.navigation.state.params.imdb?(
 
 
 {
+
+  
 this.props.navigation.state.params.year?(
   <View style={{flexDirection:'row',marginTop:20}}>
   <Text style={{color:"black"}}>გამოშვების წელი: </Text>
 <Text>{this.props.navigation.state.params.year}</Text>
 </View>
 ):(<View/>)
+
+
+
 }
 
 

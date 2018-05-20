@@ -92,7 +92,7 @@ this.getData("მთავარი")
 
 }
 
-componentDidMount() {
+componentWillMount() {
    Orientation.lockToPortrait();
    FCM.subscribeToTopic('/topics/news');
    FCM.requestPermissions(); // for iOS
@@ -133,23 +133,15 @@ componentDidMount() {
 
 getDataSeries() {
   var databaseItems = [];
-  firebase.database().ref().child("series").on("value",snapshot => {
-    databaseItems = [];
-   snapshot.forEach(snap => {
-     databaseItems.push({
-       title:snap.child("name").val(),
-       des:snap.child("des").val(),
-       photo:snap.child("photo").val(),
-       sd:snap.child("sd").val(),
-       key:snap.key
-     })
-
-  //console.warn(snap.key)
-
-   })
-   store.dispatch({type:"database",payload:databaseItems.reverse()})
+  fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=16&startYear=1900&endYear=2018&offset=0&isnew=0&needtags=0&orderBy=date&order%5Border%5D=data&order%5Bdata%5D=published&language=false&country=false&game=0&softs=0&episode=1&trailers=0&tvshow=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&flashgames=0")
+  .then(res => res.json())
+  .then(res => {
+   databaseItems = res.data;
+    store.dispatch({type:"database",payload:databaseItems})
+    console.log(databaseItems)
   })
 
+ 
 
 }
 

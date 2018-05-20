@@ -3,17 +3,19 @@ import {View,Text,StyleSheet} from "react-native";
 import Video from 'react-native-af-video-player'
 
 export default class Movie extends React.Component {
+constructor(props){
+  super(props);
+  console.log(props.navigation.state.params.url)
+
+}
   render() {
     return (
-        <View style={styles.container}>
-          <Video style={{flex:1}} autoPlay={true} url={this.props.navigation.state.params.url} fullScreenOnly={true} rotateToFullScreen={true} />
-        </View>
+           <View style={{flex:1,backgroundColor:"black"}}>
+          <Video style={{flex:1}} autoPlay={true} url={("http://" + this.props.navigation.state.params.url).toString()} 
+          fullScreenOnly={true} rotateToFullScreen={true} />
+            </View>
       )
     }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  }
-})
+ 
