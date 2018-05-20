@@ -43,10 +43,30 @@ this.state = {
  "სერიალები",
  "კომედია",
  "ანიმაცია",
- "ბოევიკი","ბიოგრაფიული","ისტორიული",
- "კრიმინალური"
- ,"ფანტასტიკა","თრილერი","მისტიკური","საშინელება","დრამა","მძაფრსიუჟეტიანი","სათავგადასავლო"],
-
+ "დეტექტივი",
+ "დოკუმენტური",
+ "ისტორიული",
+ "კრიმინალური",
+ "ბიოგრაფიული"
+ ,"ფანტასტიკა",
+ "საომარი",
+ "თრილერი",
+ "მისტიკა",
+ "საშინელებათა",
+ "ვესტერნი",
+ "დრამა",
+  "მიუზიკლი",
+  "სპორტული",
+ "მძაფრ-სიუჟეტიანი",
+ "საომარი",
+ ,"სათავგადასავლო",
+ "საოჯახო",
+"მუსიკალური",
+"მოკლემეტრაჟიანი",
+"სამოყვარულო",
+"ფენტეზი",
+"საოჯახო"],
+ 
 
  items:[],
  token:'a'
@@ -67,27 +87,126 @@ this.getData("მთავარი")
 
 
  getData(cat) {
-  var databaseItems = [];
-  store.dispatch({type:"database",payload:[]})
+var Tag = "";
 
-  firebase.database().ref().child("ALLmovies").child(cat).on("value",snapshot => {
-    databaseItems = [];
-   snapshot.forEach(snap => {
-     databaseItems.push({
-       title:snap.child("name").val(),
-       des:snap.child("des").val(),
-       photo:snap.child("photo").val(),
-       sd:snap.child("sd").val(),
-       hd:snap.child("hd").val(),
-       imdb:snap.child("imdb").val(),
-       year:snap.child("year").val(),
-       key:snap.key
-     })
-   })
-   store.dispatch({type:"database",payload:databaseItems.reverse()})
-   store.dispatch({type:"databaseNum",payload:snapshot.numChildren()})
+
+switch(cat) {
+  case "მთავარი":
+  break;
+  case "კომედია":
+  Tag = 877;
+  break;
+  case "ანიმაცია":
+  Tag = 882;
+  break;
+  case "თრილერი":
+  Tag = 872;
+  break;
+  case "დეტექტივი":
+  Tag = 728;
+  break;
+  case "მძაფრ-სიუჟეტიანი":
+  Tag = 871;
+  break;
+  case "კრიმინალური":
+  Tag = 873;
+  break;
+  case "მისტიკა":
+  Tag = 874;
+  break;
+  case "სათავგადასავლო":
+  Tag = 877;
+  case "დოკუმენტური":
+  Tag = 883;
+  break;
+  case "ვესტერნი":
+  Tag = 884;
+  break;
+  case "საშინელებათა":
+  Tag = 890;
+  break;
+  case "მიუზიკლი":
+  Tag = 885;
+  break;
+  case "მუსიკალური":
+  Tag = 886;
+  break;
+  case "ფენტეზი":
+  Tag = 887;
+  break;
+  case "საომარი":
+  Tag = 888;
+  break;
+  case "საოჯახო":
+  Tag = 889;
+  break;
+  case "სპორტული":
+  Tag = 891;
+  break;
+  case "სამოყვარულო":
+  Tag = 893;
+  break;
+  case "მოკლემეტრაჟიანი":
+  Tag = 963;
+  break;
+  case "ბიოგრაფიული":
+  Tag = 965;
+  break;
+  default:
+  Tag = "მთავარი"
+  break;
+
+}
+
+  var databaseItems = [];
+  // store.dispatch({type:"database",payload:[]})
+
+  // firebase.database().ref().child("ALLmovies").child(cat).on("value",snapshot => {
+  //   databaseItems = [];
+  //  snapshot.forEach(snap => {
+  //    databaseItems.push({
+  //      title:snap.child("name").val(),
+  //      des:snap.child("des").val(),
+  //      photo:snap.child("photo").val(),
+  //      sd:snap.child("sd").val(),
+  //      hd:snap.child("hd").val(),
+  //      imdb:snap.child("imdb").val(),
+  //      year:snap.child("year").val(),
+  //      key:snap.key
+  //    })
+  //  })
+  //  store.dispatch({type:"database",payload:databaseItems.reverse()})
+  //  store.dispatch({type:"databaseNum",payload:snapshot.numChildren()})
    
-  })
+  // })
+
+
+
+
+if(cat == "მთავარი") {
+fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=16&startYear=1900&endYear=2018&offset=0&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=published&language=georgian&country=false&game=0&softs=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&trailers=0&episode=0&tvshow=0&flashgames=0")
+.then(res => res.json()).then(res => 
+{
+  databaseItems = res.data;
+  store.dispatch({type:"database",payload:databaseItems})
+  console.log(databaseItems)
+})
+}else{
+
+  fetch("http://net.adjara.com/Search/SearchResults?ajax=1&searchTags%5B%5D=" + Tag + "&display=15&startYear=1900&endYear=2018&offset=0&isnew=0&needtags=1&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=movies&order%5Bmeta%5D=desc&language=false&country=false&game=0&softs=0&georgians=1&episode=0&trailers=0&tvshow=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&flashgames=0&currentPosition=1&loadedPages%5B%5D=1")
+  .then(res => res.json()).then(res => {
+  databaseItems = res.data;
+  store.dispatch({type:"database",payload:databaseItems})
+  console.log(databaseItems)
+  })  
+}
+
+
+
+
+
+
+
 
 
 }

@@ -9,17 +9,25 @@ import Movie from "./movie"
 import fullseries from './seriesFull';
 import Gridlayout from "./grid"
 import Tutorial from "./tut"
-
-
+import Actor from "./SingleActor";
+import ActorFull from "./actorFull"
 
 export default StackNavigator({
+ 
     home:{
-        screen: Home
+        screen:Home
+    },
+    SingleActor:{
+    screen:Actor
     },
 
+
+   
     full:{
         screen:Full,
     },
+   
+
     movie:{
       screen:Movie
     },
@@ -31,7 +39,10 @@ export default StackNavigator({
     },
     grid:{
         screen:Gridlayout
-    }
+    },
+        fullActor:{
+screen:ActorFull
+    },
 
 },{
     headerMode:"hidden",

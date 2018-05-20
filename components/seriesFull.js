@@ -45,7 +45,8 @@ export default class fullseries extends Component {
       ],
       lang: '',
       link: '',
-      serieI:''
+      serieI:'',
+      downloadLink:''
 
     };
  
@@ -62,8 +63,11 @@ export default class fullseries extends Component {
     
   }
   componentWillMount() {
-    // AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
-    // AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());
+     setTimeout(()=> {
+        AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
+        AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());
+        BackHandler.addEventListener('hardwareBackPress', function() {
+        return false;       }); },3000)
     // firebase.database().ref().child("series").child(this.props.navigation.state.p
     // a rams.key).child("parts").on("value",snapshot => {     databaseItems = [];
     // for(var i=1;i<=snapshot.numChildren();i++) { databaseItems.push("სეზონი " +
@@ -288,36 +292,7 @@ szns =  Object
               )
               : (<View/>)
 }
-
-            {this.props.navigation.state.params.year
-              ? (
-                <View>
-                  <View
-                    style={{
-                    flexDirection: 'row',
-                    marginTop: 20
-                  }}>
-                    <Text style={{
-                      color: "black"
-                    }}>გამოშვების წელი:
-                    </Text>
-                    <Text>{this.props.navigation.state.params.year}</Text>
-                  </View>
-                  <View
-                    style={{
-                    flexDirection: 'row',
-                    marginTop: 20
-                  }}>
-                    <Text style={{
-                      color: "black"
-                    }}>ნახვა:
-                    </Text>
-                    <Text>{this.props.navigation.state.params.views}</Text>
-                  </View>
-                </View>
-              )
-              : (<View/>)
-}
+ 
 
           </View>
           <View
@@ -332,7 +307,13 @@ szns =  Object
               fontSize: 16,
               color: "black"
             }}>აღწერა</Text>
+
+ 
             <Text>{this.props.navigation.state.params.des}</Text>
+          
+          
+          
+          
           </View>
 
           {this.state.isLoading
@@ -419,11 +400,10 @@ szns =  Object
           onPress={(index) => {
             if(index !== (this.state.qoptions.length - 1)) {
 
-              this.props.navigation.navigate("movie", {url: this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"})
+              this.props.navigation.navigate("movie", {url: "http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"})
             }else{
 
             }
-            //console.log(`${this.state.link}${this.props.navigation.state.params.key}_${this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1)))}_${this.getNum(this.state.serieI)}_${this.state.lang}_${this.getQuality(this.state.qoptions[index])}.mp4`);
         }}/>
       </View>
     )

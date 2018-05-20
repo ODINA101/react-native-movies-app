@@ -11,7 +11,7 @@ import {connect} from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons"
 import Search from "./search"
 import Feather from "react-native-vector-icons/Feather"
-
+import LinearGradient from "react-native-linear-gradient"
 
  class Toolbar extends Component {
 constructor() {
@@ -55,7 +55,7 @@ return(
 {
 
   this.props.search?(
-    <View style={{flex:1,backgroundColor:"#00A8EA",alignItems:"center",flexDirection:"row",paddingLeft:20}}>
+    <LinearGradient  locations={[0,0.5,0.6]}  start={{x: 0.0, y: 0.25}} end={{x: 0.5, y: 1.0}} colors={['#ee9ca7','#00dbde']} style={{flex:1,alignItems:"center",flexDirection:"row",paddingLeft:20}}>
     <View style={{flex:0.1,marginTop:-8,}}>
 
 
@@ -72,9 +72,10 @@ return(
       <View style={{flex:1}}>
      <Search searchChange={(text) => this.props.searchChange(text)} />
       </View>
-      </View>
+      </LinearGradient>
   ):(
-    <View style={{flexDirection:"row",height:70,backgroundColor:"#00A8EA",elevation:5,padding:18,}}>
+    <LinearGradient   start={{x: 1.0, y: 0.0}} end={{x: 0.5, y: 0.0}}
+  locations={[0,0.5,0.6]} colors={['#ee9ca7','#00dbde']} style={{flexDirection:"row",height:70,elevation:5,padding:18,}}>
 
 
  
@@ -172,7 +173,7 @@ this.props.home?(
 
 
 
-</View>
+</LinearGradient>
 
 
   )

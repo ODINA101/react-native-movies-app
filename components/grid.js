@@ -46,27 +46,42 @@ console.warn(this.state.loaded)
 setData() {
 return store.getState().database 
  }
-
+  checkTitle(data) {
+        if (data.title_ge !== "") {
+            return (data.title_ge);
+        } else {
+            return (data.title_en);
+        }
+    }
 fetc(text) {
 
     this.setState({searchTxt: text})
 
-    var test = [];
+    // var test = [];
 
-    if (this.state.loaded) {
-        this
-            .state
-            .items
-            .forEach((itm) => {
+    // if (this.state.loaded) {
+    //     this
+    //         .state
+    //         .items
+    //         .forEach((itm) => {
 
-                if (itm.title.includes(text)) {
-                    test.push(itm)
+    //             if (itm.title.includes(text)) {
+    //                 test.push(itm)
 
-                }
-            })
-        this.setState({searched: test})
+    //             }
+    //         })
 
-    }
+    // }
+
+
+  
+
+fetch("http://net.adjara.com/Home/quick_search?ajax=1&search=" + text)
+.then(res => res.json())
+.then(res =>  {
+   console.log(res.movies.data)
+      this.setState({searched: res.movies.data})
+})
 
          
      }
@@ -85,11 +100,11 @@ fetc(text) {
 this.state.loaded?(
     <View>
   <GridView
-    itemDimension={130}
+    itemDimension={200}
     items={this.state.searched}
     style={styles.gridView}
     renderItem={item => (
-          <SingleItem photo={item.photo} series={false} id={item.key} des={item.des} url={item.sd} title={item.title} navigation={this.props.navigation}/>
+          <SingleItem  views={item.VIEW} luboi={true} des={false} search={true} photo={"http://staticnet.adjara.com/moviecontent/" + item.id + "/covers/980x530-" + item.id + ".jpg"} series={false} id={item.id} title={this.checkTitle(item)} navigation={this.props.navigation}/>
     )}
   />  
 

@@ -11,7 +11,7 @@ constructor(props){
   render() {
     return (
            <View style={{flex:1,backgroundColor:"black"}}>
-          <Video style={{flex:1}} autoPlay={true} url={("http://" + this.props.navigation.state.params.url).toString()} 
+          <Video style={{flex:1}} autoPlay={true} url={(this.props.navigation.state.params.url).toString()} 
           fullScreenOnly={true} rotateToFullScreen={true} />
             </View>
       )
