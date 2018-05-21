@@ -50,9 +50,11 @@ export default class Full extends React.Component {
             link: "",
             lang: "English",
             options: [],
-            qoptions: ["hd", "sd", "უკან"],
-            isDown:false,
-            actors:[]
+            qoptions: [
+                "hd", "sd", "უკან"
+            ],
+            isDown: false,
+            actors: []
         }
         this.playMovie = this
             .playMovie
@@ -75,13 +77,13 @@ export default class Full extends React.Component {
     }
 
     playMovie(dato) {
-        
-      if(dato) {
 
-        this.setState({isDown:true});
-      }else{
-        this.setState({isDown:false});
-      }
+        if (dato) {
+
+            this.setState({isDown: true});
+        } else {
+            this.setState({isDown: false});
+        }
 
         this
             .ActionSheet
@@ -90,9 +92,8 @@ export default class Full extends React.Component {
 
     }
     componentWillMount() {
-      actors = [];
-      
-       
+        actors = [];
+
         fetch(
             "http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key +
             "&reqId=getLangAndHd"
@@ -100,12 +101,10 @@ export default class Full extends React.Component {
             .then(res => res.json())
             .then(res => {
 
-
                 info = Object
                     .keys(res)
                     .map(i => res[i])
- 
-            
+
                 var noption = info[0]
                     .lang
                     .split(",")
@@ -114,48 +113,47 @@ export default class Full extends React.Component {
 
             })
 
- fetch("http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key + "&reqId=getInfo")
- .then(res => res.json())
- .then(res => {
-console.log(res.desc[0])
-this.setState({des:res.desc[0]})
+        fetch(
+            "http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key +
+            "&reqId=getInfo"
+        )
+            .then(res => res.json())
+            .then(res => {
+                console.log(res.desc[0])
+                this.setState({des: res.desc[0]})
 
- })
+            })
 
+        fetch(
+            "http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key +
+            "&reqId=getLangAndHd"
+        )
+            .then(res => res.json())
+            .then(res => {
 
-fetch("http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key + "&reqId=getLangAndHd")
-.then(res => res.json())
-.then(res => {
+                Object
+                    .keys(res.cast)
+                    .map(async index => {
+                        actors.push(index)
+                    })
+                this.setState({actors})
 
+                // actors.forEach(item => {   console.log(item)
+                // fetch("http://net.adjara.com/req/jsondata/req.php?id=" + item +
+                // "&reqId=getLangAndHd")   .then(res => res.json())   .then(res => {
+                // console.log(res)   }) })
 
-Object.keys(res.cast).map(async index => {
-actors.push(index)
-})
-this.setState({actors})
+            })
 
-// actors.forEach(item => {
-//   console.log(item)
-//   fetch("http://net.adjara.com/req/jsondata/req.php?id=" + item + "&reqId=getLangAndHd")
-//   .then(res => res.json())
-//   .then(res => {
-//     console.log(res)
-//   })
-
-
-// })
-
-
-})
-
-
-
-
-
-        setTimeout(()=> {
-        AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
-        AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());
-        BackHandler.addEventListener('hardwareBackPress', function() {
-        return false;       }); },3000)
+        setTimeout(() => {
+            AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
+            AdMobInterstitial
+                .requestAd()
+                .then(() => AdMobInterstitial.showAd());
+            BackHandler.addEventListener('hardwareBackPress', function () {
+                return false;
+            });
+        }, 3000)
     }
     getQuality(q) {
         if (q == "sd") {
@@ -169,12 +167,11 @@ this.setState({actors})
     openuri() {
         this.playMovie(true);
 
-  
     }
 
     async download() {
-        // //////////////////////////////// await AsyncStorage.removeItem('firstTime');
-        // //////////////////////////////
+        // ////////////////////////////// await AsyncStorage.removeItem('firstTime');
+        // ////////////////////////////
         RNFS
             .getFSInfo()
             .then(async (info) => {
@@ -329,7 +326,7 @@ this.setState({actors})
                                         flex: 0.3,
                                         backgroundColor: "grey",
                                         justifyContent: "center",
-                                        alignItems: "center",
+                                        alignItems: "center"
                                     }}>
                                     <Text
                                         style={{
@@ -398,35 +395,38 @@ this.setState({actors})
 
                         }
 
-                        {this.props.navigation.state.params.year
-              ? (
-                <View>
-                  <View
-                    style={{
-                    flexDirection: 'row',
-                    marginTop: 20
-                  }}>
-                    <Text style={{
-                      color: "black"
-                    }}>გამოშვების წელი:
-                    </Text>
-                    <Text>{this.props.navigation.state.params.year}</Text>
-                  </View>
-                  <View
-                    style={{
-                    flexDirection: 'row',
-                    marginTop: 20
-                  }}>
-                    <Text style={{
-                      color: "black"
-                    }}>ნახვა:
-                    </Text>
-                    <Text>{this.props.navigation.state.params.views}</Text>
-                  </View>
-                </View>
-              )
-              : (<View/>)
-}
+                        {
+                            this.props.navigation.state.params.year
+                                ? (
+                                    <View>
+                                        <View
+                                            style={{
+                                                flexDirection: 'row',
+                                                marginTop: 20
+                                            }}>
+                                            <Text
+                                                style={{
+                                                    color: "black"
+                                                }}>გამოშვების წელი:
+                                            </Text>
+                                            <Text>{this.props.navigation.state.params.year}</Text>
+                                        </View>
+                                        <View
+                                            style={{
+                                                flexDirection: 'row',
+                                                marginTop: 20
+                                            }}>
+                                            <Text
+                                                style={{
+                                                    color: "black"
+                                                }}>ნახვა:
+                                            </Text>
+                                            <Text>{this.props.navigation.state.params.views}</Text>
+                                        </View>
+                                    </View>
+                                )
+                                : (<View/>)
+                        }
 
                         <Text
                             style={{
@@ -435,38 +435,35 @@ this.setState({actors})
                                 marginTop: 10
                             }}>აღწერა</Text>
 
-                         {
-this.props.des? (
+                        {
+                            this.props.des
+                                ? (<Text>{this.props.navigation.state.params.des}</Text>)
+                                : (<Text>{this.state.des}</Text>)
 
-                        <Text>{this.props.navigation.state.params.des}</Text>
+                        }
 
-):(
-  <Text>{this.state.des}</Text>
-)
-                         
-                         
-                         }
-                       
-                       
-                       
-                       {
-this.state.actors.length > 0?(
-  <View>
-<Text
-                            style={{
-                                fontSize: 16,
-                                color: "black",
-                                marginTop: 10
-                            }}>მსახიობები:</Text>
-  <Actor style={{marginTop:10}} navigation={this.props.navigation} list={this.state.actors} /> 
-</View>
-):(<View />)
-                       
-                       
-                       
-                       }
-                    
-                    
+                        {
+                            this.state.actors.length > 0
+                                ? (
+                                    <View>
+                                        <Text
+                                            style={{
+                                                fontSize: 16,
+                                                color: "black",
+                                                marginTop: 10
+                                            }}>მსახიობები:</Text>
+                                        <Actor
+                                            style={{
+                                                marginTop: 10
+                                            }}
+                                            navigation={this.props.navigation}
+                                            list={this.state.actors}/>
+                                    </View>
+                                )
+                                : (<View/>)
+
+                        }
+
                     </View>
                 </ScrollView>
 
@@ -480,7 +477,7 @@ this.state.actors.length > 0?(
                         if (index !== (this.state.options.length - 1)) {
 
                             this.MoviePlay(this.state.options[index])
-                        } 
+                        }
                     }}/>
 
                 <ActionSheet
@@ -490,43 +487,47 @@ this.state.actors.length > 0?(
                     cancelButtonIndex={this.state.qoptions.length - 1}
                     onPress={(index) => {
 
-                      if(this.state.isDown) {
-                          console.log(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
-                                            "_" + this.getQuality(this.state.qoptions[index]) + ".mp4")
-
-                        if (index !== (this.state.qoptions.length - 1)) {
+                        if (this.state.isDown) {
                             console.log(
                                 this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
                                 "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
-                            );
-                            this
-                                .props
-                                .navigation
-                                .navigate("movie", {
-                                    url: this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
-                                            "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
-                                })
-                        }  
+                            )
 
-                      }else{
-                        
-                        if (index !== (this.state.qoptions.length - 1)) {                                                   
-                              Linking
-                              .canOpenURL(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
-                              "_" + this.getQuality(this.state.qoptions[index]) + ".mp4")
-                              .then(supported => {
-                                  if (supported) {
-                                      Linking.openURL(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
-                              "_" + this.getQuality(this.state.qoptions[index]) + ".mp4");
-                                  }
-                  
-                              });
-                      }  
-                        ;
-                      
-                      }
-                        
-                        
+                            if (index !== (this.state.qoptions.length - 1)) {
+                                console.log(
+                                    this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                    "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
+                                );
+                                this
+                                    .props
+                                    .navigation
+                                    .navigate("movie", {
+                                        url: this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                                "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
+                                    })
+                            }
+
+                        } else {
+
+                            if (index !== (this.state.qoptions.length - 1)) {
+                                Linking
+                                    .canOpenURL(
+                                        this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                        "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
+                                    )
+                                    .then(supported => {
+                                        if (supported) {
+                                            Linking.openURL(
+                                                this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                                "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
+                                            );
+                                        }
+
+                                    });
+                            };
+
+                        }
+
                     }}/>
 
             </View>

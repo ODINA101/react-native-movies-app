@@ -81,11 +81,11 @@ openPage() {
    
     {
   this.props.imdb?  (
-    <LinearGradient colors={['#3494e6', '#ec6ead']} style={{marginLeft:90,marginBottom:10,width:50,height:50,borderRadius:25,flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
+    <View   style={{backgroundColor:"#3494e6",marginLeft:90,marginBottom:10,width:50,height:50,borderRadius:25,flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
     <Text style={{color:"#FFF",fontSize:18}}>
    {parseFloat(this.props.imdb).toFixed(1)}
     </Text>
-    </LinearGradient>
+    </View>
   ):(<View/>)
 
     }
@@ -138,11 +138,11 @@ this.props.luboi?(
    
     {
   this.props.imdb?  (
-    <LinearGradient colors={['#3494e6', '#ec6ead']} style={{marginLeft:90,marginBottom:10,width:50,height:50,borderRadius:25,flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
+    <View   style={{backgroundColor:"#3494e6",marginLeft:90,marginBottom:10,width:50,height:50,borderRadius:25,flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
     <Text style={{color:"#FFF",fontSize:18}}>
    {parseFloat(this.props.imdb).toFixed(1)}
     </Text>
-    </LinearGradient>
+    </View>
   ):(<View/>)
 
     }

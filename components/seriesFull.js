@@ -66,8 +66,9 @@ export default class fullseries extends Component {
      setTimeout(()=> {
         AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
         AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());
-        BackHandler.addEventListener('hardwareBackPress', function() {
-        return false;       }); },3000)
+     
+      
+      },3000)
     // firebase.database().ref().child("series").child(this.props.navigation.state.p
     // a rams.key).child("parts").on("value",snapshot => {     databaseItems = [];
     // for(var i=1;i<=snapshot.numChildren();i++) { databaseItems.push("სეზონი " +
