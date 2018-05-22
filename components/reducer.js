@@ -4,6 +4,7 @@ const initialState = {
     menu:true,
     nav:"",
     page:"მთავარი",
+    pageid:'',
    drawerlock:"unlocked",
    fullOpened:false,
    openDrawer:"",
@@ -23,6 +24,10 @@ export default  (state=initialState,action) => {
 
 
     switch(action.type) {
+        case "pageid":
+        state.pageid = action.payload;
+        return state;
+        break;
         case "search": 
         state.searchTxt = action.payload
         return state;

@@ -94,7 +94,7 @@ switch(cat) {
   case "მთავარი":
   break;
   case "კომედია":
-  Tag = 877;
+  Tag = 876;
   break;
   case "ანიმაცია":
   Tag = 882;
@@ -197,6 +197,8 @@ fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=16&startYear=19
   .then(res => res.json()).then(res => {
   databaseItems = res.data;
   store.dispatch({type:"database",payload:databaseItems})
+  store.dispatch({type:"pageid",payload:Tag})
+  
   console.log(databaseItems)
   })  
 }

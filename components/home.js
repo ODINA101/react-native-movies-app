@@ -3,7 +3,6 @@ import {Text, View, ScrollView, StyleSheet, StatusBar} from 'react-native';
 import SingleItem from './singleItem';
 import Toolbar from './toolbar';
 import store from "./store"
-
 import GridView from 'react-native-super-grid';
 const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
     const paddingToBottom = 20;
@@ -23,7 +22,8 @@ export default class Home extends React.Component {
             currentItems: [],
             x: 18,
             loader: false,
-            maxItems: 0
+            maxItems: 0,
+            Tag:''
         }
         store.dispatch({type: "setNav", payload: props.navigation})
 
@@ -57,7 +57,7 @@ export default class Home extends React.Component {
                         maxItems: store
                             .getState()
                             .databaseNum
-                    })
+                             ,Tag:store.getState().pageid})
 
                     if (this.state.currentItems >= this.state.maxItems) {
                         he = 0;
@@ -70,7 +70,11 @@ export default class Home extends React.Component {
         })
 
     }
-
+    _refresh() {
+        return new Promise((resolve) => {
+          setTimeout(()=>{resolve()}, 2000)
+        });
+       }
     checkTitle(data) {
         if (data.title_ge !== "") {
             return (data.title_ge);
@@ -128,7 +132,6 @@ export default class Home extends React.Component {
                                 backgroundColor: "#EBECEE",
                                 flex: 1
                             }}>
-
                             <ScrollView
                                 ref="scrollView"
                                 onScroll={({nativeEvent}) => {
@@ -138,9 +141,16 @@ export default class Home extends React.Component {
                                             if (!this.state.loader) {
                                                 this.setState({loader: true});
 
-                                                setTimeout(() => {
+                                              //  setTimeout(() => {
                                                     var changed = this.state.currentItems;
-
+                                                console.log("http://net.adjara.com/Search/SearchResults?ajax=1&display=" + (
+                                                    this.state.x + 10
+                                                ) + "&startYear=1900&endYear=2018&offset=" + (
+                                                    this.state.x + 10
+                                                ) + "&isnew=0&needtags=0&orderBy=date&order%5Border%5D=data&order%5Bdata%5D=pub" +
+                                                "lished&language=false&country=false&game=0&softs=0&episode=1&trailers=0&tvshow" +
+                                                "=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&flashg" +
+                                                "ames=0")
                                                     fetch(
                                                         "http://net.adjara.com/Search/SearchResults?ajax=1&display=" + (
                                                             this.state.x + 10
@@ -163,13 +173,13 @@ export default class Home extends React.Component {
 
                                                         });
 
-                                                }, 1000)
+                                               // }, 1000)
                                             }
-                                        } else {
+                                        } else if(store.getState().page == "მთავარი"){
                                             if (!this.state.loader) {
                                                 this.setState({loader: true});
 
-                                                setTimeout(() => {
+                                             //  setTimeout(() => {
                                                     var changed = this.state.currentItems;
 
                                                     fetch(
@@ -195,7 +205,46 @@ export default class Home extends React.Component {
 
                                                  
                                                   
-                                                }, 1000)
+                                              //  }, 1000)
+                                            }
+
+                                            if (this.state.currentItems >= this.state.maxItems) {
+                                                he = 0;
+                                            }
+                                        }else{
+                                               if (!this.state.loader) {
+                                                this.setState({loader: true});
+
+                                            //    setTimeout(() => {
+                                                    var changed = this.state.currentItems;
+                                                    console.log(
+                                                        "http://net.adjara.com/Search/SearchResults?ajax=1&searchTags%5B%5D=" + this.state.Tag + "&display=" + (
+                                                            this.state.x + 10
+                                                        ) + "&startYear=1900&endYear=2018&offset=" + (
+                                                            this.state.x + 10
+                                                        ) + "&isnew=0&needtags=1&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=movies&order%5Bmeta%5D=desc&language=false&country=false&game=0&softs=0&georgians=1&episode=0&trailers=0&tvshow=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&flashgames=0&currentPosition=1&loadedPages%5B%5D=1"
+                                                )
+                                                    fetch(
+                                                        "http://net.adjara.com/Search/SearchResults?ajax=1&searchTags%5B%5D=" + this.state.Tag + "&display=" + (
+                                                            this.state.x + 10
+                                                        ) + "&startYear=1900&endYear=2018&offset=" + (
+                                                            this.state.x + 10
+                                                        ) + "&isnew=0&needtags=1&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=movies&order%5Bmeta%5D=desc&language=false&country=false&game=0&softs=0&georgians=1&episode=0&trailers=0&tvshow=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&flashgames=0&currentPosition=1&loadedPages%5B%5D=1"
+                                                    ) .then(res => res.json())
+                                                    .then(res => {
+                                                        changed = changed.concat(res.data);
+                                                        console.log(changed)
+                                                        this.setState({
+                                                            currentItems: changed,
+                                                            x: this.state.x + 10,
+                                                            loader: false
+                                                        })
+
+                                                    });
+
+                                                 
+                                                  
+                                               // }, 1000)
                                             }
 
                                             if (this.state.currentItems >= this.state.maxItems) {

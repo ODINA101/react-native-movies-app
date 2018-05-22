@@ -23,7 +23,8 @@ import {AdMobInterstitial, PublisherBanner} from 'react-native-admob'
 
 var seasons = [];
 var szn = [];
-
+var qualitiesObjs = [];
+var nnqu = [];   
 export default class fullseries extends Component {
   constructor(props) {
     super(props);
@@ -43,6 +44,8 @@ export default class fullseries extends Component {
       qoptions: [
         "hd", "sd", "უკან"
       ],
+      nnqu:[],
+      qualitiesObjs:[],
       lang: '',
       link: '',
       serieI:'',
@@ -69,13 +72,22 @@ export default class fullseries extends Component {
      
       
       },3000)
+
+   
+      
+
+
+
+
+
+
+
     // firebase.database().ref().child("series").child(this.props.navigation.state.p
     // a rams.key).child("parts").on("value",snapshot => {     databaseItems = [];
     // for(var i=1;i<=snapshot.numChildren();i++) { databaseItems.push("სეზონი " +
     // i);     }     }) this.setState({seasons:databaseItems})
     // this.getSeason("სეზონი 1");
 
-    console.log("http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key + "&reqId=getInfo")
     fetch("http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key + "&reqId=getInfo")
       .then(res => res.json())
       .then(res => {
@@ -83,7 +95,6 @@ export default class fullseries extends Component {
         const myarr = Object
           .keys(res)
           .map(i => res[i])
-        console.log(myarr)
         this.setState({link:myarr[myarr.length-1]})
         myarr.forEach((item, index) => {
           if (item[1]) {
@@ -102,12 +113,10 @@ export default class fullseries extends Component {
 
 
 
-console.log(seasons)
 var testSznNum = 0;
 
 
 var szns;
-console.log(seasons[testSznNum][testSznNum+1])
 
 if(seasons[testSznNum][testSznNum+1].lang) {
 szns =  Object
@@ -123,7 +132,6 @@ szns =  Object
   }
 
   }else{
-    console.log("auuuf")
   }
 
 });
@@ -143,13 +151,11 @@ szns =  Object
   }
 
   }else{
-    console.log("auuuf")
   }
 
 });
 
 }
-        console.log(szns)
         szn = szns;
 
         this.setState({series: szn, isLoading: false, seasons: seasons})
@@ -157,15 +163,7 @@ szns =  Object
       })
 
   }
-  getQuality(q) {
-    console.log(q)
-    if(q == "sd") {
-      return "300"
-    }else{
-      return "1500"
-    }
-
-  }
+ 
   SeriePlay(lang)
   {
     this.setState({lang})
@@ -174,7 +172,17 @@ szns =  Object
       .show();
 
   }
-
+  getq(data) {
+  if(data !== "უკან") {
+    if(data < 1000) {
+      return "sd"
+    }else{
+      return "hd"
+    }
+  }else{
+    return "უკან"
+  }
+  }
   getNum(num) {
     if (num < 10) {
       return ("0" + (num+1)).toString()
@@ -183,11 +191,36 @@ szns =  Object
     }
   }
 
-  playSerie(lang,serieI) {
-    console.log(lang)
+  playSerie(lang,serieI,quality) {
     var noption = lang.split(",")
     this.setState({serieI});
     noption.push("უკან")
+  // if(quality == "300,1500") {
+
+  // }else if(quality == "1500") {
+  //   this.setState({})
+  // }
+  qualitiesObjs = [];
+  nnqu = [];
+   nqoption = quality.split(",")
+   nqoption.push("უკან")
+   nqoption.map(item => {
+     qualitiesObjs.push({q:item})
+     nnqu.push(this.getq(item))
+    })
+   
+
+
+
+  this.setState({qoptions: nqoption,qualitiesObjs:qualitiesObjs,nnqu:nnqu})
+
+
+
+
+
+
+
+
     this.setState({options: noption})
     this
       .ActionSheet
@@ -209,12 +242,10 @@ szns =  Object
         }
 
       })
-    console.log(datiko)
     this.setState({series: datiko, isLoading: false})
 
   }
   onValueChange(value) {
-    console.log(value)
     this.getSeason(value)
     this.setState({selected1: value});
   }
@@ -351,7 +382,7 @@ szns =  Object
                       .state
                       .seasons
                       .map((data, index) => {
-                        return (<Picker.Item label={"სეზონი " + (index + 1)} value={"key" + index}/>)
+                        return (<Picker.Item key={0} label={"სეზონი " + (index + 1)} value={"key" + index}/>)
                       })
 }
 
@@ -364,7 +395,7 @@ szns =  Object
                     .series
                     .map((item, index) => {
                       return (
-                        <Ripple key={index} onPress={() => this.playSerie(item.lang,index)}>
+                        <Ripple key={index} onPress={() => this.playSerie(item.lang,index,item.quality)}>
                           <ListItem>
                             <Text>{(index + 1) + "." + item.name}</Text>
                           </ListItem>
@@ -396,12 +427,11 @@ szns =  Object
         <ActionSheet
           ref={o => this.qActionSheet = o}
           title={'აირჩიეთ ხარისხი'}
-          options={this.state.qoptions}
+          options={this.state.nnqu}
           cancelButtonIndex={this.state.qoptions.length - 1}
           onPress={(index) => {
             if(index !== (this.state.qoptions.length - 1)) {
-
-              this.props.navigation.navigate("movie", {url: "http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"})
+              this.props.navigation.navigate("movie", {url: "http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + qualitiesObjs[index].q + ".mp4"})
             }else{
 
             }

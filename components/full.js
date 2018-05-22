@@ -10,6 +10,7 @@ import {
     TouchableOpacity,
     TouchableNativeFeedback,
     Linking,
+    Dimensions,
     AsyncStorage
 } from 'react-native';
 import SingleItem from './singleItem'
@@ -28,7 +29,7 @@ import Orientation from 'react-native-orientation';
 import ActionSheet from 'react-native-actionsheet'
 import Actor from "./SingleActor";
 import {AdMobInterstitial, PublisherBanner} from 'react-native-admob'
-import downloadManager from 'react-native-simple-download-manager';
+ 
 var actors = [];
 
 const options = [
@@ -44,6 +45,17 @@ export default class Full extends React.Component {
 
     constructor(props) {
         super(props);
+        setInterval(() => {
+            const initial = Orientation.getInitialOrientation();
+            if (initial === 'PORTRAIT') {
+                // do something
+            } else {
+                Orientation.lockToPortrait();
+        
+            }
+         },1000)
+         
+        
         this.state = {
             storage: 0,
             isModalVisible: false,
@@ -54,7 +66,8 @@ export default class Full extends React.Component {
                 "hd", "sd", "უკან"
             ],
             isDown: false,
-            actors: []
+            actors: [],
+            types:[]
         }
         this.playMovie = this
             .playMovie
@@ -75,6 +88,9 @@ export default class Full extends React.Component {
 
         }
     }
+
+
+
 
     playMovie(dato) {
 
@@ -119,8 +135,13 @@ export default class Full extends React.Component {
         )
             .then(res => res.json())
             .then(res => {
-                console.log(res.desc[0])
-                this.setState({des: res.desc[0]})
+                console.log(res)
+ 
+
+                var genres = Object.keys(res.genres).map(i => res.genres[i])
+
+                this.setState({des: res.desc[0],types:genres})
+
 
             })
 
@@ -150,9 +171,7 @@ export default class Full extends React.Component {
             AdMobInterstitial
                 .requestAd()
                 .then(() => AdMobInterstitial.showAd());
-            BackHandler.addEventListener('hardwareBackPress', function () {
-                return false;
-            });
+            
         }, 3000)
     }
     getQuality(q) {
@@ -169,39 +188,64 @@ export default class Full extends React.Component {
 
     }
 
-    async download() {
+     download() {
+
+
+        this.openuri()
+         
+        //downloadManager.download({url:""})
+       
+        // var url1 = 'https://www.optoma.co.uk/images/ProductApplicationFeatures/4kuhd/banner.jpg';
+        // var headers = {'Authorization': 'Bearer abcsdsjkdjskjdkskjd'};
+        // const config = {
+        //   downloadTitle: 'Title that should appear in Native Download manager',
+        //   downloadDescription: 'Description that should appear in Native Download manager',
+        //   saveAsName: 'File name to save',
+        //   allowedInRoaming: true,
+        //   allowedInMetered: true,
+        //   showInDownloads: true,
+        //   external: true, //when false basically means use the default Download path (version ^1.3)
+        //   path: "Download/" //if "external" is true then use this path (version ^1.3)
+        // };
+    
+        // downloadManager.download(url1, headers, config).then((response)=>{
+        //   console.log('Download success!');
+        // }).catch(err=>{
+        //   console.log('Download failed!');
+        //   console.error(err)
+        // })
         // ////////////////////////////// await AsyncStorage.removeItem('firstTime');
-        // ////////////////////////////
-        RNFS
-            .getFSInfo()
-            .then(async (info) => {
-                if (parseInt((info.freeSpace / 1024) / 1024) > 1000) {
+        // // ////////////////////////////
+        // RNFS
+        //     .getFSInfo()
+        //     .then(async (info) => {
+        //         if (parseInt((info.freeSpace / 1024) / 1024) > 1000) {
 
-                    const value = await AsyncStorage.getItem('firstTime');
-                    if (!value) {
-                        try {
-                            await AsyncStorage.setItem('firstTime', 'yes');
-                            this
-                                .props
-                                .navigation
-                                .navigate('tut', {OpenUri: this.openuri});
+        //             const value = await AsyncStorage.getItem('firstTime');
+        //             if (!value) {
+        //                 try {
+        //                     await AsyncStorage.setItem('firstTime', 'yes');
+        //                     this
+        //                         .props
+        //                         .navigation
+        //                         .navigate('tut', {OpenUri: this.openuri});
 
-                        } catch (error) {}
+        //                 } catch (error) {}
 
-                    } else {
+        //             } else {
 
-                        this.openuri()
+        //                 
 
-                    }
+        //             }
 
-                } else {
-                    this.setState({
-                        free: parseInt((info.freeSpace / 1024) / 1024)
-                    })
-                    this._toggleModal()
+        //         } else {
+        //             this.setState({
+        //                 free: parseInt((info.freeSpace / 1024) / 1024)
+        //             })
+        //             this._toggleModal()
 
-                }
-            });
+        //         }
+        //     });
 
     }
 
@@ -401,7 +445,6 @@ export default class Full extends React.Component {
                                     <View>
                                         <View
                                             style={{
-                                                flexDirection: 'row',
                                                 marginTop: 20
                                             }}>
                                             <Text
@@ -411,6 +454,39 @@ export default class Full extends React.Component {
                                             </Text>
                                             <Text>{this.props.navigation.state.params.year}</Text>
                                         </View>
+
+                                        {
+                                             this.state.types?(
+                                                 <View>
+                                                <View
+                                                style={{
+                                                    flexDirection: 'row',
+                                                    marginTop: 20,
+                                                    width:200,
+                                                }}>
+                                                <Text
+                                                    style={{
+                                                        color: "black"
+                                                    }}>ჟანრი:
+                                                </Text>
+                                                    </View>
+                                                <View
+                                            style={{
+                                            }}>
+                                                {
+                                                   this.state.types.map(itm => {
+                                                       return (
+                                                   <Text> {itm}, </Text>
+                                                       )
+                                                   })
+    
+                                                }
+                                                </View>
+                                                </View>
+                                                
+                                             ):(<View />)
+                                        }
+                                       
                                         <View
                                             style={{
                                                 flexDirection: 'row',
@@ -487,7 +563,7 @@ export default class Full extends React.Component {
                     cancelButtonIndex={this.state.qoptions.length - 1}
                     onPress={(index) => {
 
-                        if (this.state.isDown) {
+                        if (!this.state.isDown) {
                             console.log(
                                 this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
                                 "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
@@ -510,20 +586,34 @@ export default class Full extends React.Component {
                         } else {
 
                             if (index !== (this.state.qoptions.length - 1)) {
-                                Linking
-                                    .canOpenURL(
-                                        this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
-                                        "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
-                                    )
-                                    .then(supported => {
-                                        if (supported) {
-                                            Linking.openURL(
-                                                this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
-                                                "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
-                                            );
-                                        }
+                                 
 
-                                    });
+                                    const downloadManager = require('react-native-simple-download-manager');
+ 
+                                    const url = this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                    "_" + this.getQuality(this.state.qoptions[index]) + ".mp4";
+                                    const headers = {'Authorization': 'movie is downloading'};
+                                    const config = {
+                                      downloadTitle:this.props.navigation.state.params.title,
+                                      downloadDescription: 'მიმდინარეობს გადმოწერა',
+                                      saveAsName: this.props.navigation.state.params.title,
+                                      allowedInRoaming: true,
+                                      allowedInMetered: true,
+                                      showInDownloads: true,
+                                      external: true, //when false basically means use the default Download path (version ^1.3)
+                                      path: "Download/" //if "external" is true then use this path (version ^1.3)
+                                    };
+                                     
+                                    downloadManager.download(url, headers, config).then((response)=>{
+                                      console.log('Download success!');
+                                    }).catch(err=>{
+                                      console.log('Download failed!');
+                                    })
+
+
+
+
+
                             };
 
                         }

@@ -77,14 +77,14 @@ class Toolbar extends Component {
                                 style={{
                                     flex: 1,
                                     alignItems: "center",
-                                    backgroundColor: "#ee9ca7",
+                                    backgroundColor: "#3494e6",
                                     flexDirection: "row",
                                     paddingLeft: 20
                                 }}>
                                 <View
                                     style={{
                                         flex: 0.1,
-                                        marginTop: -5
+                                        marginTop: 4
                                     }}>
 
                                     <TouchableNativeFeedback
@@ -103,9 +103,14 @@ class Toolbar extends Component {
 
                                 <View
                                     style={{
-                                        flex: 1
+                                        flex: 1,
+                                        justifyContent:"center",
+                                        marginTop: 10
+
+                                        
+                                        
                                     }}>
-                                    <Search searchChange={(text) => this.props.searchChange(text)}/>
+                                    <Search style={{marginTop:16}} searchChange={(text) => this.props.searchChange(text)}/>
                                 </View>
                             </View>
                         )
@@ -113,7 +118,7 @@ class Toolbar extends Component {
                             <View
                                 style={{
                                     flexDirection: "row",
-                                    backgroundColor: "#ee9ca7",
+                                    backgroundColor: "#3494e6",
                                     height: 70,
                                     elevation: 5,
                                     padding: 18
