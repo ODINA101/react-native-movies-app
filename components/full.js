@@ -29,6 +29,7 @@ import Orientation from 'react-native-orientation';
 import ActionSheet from 'react-native-actionsheet'
 import Actor from "./SingleActor";
 import {AdMobInterstitial, PublisherBanner} from 'react-native-admob'
+const downloadManager = require('react-native-simple-download-manager');
  
 var actors = [];
 
@@ -75,9 +76,7 @@ export default class Full extends React.Component {
         this.download = this
             .download
             .bind(this)
-        this.openuri = this
-            .openuri
-            .bind(this)
+        
         // store.dispatch({type:"OpenUri",payload:this.openuri})
 
         const initial = Orientation.getInitialOrientation();
@@ -91,110 +90,108 @@ export default class Full extends React.Component {
 
 
 
-
-    playMovie(dato) {
-
-        if (dato) {
-
-            this.setState({isDown: true});
-        } else {
-            this.setState({isDown: false});
-        }
-
-        this
-            .ActionSheet
-            .show()
-        //
-
-    }
     componentWillMount() {
         actors = [];
-
+        
         fetch(
             "http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key +
             "&reqId=getLangAndHd"
         )
-            .then(res => res.json())
-            .then(res => {
+        .then(res => res.json())
+        .then(res => {
+            
+            info = Object
+            .keys(res)
+            .map(i => res[i])
 
-                info = Object
-                    .keys(res)
-                    .map(i => res[i])
-
-                var noption = info[0]
+            var noption = info[0]
                     .lang
                     .split(",")
                 noption.push("უკან")
                 this.setState({options: noption, link: info[0].url})
-
+                
             })
-
+            
         fetch(
             "http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key +
             "&reqId=getInfo"
         )
-            .then(res => res.json())
-            .then(res => {
+        .then(res => res.json())
+        .then(res => {
                 console.log(res)
- 
-
+                
+                
                 var genres = Object.keys(res.genres).map(i => res.genres[i])
-
+                
                 this.setState({des: res.desc[0],types:genres})
-
-
+                
+                
             })
-
-        fetch(
-            "http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key +
-            "&reqId=getLangAndHd"
-        )
+            
+            fetch(
+                "http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key +
+                "&reqId=getLangAndHd"
+            )
             .then(res => res.json())
             .then(res => {
-
+                
                 Object
                     .keys(res.cast)
                     .map(async index => {
                         actors.push(index)
                     })
-                this.setState({actors})
+                    this.setState({actors})
 
-                // actors.forEach(item => {   console.log(item)
+                    // actors.forEach(item => {   console.log(item)
                 // fetch("http://net.adjara.com/req/jsondata/req.php?id=" + item +
                 // "&reqId=getLangAndHd")   .then(res => res.json())   .then(res => {
                 // console.log(res)   }) })
-
+                
             })
 
-        setTimeout(() => {
+            setTimeout(() => {
             AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
             AdMobInterstitial
                 .requestAd()
                 .then(() => AdMobInterstitial.showAd());
-            
-        }, 3000)
-    }
-    getQuality(q) {
-        if (q == "sd") {
+                
+            }, 3000)
+        }
+        getQuality(q) {
+            if (q == "sd") {
             return "300"
         } else {
             return "1500"
         }
-
+        
     }
+    
+        playMovie(dato) {
+      console.log(dato)
+            if (dato == false) {
+    
+                this.setState({isDown: true});
+            } else {
+                this.setState({isDown: false});
+            }
+    
 
-    openuri() {
-        this.playMovie(true);
-
-    }
-
-     download() {
-
-
-        this.openuri()
-         
+                this
+                .ActionSheet
+                .show()
+             
+     
+        }
+    
+    
+    
+    download() {
+        
+        
+        
+        
         //downloadManager.download({url:""})
-       
+        
         // var url1 = 'https://www.optoma.co.uk/images/ProductApplicationFeatures/4kuhd/banner.jpg';
         // var headers = {'Authorization': 'Bearer abcsdsjkdjskjdkskjd'};
         // const config = {
@@ -207,7 +204,7 @@ export default class Full extends React.Component {
         //   external: true, //when false basically means use the default Download path (version ^1.3)
         //   path: "Download/" //if "external" is true then use this path (version ^1.3)
         // };
-    
+        
         // downloadManager.download(url1, headers, config).then((response)=>{
         //   console.log('Download success!');
         // }).catch(err=>{
@@ -305,7 +302,7 @@ export default class Full extends React.Component {
 
                     </View>
                     <Ripple
-                        onPress={this.playMovie}
+                        onPress={() => this.playMovie(false)}
                         rippleContainerBorderRadius={100}
                         style={{
                             elevation: 5,
@@ -382,7 +379,7 @@ export default class Full extends React.Component {
                         </View>
                     </Modal>
                     <Ripple
-                        onPress={this.download}
+                        onPress={() => this.playMovie(true)}
                         rippleContainerBorderRadius={100}
                         style={{
                             elevation: 5,
@@ -563,7 +560,8 @@ export default class Full extends React.Component {
                     cancelButtonIndex={this.state.qoptions.length - 1}
                     onPress={(index) => {
 
-                        if (!this.state.isDown) {
+                        if (this.state.isDown) {
+                            console.log("play")
                             console.log(
                                 this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
                                 "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
@@ -584,12 +582,12 @@ export default class Full extends React.Component {
                             }
 
                         } else {
-
+               console.log("gadmowera")
                             if (index !== (this.state.qoptions.length - 1)) {
                                  
-
-                                    const downloadManager = require('react-native-simple-download-manager');
- 
+          
+                                      console.log(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                      "_" + this.getQuality(this.state.qoptions[index]) + ".mp4")
                                     const url = this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
                                     "_" + this.getQuality(this.state.qoptions[index]) + ".mp4";
                                     const headers = {'Authorization': 'movie is downloading'};
@@ -600,14 +598,18 @@ export default class Full extends React.Component {
                                       allowedInRoaming: true,
                                       allowedInMetered: true,
                                       showInDownloads: true,
-                                      external: true, //when false basically means use the default Download path (version ^1.3)
+                                      external: false, //when false basically means use the default Download path (version ^1.3)
                                       path: "Download/" //if "external" is true then use this path (version ^1.3)
                                     };
-                                     
+                                    
+                                    
                                     downloadManager.download(url, headers, config).then((response)=>{
                                       console.log('Download success!');
                                     }).catch(err=>{
-                                      console.log('Download failed!');
+                                      console.log(err);
+                                      if(err.reason == "ERROR_INSUFFICIENT_SPACE") {
+                                          this._toggleModal()
+                                      }
                                     })
 
 
