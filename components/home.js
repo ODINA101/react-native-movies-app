@@ -32,7 +32,6 @@ export default class Home extends React.Component {
             this.setState({currentItems: []})
 
             if (this.state.items !== store.getState().database) {
-                setTimeout(() => {
                     this.setState({
                         items: store
                             .getState()
@@ -63,7 +62,6 @@ export default class Home extends React.Component {
                         he = 0;
                     }
 
-                }, 1000)
 
             }
 
@@ -143,18 +141,14 @@ export default class Home extends React.Component {
 
                                               //  setTimeout(() => {
                                                     var changed = this.state.currentItems;
-                                                console.log("http://net.adjara.com/Search/SearchResults?ajax=1&display=" + (
-                                                    this.state.x + 10
-                                                ) + "&startYear=1900&endYear=2018&offset=" + (
+                                                console.log("http://net.adjara.com/Search/SearchResults?ajax=1&display=16&startYear=1900&endYear=2018&offset=" + (
                                                     this.state.x + 10
                                                 ) + "&isnew=0&needtags=0&orderBy=date&order%5Border%5D=data&order%5Bdata%5D=pub" +
                                                 "lished&language=false&country=false&game=0&softs=0&episode=1&trailers=0&tvshow" +
                                                 "=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&flashg" +
                                                 "ames=0")
                                                     fetch(
-                                                        "http://net.adjara.com/Search/SearchResults?ajax=1&display=" + (
-                                                            this.state.x + 10
-                                                        ) + "&startYear=1900&endYear=2018&offset=" + (
+                                                        "http://net.adjara.com/Search/SearchResults?ajax=1&display=16&startYear=1900&endYear=2018&offset=" + (
                                                             this.state.x + 10
                                                         ) + "&isnew=0&needtags=0&orderBy=date&order%5Border%5D=data&order%5Bdata%5D=pub" +
                                                         "lished&language=false&country=false&game=0&softs=0&episode=1&trailers=0&tvshow" +
@@ -183,9 +177,7 @@ export default class Home extends React.Component {
                                                     var changed = this.state.currentItems;
 
                                                     fetch(
-                                                        "http://net.adjara.com/Search/SearchResults?ajax=1&display=" + (
-                                                            this.state.x + 10
-                                                        ) + "&startYear=1900&endYear=2018&offset=" + (
+                                                        "http://net.adjara.com/Search/SearchResults?ajax=1&display=16&startYear=1900&endYear=2018&offset=" + (
                                                             this.state.x + 10
                                                         ) + "&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=pub" +
                                                         "lished&language=georgian&country=false&game=0&softs=0&videos=0&xvideos=0&vvide" +
@@ -217,17 +209,9 @@ export default class Home extends React.Component {
 
                                             //    setTimeout(() => {
                                                     var changed = this.state.currentItems;
-                                                    console.log(
-                                                        "http://net.adjara.com/Search/SearchResults?ajax=1&searchTags%5B%5D=" + this.state.Tag + "&display=" + (
-                                                            this.state.x + 10
-                                                        ) + "&startYear=1900&endYear=2018&offset=" + (
-                                                            this.state.x + 10
-                                                        ) + "&isnew=0&needtags=1&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=movies&order%5Bmeta%5D=desc&language=false&country=false&game=0&softs=0&georgians=1&episode=0&trailers=0&tvshow=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&flashgames=0&currentPosition=1&loadedPages%5B%5D=1"
-                                                )
+                                                  
                                                     fetch(
-                                                        "http://net.adjara.com/Search/SearchResults?ajax=1&searchTags%5B%5D=" + this.state.Tag + "&display=" + (
-                                                            this.state.x + 10
-                                                        ) + "&startYear=1900&endYear=2018&offset=" + (
+                                                        "http://net.adjara.com/Search/SearchResults?ajax=1&searchTags%5B%5D=" + this.state.Tag + "&display=16&startYear=1900&endYear=2018&offset=" + (
                                                             this.state.x + 10
                                                         ) + "&isnew=0&needtags=1&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=movies&order%5Bmeta%5D=desc&language=false&country=false&game=0&softs=0&georgians=1&episode=0&trailers=0&tvshow=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&flashgames=0&currentPosition=1&loadedPages%5B%5D=1"
                                                     ) .then(res => res.json())

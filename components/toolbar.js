@@ -79,7 +79,9 @@ class Toolbar extends Component {
                                     alignItems: "center",
                                     backgroundColor: "#3494e6",
                                     flexDirection: "row",
-                                    paddingLeft: 20
+                                    paddingLeft: 20,
+                                    elevation: 5,
+                                    
                                 }}>
                                 <View
                                     style={{
@@ -93,7 +95,10 @@ class Toolbar extends Component {
                                         <View
                                             style={{
                                                 backgroundColor: "transparent",
-                                                width: 32
+                                                width: 50,
+                                                marginLeft:-10,
+                                                justifyContent:"center",
+                                                alignItems:"center"
                                             }}>
                                             <Ionicons name="md-arrow-round-back" color="white" size={32}/>
                                         </View>
@@ -145,7 +150,10 @@ class Toolbar extends Component {
                                                                 <View
                                                                     style={{
                                                                         backgroundColor: "transparent",
-                                                                        width: 32
+                                                                        width: 50,
+                                                                        marginLeft:-10,
+                                                                        justifyContent:"center",
+                                                                        alignItems:"center"
                                                                     }}>
                                                                     <Icon name="menu" color="white" size={32}/>
                                                                 </View>
@@ -161,7 +169,10 @@ class Toolbar extends Component {
                                                                 <View
                                                                     style={{
                                                                         backgroundColor: "transparent",
-                                                                        width: 32
+                                                                        width: 50,
+                                                                        marginLeft:-10,
+                                                                        justifyContent:"center",
+                                                                        alignItems:"center"
                                                                     }}>
                                                                     <Icon name="arrow-long-left" color="white" size={32}/>
                                                                 </View>
@@ -190,7 +201,7 @@ class Toolbar extends Component {
                                                     style={{
                                                         color: "white",
                                                         fontSize: 16,
-                                                        marginTop: 10
+                                                        marginTop: 5
                                                     }}>
 
                                                     {
@@ -241,7 +252,10 @@ class Toolbar extends Component {
                                                                     <View
                                                                         style={{
                                                                             backgroundColor: "transparent",
-                                                                            width: 25
+                                                                            width: 50,
+                                                                            marginRight:-15,
+                                                                            width: 50,
+                                                                            alignItems:"center"
                                                                         }}>
                                                                         <Feather name="search" color="white" size={25}/>
                                                                     </View>
