@@ -18,6 +18,7 @@ import Ionicons from "react-native-vector-icons/Ionicons"
 import Orientation from 'react-native-orientation';
 import ActionSheet from 'react-native-actionsheet'
 import Video from 'react-native-af-video-player'
+var VideoPlayer = require('react-native-native-video-player');
 
 import {AdMobInterstitial, PublisherBanner} from 'react-native-admob'
 
@@ -431,7 +432,9 @@ szns =  Object
           cancelButtonIndex={this.state.qoptions.length - 1}
           onPress={(index) => {
             if(index !== (this.state.qoptions.length - 1)) {
-              this.props.navigation.navigate("movie", {url: "http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + qualitiesObjs[index].q + ".mp4"})
+              VideoPlayer.showVideoPlayer("http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + qualitiesObjs[index].q + ".mp4")
+
+             // this.props.navigation.navigate("movie", {url: "http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + qualitiesObjs[index].q + ".mp4"})
             }else{
 
             }

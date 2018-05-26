@@ -11,8 +11,7 @@ import {
  TextInput
 
 } from 'react-native';
-import Orientation from 'react-native-orientation';
-import {Provider } from "react-redux"
+import { Provider } from "react-redux"
 import HomeRouter from "./components/homeRouter";
 import { Container, Header, Content, Button  } from 'native-base';
 import store from "./components/store";
@@ -20,6 +19,8 @@ import Toolbar from './components/toolbar';
 import * as firebase from "firebase";
 import fbconfig from "./components/fbconfig";
 import FCM, {FCMEvent, RemoteNotificationResult, WillPresentNotificationResult, NotificationType} from 'react-native-fcm';
+import  Orientation  from 'react-native-orientation';
+var VideoPlayer = require('react-native-native-video-player');
 
 
 
@@ -29,6 +30,8 @@ export default class App extends Component {
 
  constructor() {
    super();
+  Orientation.unlockAllOrientations()
+   
    this.openDrawer = this.openDrawer.bind(this);
    this.closeDrawer = this.closeDrawer.bind(this);
    if (!firebase.apps.length) {
@@ -93,6 +96,10 @@ var Tag = "";
 switch(cat) {
   case "მთავარი":
   break;
+  case "ფანტასტიკა":
+  Tag = 878;
+  
+  break;
   case "კომედია":
   Tag = 876;
   break;
@@ -133,6 +140,9 @@ switch(cat) {
   break;
   case "ფენტეზი":
   Tag = 887;
+  break;
+  case "დრამა":
+  Tag = 875;
   break;
   case "საომარი":
   Tag = 888;
@@ -184,7 +194,7 @@ switch(cat) {
 
 
 if(cat == "მთავარი") {
-fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=16&startYear=1900&endYear=2018&offset=0&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=published&language=georgian&country=false&game=0&softs=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&trailers=0&episode=0&tvshow=0&flashgames=0")
+fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=1900&endYear=2018&offset=0&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=published&language=georgian&country=false&game=0&softs=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&trailers=0&episode=0&tvshow=0&flashgames=0")
 .then(res => res.json()).then(res => 
 {
   databaseItems = res.data;
@@ -214,7 +224,6 @@ fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=16&startYear=19
 }
 
 componentWillMount() {
-   Orientation.lockToPortrait();
    FCM.subscribeToTopic('/topics/news');
    FCM.requestPermissions(); // for iOS
         FCM.getFCMToken().then(token => {

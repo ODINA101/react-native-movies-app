@@ -174,7 +174,7 @@ class Toolbar extends Component {
                                                                         justifyContent:"center",
                                                                         alignItems:"center"
                                                                     }}>
-                                                                    <Icon name="arrow-long-left" color="white" size={32}/>
+                                            <Ionicons name="md-arrow-round-back" color="white" size={32}/>
                                                                 </View>
 
                                                             </TouchableNativeFeedback>

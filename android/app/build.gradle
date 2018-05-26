@@ -101,8 +101,8 @@ android {
         applicationId "irakli.samniashvili.app"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 50016
-        versionName "46.0"
+        versionCode 50017
+        versionName "47.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -140,6 +140,10 @@ android {
 }
 
 dependencies {
+    compile project(':RNWebView')
+    compile project(':react-native-nested-scroll-view')    
+    compile project(':react-native-autoheight-webview')    
+    compile project(':react-native-native-video-player')
     compile project(':react-native-fetch-blob')
     compile project(':react-native-simple-download-manager')
     compile project(':react-native-fs')

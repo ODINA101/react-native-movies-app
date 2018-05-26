@@ -1826,7 +1826,7 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
-create-react-class@^15.6.3:
+create-react-class@^15.6.2, create-react-class@^15.6.3:
   version "15.6.3"
   resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.3.tgz#2d73237fb3f970ae6ebe011a9e66f46dbca80036"
   dependencies:
@@ -1885,6 +1885,10 @@ data-urls@^1.0.0:
 dateformat@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-2.2.0.tgz#4065e2013cf9fb916ddfd82efb506ad4c6769062"
+
+debounce@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.1.0.tgz#6a1a4ee2a9dc4b7c24bb012558dbcdb05b37f408"
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8:
   version "2.6.9"
@@ -2816,6 +2820,10 @@ iconv-lite@^0.4.17, iconv-lite@~0.4.13:
 image-size@^0.6.0:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.6.2.tgz#8ee316d4298b028b965091b673d5f1537adee5b4"
+
+immutable@^3.8.1:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
 
 import-local@^1.0.0:
   version "1.0.0"
@@ -4725,6 +4733,13 @@ react-native-app-intro-slider@^0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/react-native-app-intro-slider/-/react-native-app-intro-slider-0.2.4.tgz#e85e5aab826fd6c131f197ab7878d6686e7b468f"
 
+react-native-autoheight-webview@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/react-native-autoheight-webview/-/react-native-autoheight-webview-0.6.1.tgz#890f59d60777dbd8f1ef84ab9bb42c4200391f59"
+  dependencies:
+    immutable "^3.8.1"
+    prop-types "^15.5.10"
+
 react-native-awesome-alert@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/react-native-awesome-alert/-/react-native-awesome-alert-0.4.0.tgz#b6aed8d5bb20d757235f981f0d599b3c596e8db7"
@@ -4808,6 +4823,12 @@ react-native-fs@^2.9.12:
     base-64 "^0.1.0"
     utf8 "^2.1.1"
 
+"react-native-full-screen@https://github.com/Anthonyzou/react-native-full-screen.git":
+  version "0.0.2"
+  resolved "https://github.com/Anthonyzou/react-native-full-screen.git#e82ceea1cdd4f3c17c19de7e864a67b7dc623465"
+  dependencies:
+    debounce "^1.0.0"
+
 react-native-iphone-x-helper@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.0.2.tgz#7dbca530930f7c1ce8633cc8fd13ba94102992e1"
@@ -4841,6 +4862,14 @@ react-native-modal@^5.4.0:
   dependencies:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
+
+react-native-native-video-player@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/react-native-native-video-player/-/react-native-native-video-player-1.3.4.tgz#ac58c9d4ee66c2dc1f4fc884b9f3acf5448040e4"
+
+react-native-nested-scroll-view@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-nested-scroll-view/-/react-native-nested-scroll-view-6.0.1.tgz#10ac05def0eeedcaf52d960abd8f7a4a6c8187c1"
 
 react-native-orientation@^3.1.0:
   version "3.1.3"
@@ -4877,6 +4906,12 @@ react-native-star-rating@^1.0.9:
 react-native-super-grid@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-native-super-grid/-/react-native-super-grid-2.1.0.tgz#5025941f96580b9a4c5bf20a5eaffaf0a5dd4d29"
+  dependencies:
+    prop-types "^15.6.0"
+
+react-native-tab-view@^0.0.78:
+  version "0.0.78"
+  resolved "https://registry.yarnpkg.com/react-native-tab-view/-/react-native-tab-view-0.0.78.tgz#9b90730d89cbd34a03f0e0ab10e74ca7af945560"
   dependencies:
     prop-types "^15.6.0"
 
@@ -4918,6 +4953,17 @@ react-native-video@^2.0.0:
   dependencies:
     keymirror "0.1.1"
     prop-types "^15.5.10"
+
+react-native-webview-android@^1.1.16:
+  version "1.1.16"
+  resolved "https://registry.yarnpkg.com/react-native-webview-android/-/react-native-webview-android-1.1.16.tgz#522898ab67f98fadc0973f60165da97b892f7f39"
+  dependencies:
+    create-react-class "^15.6.2"
+    prop-types "^15.6.0"
+
+react-native-webview-autoheight@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-webview-autoheight/-/react-native-webview-autoheight-1.0.5.tgz#6be37caf679b4c88b9b3e4e547f149b6436d8bff"
 
 react-native@0.55.2:
   version "0.55.2"

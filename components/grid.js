@@ -99,7 +99,7 @@ export default class Gridlayout extends Component {
                             ? (
                                 <View>
                                     <GridView
-                                        itemDimension={200}
+                                        itemDimension={130}
                                         items={this.state.searched}
                                         style={styles.gridView}
                                         renderItem={item => (
@@ -108,7 +108,7 @@ export default class Gridlayout extends Component {
                                                 luboi={true}
                                                 des={false}
                                                 search={true}
-                                                photo={"http://staticnet.adjara.com/moviecontent/" + item.id + "/covers/980x530-" +
+                                                photo={"http://staticnet.adjara.com/moviecontent/" + item.id + "/covers/214x321-" +
                                                         item.id + ".jpg"}
                                                 series={false}
                                                 id={item.id}

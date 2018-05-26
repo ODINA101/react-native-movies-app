@@ -30,31 +30,27 @@ import ActionSheet from 'react-native-actionsheet'
 import Actor from "./SingleActor";
 import {AdMobInterstitial, PublisherBanner} from 'react-native-admob'
 const downloadManager = require('react-native-simple-download-manager');
- 
+import { Container, Header, Content, Tab, Tabs, Spinner } from 'native-base';
 var actors = [];
-
-const options = [
-    'Cancel', 'Apple', <Text style={{
-            color: 'yellow'
-        }}>Banana</Text>,
-    'Watermelon',
-    <Text style={{
-            color: 'red'
-        }}>Durian</Text>
-]
+import Video from 'react-native-af-video-player'
+var VideoPlayer = require('react-native-native-video-player');
+//import { WebView } from 'react-native';
+import NestedScrollView from 'react-native-nested-scroll-view';
+//var WebViewAndroid = require('react-native-webview-android');
+//import AutoHeightWebView from 'react-native-autoheight-webview';
 export default class Full extends React.Component {
 
     constructor(props) {
         super(props);
-        setInterval(() => {
-            const initial = Orientation.getInitialOrientation();
-            if (initial === 'PORTRAIT') {
-                // do something
-            } else {
-                Orientation.lockToPortrait();
+        // setInterval(() => {
+        //     const initial = Orientation.getInitialOrientation();
+        //     if (initial === 'PORTRAIT') {
+        //         // do something
+        //     } else {
+        //         Orientation.lockToPortrait();
         
-            }
-         },1000)
+        //     }
+        //  },1000)
          
         
         this.state = {
@@ -63,12 +59,16 @@ export default class Full extends React.Component {
             link: "",
             lang: "English",
             options: [],
+            video:"",
             qoptions: [
                 "hd", "sd", "უკან"
             ],
             isDown: false,
-            actors: [],
-            types:[]
+            actors: "",
+            types:[],
+            enabled:true,
+            he:200
+            
         }
         this.playMovie = this
             .playMovie
@@ -79,16 +79,18 @@ export default class Full extends React.Component {
         
         // store.dispatch({type:"OpenUri",payload:this.openuri})
 
-        const initial = Orientation.getInitialOrientation();
-        if (initial === 'PORTRAIT') {
-            // do something
-        } else {
-            Orientation.lockToPortrait();
+        // const initial = Orientation.getInitialOrientation();
+        // if (initial === 'PORTRAIT') {
+        //     // do something
+        // } else {
+        //     Orientation.lockToPortrait();
 
-        }
+        // }
     }
 
-
+dsc() {
+    this.setState({enabled:false });
+}
 
     componentWillMount() {
         actors = [];
@@ -137,17 +139,24 @@ export default class Full extends React.Component {
                 
                 Object
                     .keys(res.cast)
-                    .map(async index => {
-                        actors.push(index)
+                    .map(async (item,index) => {
+                        actors.push({id:item,name:res.cast[item]})
                     })
-                    this.setState({actors})
+                 this.setState({actors})
+console.log(actors)
+                   
+                fetch("http://net.adjara.com/Search/getTrailers?ajax=1&movie_id=" + this.props.navigation.state.params.key).then(res => res.json())
+                .then(res => {
+                    
+                    
+                    if(res[0]) {
+                      this.setState({video:res[0].trailer})
+                    }
 
-                    // actors.forEach(item => {   console.log(item)
-                // fetch("http://net.adjara.com/req/jsondata/req.php?id=" + item +
-                // "&reqId=getLangAndHd")   .then(res => res.json())   .then(res => {
-                // console.log(res)   }) })
+
+                })
                 
-            })
+            }) 
 
             setTimeout(() => {
             AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
@@ -184,7 +193,8 @@ export default class Full extends React.Component {
         }
     
     
-    
+        
+        
     download() {
         
         
@@ -271,9 +281,9 @@ export default class Full extends React.Component {
                     home={false}
                     nav={this.props.navigation}
                     title={this.props.navigation.state.params.title}/>
-                <ScrollView style={{
+                <NestedScrollView style={{
                         flex: 1
-                    }}>
+                    }} 	scrollEnabled={this.state.enabled}>
                     <View
                         style={{
                             height: 300
@@ -408,17 +418,27 @@ export default class Full extends React.Component {
                         source={{
                             uri: this.props.navigation.state.params.photo
                         }}/>
+                  
+
+
                     <View
                         style={{
                             backgroundColor: "#FFF",
                             padding: 20,
                             marginTop: 25
                         }}>
+
+                        {
+                            this.props.navigation.state.params.title?(
+                             <Text style={{color:"#000",fontSize:20}}>{this.props.navigation.state.params.title}</Text>
+                            ):(<View/>)
+                        }
+
                         {
 
                             this.props.navigation.state.params.imdb
                                 ? (
-                                    <View>
+                                    <View style={{marginTop:10,paddong:10}}>
                                         <StarRating
                                             disabled={true}
                                             emptyStar={'ios-star-outline'}
@@ -428,8 +448,14 @@ export default class Full extends React.Component {
                                             maxStars={5}
                                             rating={parseFloat(this.props.navigation.state.params.imdb * (1 / 2))}
                                             fullStarColor={'red'}
-                                            starSize={50}/>
+                                            starSize={50}/>  
 
+
+
+
+
+
+ 
                                     </View>
                                 )
                                 : (<View/>)
@@ -515,31 +541,59 @@ export default class Full extends React.Component {
 
                         }
 
-                        {
-                            this.state.actors.length > 0
-                                ? (
-                                    <View>
-                                        <Text
-                                            style={{
-                                                fontSize: 16,
-                                                color: "black",
-                                                marginTop: 10
-                                            }}>მსახიობები:</Text>
-                                        <Actor
-                                            style={{
-                                                marginTop: 10
-                                            }}
-                                            navigation={this.props.navigation}
-                                            list={this.state.actors}/>
-                                    </View>
-                                )
-                                : (<View/>)
-
-                        }
+                       
 
                     </View>
-                </ScrollView>
+                    <Tabs initialPage={0} locked={false} style={{flex:1,marginTop: 10}}>
+          <Tab heading="მსახიობები" >
+          {
+                            
+                  <NestedScrollView style={{flex:1,height:200}}>
+              <View style={{backgroundColor:'#3494e6'}}>
+              {
+                  this.state.actors? (
+                                             
+                                            <Actor
+                                            navigation={this.props.navigation}
+                                            list={this.state.actors}/>
+                                            
+                                        ):(<View />)
+                                        
+                                    }
+                                
+                              
+                                            </View>
 
+                        </NestedScrollView>
+                        }
+                        
+          </Tab>
+          <Tab heading="Trailers" style={{height:200}}>
+            <View>
+       {
+           this.state.video? (
+            <Video url={"http://85.117.37.136/storage/trailers/" + this.state.video} style={{flex:1}}/>
+           ):(
+               <View>
+               <Spinner />
+               </View>
+           )
+       }
+                </View>
+          </Tab>
+          {/* <Tab  style={{height:this.state.he}} heading="კომები">
+      
+        <AutoHeightWebView
+          hasIframe={false}
+          enableAnimation={false}
+          onLoad={() => console.warn('on load')}
+          onHeightUpdated={height => this.setState({ he:height })}
+        source={{uri: 'https://www.facebook.com/plugins/comments.php?api_key=376429472422698&channel_url=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FRQ7NiRXMcYA.js%3Fversion%3D42%23cb%3Df3aef1ab184469%26domain%3Dnet.adjara.com%26origin%3Dhttp%253A%252F%252Fnet.adjara.com%252Ffc677a2078d1a%26relation%3Dparent.parent&href=http%3A%2F%2Fadjaranet.com%2FMovie%2Fmain%3Fid%3D' +  this.props.navigation.state.params.key + ' &locale=en_US&numposts=6&order_by=reverse_time&sdk=joey&width=956'}}
+        />
+          </Tab> */}
+          
+        </Tabs>
+              </NestedScrollView>
                 <ActionSheet
                     ref={o => this.ActionSheet = o}
                     title={'აირჩიეთ ენა'}
@@ -561,33 +615,26 @@ export default class Full extends React.Component {
                     onPress={(index) => {
 
                         if (this.state.isDown) {
-                            console.log("play")
-                            console.log(
-                                this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
-                                "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
-                            )
+                           
 
                             if (index !== (this.state.qoptions.length - 1)) {
-                                console.log(
-                                    this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
-                                    "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
-                                );
-                                this
-                                    .props
-                                    .navigation
-                                    .navigate("movie", {
-                                        url: this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
-                                                "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
-                                    })
+                                 
+                                 VideoPlayer.showVideoPlayer(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                 "_" + this.getQuality(this.state.qoptions[index]) + ".mp4")
+                                // this
+                                //     .props
+                                //     .navigation
+                                //     .navigate("movie", {
+                                //         url: this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                //                 "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
+                                //     })
                             }
 
                         } else {
                console.log("gadmowera")
                             if (index !== (this.state.qoptions.length - 1)) {
                                  
-          
-                                      console.log(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
-                                      "_" + this.getQuality(this.state.qoptions[index]) + ".mp4")
+           
                                     const url = this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
                                     "_" + this.getQuality(this.state.qoptions[index]) + ".mp4";
                                     const headers = {'Authorization': 'movie is downloading'};

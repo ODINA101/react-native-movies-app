@@ -103,6 +103,7 @@ openPage() {
  
 
 
+/// 
 
 
         )
@@ -110,81 +111,56 @@ openPage() {
 
         }else{
             return (
-                 <View style={[{
-                flexDirection: 'row',
-                minHeight:100,
-                width:Dimensions.get("window").width,
-                borderRadius:15,
-             backgroundColor:"#FFF",
-             elevation:10,
-            }]}>
-
-
-          <View style={{flex:1,flexDirection:"row"}}>
-
-
-
-
-
-{
-
-
-this.props.luboi?(
-
-   <Ripple rippleColor="#FFF" onPress={() => this.luboi(this.props.id)}>
+                <View style={[{
+                    flexDirection: 'column',
+                    minHeight:300,
+                    width:150,
+                    borderRadius:15,
+                 backgroundColor:"#FFF",
+                 elevation:10,
+                }]}>
     
-      <ImageBackground style={{width:100,height:100,borderTopLeftRadius:15,borderTopRightRadius:15,justifyContent:"flex-end",}}  source={{uri:this.props.photo}}>
-   
-   
-    {
-  this.props.imdb?  (
-    <View   style={{backgroundColor:"#3494e6",marginLeft:90,marginBottom:10,width:50,height:50,borderRadius:25,flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
-    <Text style={{color:"#FFF",fontSize:18}}>
-   {parseFloat(this.props.imdb).toFixed(1)}
-    </Text>
-    </View>
-  ):(<View/>)
-
-    }
     
-      </ImageBackground>
-      
-</Ripple>
-
-):(
-
-
-   <Ripple rippleColor="#FFF" onPress={this.openPage}>
+              <View style={{flex:1}}>
     
-      <ImageBackground style={{width:100,height:100,borderTopLeftRadius:15,borderTopRightRadius:15,justifyContent:"flex-end",}}  source={{uri:this.props.photo}}>
-   
-   
-    {
-  this.props.imdb?  (
-    <LinearGradient colors={['#3494e6', '#ec6ead']} style={{marginLeft:90,marginBottom:10,width:50,height:50,borderRadius:25,flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
-    <Text style={{color:"#FFF",fontSize:18}}>
-   {parseFloat(this.props.imdb).toFixed(1)}
-    </Text>
-    </LinearGradient>
-  ):(<View/>)
-
-    }
     
-      </ImageBackground>
-      
-</Ripple>
-
-
-
-)
-}
- <View style={{flex:1,flexDirection:"row",alignItems:"center",justifyContent:"center",padding:5}}>
-<Text>{this.props.title}</Text>
- </View>
+    
+    
+    
+    
+    
+    
+       <Ripple rippleColor="#FFF" onPress={() => this.luboi(this.props.id)}>
+        
+          <ImageBackground style={{width:150,height:250,borderTopLeftRadius:15,borderTopRightRadius:15,justifyContent:"flex-end",}}  source={{uri:this.props.photo}}>
+       
+       
+        {
+      this.props.imdb?  (
+        <View   style={{backgroundColor:"#3494e6",marginLeft:90,marginBottom:10,width:50,height:50,borderRadius:25,flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
+        <Text style={{color:"#FFF",fontSize:18}}>
+       {parseFloat(this.props.imdb).toFixed(1)}
+        </Text>
         </View>
- 
+      ):(<View/>)
+    
+        }
+        
+          </ImageBackground>
+          
+    </Ripple>
+     <View style={{flex:1,flexDirection:"row",alignItems:"center",justifyContent:"center",padding:5}}>
+    <Text>{this.props.title}</Text>
+     </View>
             </View>
-
+     
+                </View>
+    
+     
+    
+    
+    
+    
  
             )
         }
