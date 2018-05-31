@@ -101,8 +101,8 @@ android {
         applicationId "irakli.samniashvili.app"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 50017
-        versionName "47.0"
+        versionCode 50019
+        versionName "49.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

@@ -9,7 +9,9 @@ import {
     TouchableNativeFeedback,
     BackHandler,
     BackAndroid,
-    TextInput
+    TextInput,
+    TouchableHighlight,
+    Modal
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import store from "./store";
@@ -20,9 +22,29 @@ import {connect} from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons"
 import Search from "./search"
 import Feather from "react-native-vector-icons/Feather"
+import MaterialIcons from "react-native-vector-icons/MaterialIcons"
+import { MaterialDialog } from 'react-native-material-dialog';
 import LinearGradient from "react-native-linear-gradient"
+import {Picker, List, ListItem,Item} from 'native-base';
+var lens = [{
+    name:"ინგლისური",
+    real:"english"
+},
 
-class Toolbar extends Component {
+{
+    name:"ქართული",
+    real:"georgian"
+},
+{
+    name:"რუსული",
+    real:"russian"
+}
+
+
+]
+
+
+ class Toolbar extends Component {
     constructor() {
         super();
 
@@ -30,9 +52,16 @@ class Toolbar extends Component {
             title: '',
             menu: true,
             drawerOpen: "",
-            search: false
+            search: false,
+            visible:false,
+            startYear:1900,
+            endYear:2018,
+            lenguage:"georgian"
+            
 
         }
+
+
 
         this.background = TouchableNativeFeedback.SelectableBackground();
 
@@ -61,7 +90,36 @@ class Toolbar extends Component {
                 .page
         });
     }
+    onValueChange(dat) {
+        this.setState({selected1:dat})
+        console.log(dat)
+  var year = 1900 + (parseInt(dat.replace("key",""))+1)
+  console.log(year)
 
+  this.setState({startYear:year})
+
+
+    }
+    onValueChange2(dat) {
+        this.setState({selected2:dat})
+
+
+        console.log(dat)
+  var year = 2018 - (parseInt(dat.replace("key","")))
+  console.log(year)
+
+  this.setState({endYear:year})
+    }
+    onValueChange3(dat) {
+        this.setState({selected3:dat})
+
+        console.log(dat)
+
+
+    }
+    onValueChange4(dat) {
+        this.setState({selected4:dat})
+    }
     render() {
 
         return (
@@ -236,7 +294,34 @@ class Toolbar extends Component {
                                                                     alignItems: "center",
                                                                     marginTop: 5
                                                                 }}>
+                                                                {
+this.state.title == "მთავარი"?(
+<TouchableNativeFeedback
+                                                                    background={this.background}
+                                                                    onPress={() => {
+                                                                        this.setState({visible:true});
+                                                                      }}>
+                                                                         
 
+
+                                                                    <View
+                                                                        style={{
+                                                                            backgroundColor: "transparent",
+                                                                            width: 50,
+                                                                            marginRight:-15,
+                                                                            width: 50,
+                                                                            alignItems:"center"
+                                                                        }}>
+                                                                        <MaterialIcons name="filter-list" color="white" size={25}/>
+                                                                    </View>
+                                                                </TouchableNativeFeedback>
+
+):(
+    <View />
+)
+
+                                                                }
+                                                                
                                                                 <TouchableNativeFeedback
                                                                     background={this.background}
                                                                     onPress={() => {
@@ -265,6 +350,8 @@ class Toolbar extends Component {
                                                         )
                                                         : (<View></View>)
                                                 }
+                                                         
+
                                             </View>
                                         )
                                 }
@@ -274,7 +361,132 @@ class Toolbar extends Component {
                         )
 
                 }
+<MaterialDialog
+ title="გაფილტვრა"
+visible={this.state.visible}
+  onOk={() => {this.setState({ visible: false });  
+  store.dispatch({type:"database",payload:null})
 
+  fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=" + this.state.startYear + "&endYear=" + this.state.endYear +"&offset=0&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=published&language=" + this.state.lenguage +"&country=false&game=0&softs=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&trailers=0&episode=0&tvshow=0&flashgames=0")
+  .then(res => res.json()).then(res => 
+  {
+    databaseItems = res.data;
+    store.dispatch({type:"database",payload:databaseItems})
+    store.dispatch({type:"startYear",payload:this.state.startYear})
+    store.dispatch({type:"endYear",payload:this.state.endYear})
+    
+    console.log(databaseItems)
+  })
+}
+ 
+ 
+}
+  onCancel={() => this.setState({ visible: false })}>
+  <Text>
+   წელი
+  </Text>
+  <View style={{flexDirection:"row"}}>
+ 
+  <Picker
+ style={{flex:1}}                  
+ mode='dropdown'
+selectedValue={this.state.selected1}
+onValueChange={this.onValueChange.bind(this)}>
+
+
+{
+     Array.apply(null,Array(118)).map((item,i) => {
+return (
+<Item label={(1900 + i + 1).toString()} value={"key" + i} />
+);    
+
+})
+
+}
+
+</Picker>
+<View style={{flex:0.5,justifyContent:"center",alignItems:"center"}}>
+<Text style={{color:"#000"}}>
+   დან
+  </Text>
+</View>
+</View>
+
+  <View style={{flexDirection:"row"}}>
+ 
+ <Picker
+style={{flex:1}}                  
+mode='dropdown'
+selectedValue={this.state.selected2}
+onValueChange={this.onValueChange2.bind(this)}>
+
+
+{
+    Array.apply(null,Array(118)).map((item,i) => {
+return (
+<Item label={(2018 - i).toString()} value={"key" + i} />
+);    
+
+})
+
+}
+
+</Picker>
+<View style={{flex:0.5,justifyContent:"center",alignItems:"center"}}>
+<Text style={{color:"#000"}}>
+  მდე
+ </Text>
+</View>
+</View>
+
+  <Text>
+   ენა
+  </Text>
+  <Picker
+mode='dropdown'
+selectedValue={this.state.selected3}
+onValueChange={this.onValueChange3.bind(this)}>
+
+{
+    lens.map((item,i) => {
+return (
+<Item label={item.name} value={item.real} />
+    
+)
+})
+}
+
+</Picker>
+
+
+  {/* <Text>
+   ქვეყანა
+  </Text>
+  <Picker
+mode='dropdown'
+selectedValue={this.state.selected4}
+onValueChange={this.onValueChange4.bind(this)}>
+
+
+<Item label="გერმანია" value="key0" />
+<Item label="იტალია" value="key1" />
+<Item label="იაპონია" value="key2" />
+<Item label="საფრანგეთი" value="key3" />
+<Item label="აშშ" value="key4" />
+<Item label="საქართველო" value="key5" />
+<Item label="კორეა" value="key6" />
+<Item label="რუსეთი" value="key7" />
+<Item label="ინდოეთი" value="key8" />
+<Item label="დიდი ბრიტანეთი" value="key9" />
+
+</Picker>
+
+ */}
+
+
+
+
+</MaterialDialog>
             </View>
 
         );

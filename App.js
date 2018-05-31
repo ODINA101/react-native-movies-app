@@ -50,8 +50,8 @@ this.state = {
  "დოკუმენტური",
  "ისტორიული",
  "კრიმინალური",
- "ბიოგრაფიული"
- ,"ფანტასტიკა",
+ "ბიოგრაფიული",
+ "ფანტასტიკა",
  "საომარი",
  "თრილერი",
  "მისტიკა",
@@ -200,6 +200,8 @@ fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=19
   databaseItems = res.data;
   store.dispatch({type:"database",payload:databaseItems})
   console.log(databaseItems)
+  store.dispatch({type:"startYear",payload:this.state.startYear})
+  store.dispatch({type:"endYear",payload:this.state.endYear})
 })
 }else{
 

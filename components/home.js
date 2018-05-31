@@ -23,14 +23,16 @@ export default class Home extends React.Component {
             x: 15,
             loader: false,
             maxItems: 0,
-            Tag:''
+            Tag:'',
+            startYear:"1900",
+            endYear:"2018"
         }
         store.dispatch({type: "setNav", payload: props.navigation})
 
         store.subscribe(() => {
             this.setState({items: []})
-            this.setState({currentItems: []})
-
+            this.setState({currentItems: [],startYear:store.getState().startYear,endYear:store.getState().endYear})
+             
             if (this.state.items !== store.getState().database) {
                     this.setState({
                         items: store
@@ -140,12 +142,7 @@ export default class Home extends React.Component {
 
                                               //  setTimeout(() => {
                                                     var changed = this.state.currentItems;
-                                                console.log("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=1900&endYear=2018&offset=" + (
-                                                    this.state.x + 15
-                                                ) + "&isnew=0&needtags=0&orderBy=date&order%5Border%5D=data&order%5Bdata%5D=pub" +
-                                                "lished&language=false&country=false&game=0&softs=0&episode=1&trailers=0&tvshow" +
-                                                "=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&flashg" +
-                                                "ames=0")
+                                              
                                                     fetch(
                                                         "http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=1900&endYear=2018&offset=" + (
                                                             this.state.x + 15
@@ -174,9 +171,14 @@ export default class Home extends React.Component {
 
                                              //  setTimeout(() => {
                                                     var changed = this.state.currentItems;
-
+                                                     console.log("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=" + this.state.startYear + "&endYear=" + this.state.startYear + "&offset=" + (
+                                                        this.state.x + 15
+                                                    ) + "&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=pub" +
+                                                    "lished&language=georgian&country=false&game=0&softs=0&videos=0&xvideos=0&vvide" +
+                                                    "os=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&trailers=0&episode=0&tvshow=0&fla" +
+                                                    "shgames=0")
                                                     fetch(
-                                                        "http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=1900&endYear=2018&offset=" + (
+                                                        "http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=" + this.state.startYear + "&endYear=" + this.state.endYear + "&offset=" + (
                                                             this.state.x + 15
                                                         ) + "&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=pub" +
                                                         "lished&language=georgian&country=false&game=0&softs=0&videos=0&xvideos=0&vvide" +

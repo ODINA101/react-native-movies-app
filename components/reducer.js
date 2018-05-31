@@ -13,7 +13,9 @@ const initialState = {
    databaseNum:0,
    openuri:'',
    searching:false,
-   searchTxt:''
+   searchTxt:'',
+   startYear:"1900",
+   endYear:"2018"
 
 
 }
@@ -34,7 +36,12 @@ export default  (state=initialState,action) => {
         case "searching":
         state.searching = !state.searching
         return state;
-
+        case "startYear":
+        state.startYear = action.payload
+        return state;
+        case "endYear":
+        state.endYear = action.payload;
+        return state;
         case "OpenUri": 
         state.openuri = action.payload
         return state;

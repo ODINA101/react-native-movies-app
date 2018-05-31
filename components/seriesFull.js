@@ -50,7 +50,8 @@ export default class fullseries extends Component {
       lang: '',
       link: '',
       serieI:'',
-      downloadLink:''
+      downloadLink:'',
+      des:''
 
     };
  
@@ -92,7 +93,15 @@ export default class fullseries extends Component {
     fetch("http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key + "&reqId=getInfo")
       .then(res => res.json())
       .then(res => {
-    
+        if(!this.props.navigation.state.params.des) {
+          this.setState({des:res.desc})
+        }else{
+          this.setState({des:this.props.navigation.state.params.des})
+        } 
+
+
+
+
         const myarr = Object
           .keys(res)
           .map(i => res[i])
@@ -160,6 +169,10 @@ szns =  Object
         szn = szns;
 
         this.setState({series: szn, isLoading: false, seasons: seasons})
+
+
+
+      
 
       })
 
@@ -342,7 +355,7 @@ szns =  Object
             }}>აღწერა</Text>
 
  
-            <Text>{this.props.navigation.state.params.des}</Text>
+            <Text>{this.state.des}</Text>
           
           
           
