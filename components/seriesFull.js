@@ -11,7 +11,6 @@ import Toolbar from './toolbar';
 import Ripple from 'react-native-material-ripple';
 import Icon from 'react-native-vector-icons/Entypo';
 import {Picker, List, ListItem} from 'native-base';
-import firebase from 'firebase';
 import {Spinner} from "native-base";
 import StarRating from 'react-native-star-rating';
 import Ionicons from "react-native-vector-icons/Ionicons"
@@ -68,14 +67,15 @@ export default class fullseries extends Component {
     
   }
   componentWillMount() {
-     setTimeout(()=> {
-        AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
-        AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());
-     
-      
-      },3000)
-
-   
+    setTimeout(() => {
+      AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
+      AdMobInterstitial
+          .requestAd(function(){
+              AdMobInterstitial.showAd()
+          })
+         
+          
+      }, 3000)
       
 
 

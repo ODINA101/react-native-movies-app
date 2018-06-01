@@ -148,8 +148,10 @@ console.log(actors)
                         setTimeout(() => {
                             AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
                             AdMobInterstitial
-                                .requestAd()
-                                .then(() => AdMobInterstitial.showAd());
+                                .requestAd(function(){
+                                    AdMobInterstitial.showAd()
+                                })
+                               
                                 
                             }, 3000)
 
