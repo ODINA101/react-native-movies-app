@@ -11,7 +11,7 @@ const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
 import {Spinner} from "native-base";
 import * as Animatable from 'react-native-animatable'
 var he = 50;
-
+import PremireMovies from "./PremireMovies"
 export default class Home extends React.Component {
 
     constructor(props) {
@@ -121,6 +121,12 @@ export default class Home extends React.Component {
                         drawer={() => store.getState().openDrawer()}
                         nav={this.props.navigation}
                         home={true}/>
+                    
+                    
+                   
+ 
+
+
                     <View
                         style={{
                             flex: 1,
@@ -131,6 +137,7 @@ export default class Home extends React.Component {
                                 backgroundColor: "#EBECEE",
                                 flex: 1
                             }}>
+                                
                             <ScrollView
                                 ref="scrollView"
                                 onScroll={({nativeEvent}) => {
@@ -243,6 +250,26 @@ export default class Home extends React.Component {
 
                                 }}>
 
+
+                                {
+
+store.getState()
+    .page == "მთავარი"
+        ? (
+ <View>
+            <View style={{height:200,padding:10,backgroundColor:"transparent"}}>
+
+<PremireMovies nav={this.props.navigation}/>
+</View>   
+<View style={{height:1,backgroundColor:"#000",marginTop:8}} />
+      </View>          
+
+        ): (  
+<View/>
+
+        )
+    }
+
                                 {
 
                                     store
@@ -282,12 +309,11 @@ export default class Home extends React.Component {
                                                             imdb={this.checkImdb(item)}
                                                             year={item.release_date}
                                                             views={item.views}
-                                                            
+                                                            titleEn={item.title_en}
                                                                 series={false}
                                                                 id={item.id}
                                                                 des={item.description}
-                                                                sdurl={item.sd}
-                                                                hdurl={item.hd}
+                                                               
                                                                 title={this.checkTitle(item)}
                                                                 navigation={this.props.navigation}/>
                                                         )}/>

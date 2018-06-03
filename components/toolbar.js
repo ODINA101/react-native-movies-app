@@ -11,14 +11,14 @@ import {
     BackAndroid,
     TextInput,
     TouchableHighlight,
-    Modal
+    Modal,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import store from "./store";
 
 import {StackNavigator} from 'react-navigation';
 import {connect} from "react-redux";
-
+import  Slider from 'react-native-slider';
 import Ionicons from "react-native-vector-icons/Ionicons"
 import Search from "./search"
 import Feather from "react-native-vector-icons/Feather"
@@ -26,6 +26,11 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 import { MaterialDialog } from 'react-native-material-dialog';
 import LinearGradient from "react-native-linear-gradient"
 import {Picker, List, ListItem,Item} from 'native-base';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
+import Entypo from "react-native-vector-icons/Entypo"
+import Share, {ShareSheet, Button} from 'react-native-share';
+
+
 var lens = [{
     name:"ინგლისური",
     real:"english"
@@ -56,7 +61,10 @@ var lens = [{
             visible:false,
             startYear:1900,
             endYear:2018,
-            lenguage:"georgian"
+            lenguage:"georgian",
+            value:0,
+            value1:10,
+            imdbIsChanged:false
             
 
         }
@@ -348,7 +356,64 @@ this.state.title == "მთავარი"?(
                                                             </View>
 
                                                         )
-                                                        : (<View></View>)
+                                                        : (<View
+                                                            style={{
+                                                                flex: 0.1,
+                                                                flexDirection: "row",
+                                                                alignItems: "center",
+                                                                marginTop: 5
+                                                            }}>
+                                                            {
+this.state.title == "მთავარი"?(
+<TouchableNativeFeedback
+                                                                background={this.background}
+                                                                onPress={() => {
+                                                                    Share.open({
+                                                                        title: "გაზიარება",
+                                                                        message: this.props.title,
+                                                                        url: "http://net.adjara.com/Movie/main?id=" + this.props.id,
+                                                                        subject: "Share Link" //  for email
+                                                                      }, {
+                                                                        "social": "facebook"
+                                                                      }).catch((err) => { err && console.log(err); })
+                                                                  }}>
+                                                                     
+
+
+                                                                <View
+                                                                    style={{
+                                                                        backgroundColor: "transparent",
+                                                                        width: 50,
+                                                                        marginRight:-15,
+                                                                        width: 50,
+                                                                        alignItems:"center"
+                                                                    }}>
+                                                                    <Entypo name="share" color="white" size={25}/>
+                                                                </View>
+                                                            </TouchableNativeFeedback>
+
+):(
+<View />
+)
+
+                                                            }
+                                                            
+                                                            <TouchableNativeFeedback
+                                                                background={this.background}
+                                                                 >
+
+                                                                <View
+                                                                    style={{
+                                                                        backgroundColor: "transparent",
+                                                                        width: 50,
+                                                                        marginRight:-15,
+                                                                        width: 50,
+                                                                        alignItems:"center"
+                                                                    }}>
+                                                                    <MaterialCommunityIcons name="dots-vertical" color="white" size={25}/>
+                                                                </View>
+                                                            </TouchableNativeFeedback>
+                                                        </View>)
                                                 }
                                                          
 
@@ -366,8 +431,12 @@ this.state.title == "მთავარი"?(
 visible={this.state.visible}
   onOk={() => {this.setState({ visible: false });  
   store.dispatch({type:"database",payload:null})
+// if(!this.state.imdbIsChanged) {
 
-  fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=" + this.state.startYear + "&endYear=" + this.state.endYear +"&offset=0&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=published&language=" + this.state.lenguage +"&country=false&game=0&softs=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&trailers=0&episode=0&tvshow=0&flashgames=0")
+
+
+
+  fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=" + this.state.startYear + "&endYear=" + this.state.endYear +"&offset=0&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=relised&language=georgian&country=false&game=0&softs=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&trailers=0&episode=0&tvshow=0&flashgames=0")
   .then(res => res.json()).then(res => 
   {
     databaseItems = res.data;
@@ -377,6 +446,21 @@ visible={this.state.visible}
     
     console.log(databaseItems)
   })
+// }else{
+//     fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=1900&endYear=2018&offset=15&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=rating&order%5Bstart%5D=" + parseInt(this.state.value) + "&order%5Bend%5D=" + parseInt(this.state.value1) +"&order%5Bmeta%5D=imdb&language=georgian&country=false&game=0&softs=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&trailers=0&episode=0&tvshow=0&flashgames=0"
+//     ).then(res => res.json()).then(res => 
+//         {
+//           databaseItems = res.data;
+//           store.dispatch({type:"database",payload:databaseItems})
+//           store.dispatch({type:"startYear",payload:this.state.startYear})
+//           store.dispatch({type:"endYear",payload:this.state.endYear})
+          
+//           console.log(databaseItems)
+//         })
+// }
+
+
+
 }
  
  
@@ -482,10 +566,17 @@ onValueChange={this.onValueChange4.bind(this)}>
 </Picker>
 
  */}
+ {/* <Text>imdb:{(this.state.value).toFixed(1)}: დან</Text>  */}
+ {/* <Slider
+ maximumValue={10}
+          value={this.state.value}
+          onValueChange={(value) => this.setState({value,imdbIsChanged:true})} />
 
-
-
-
+<Text>imdb:{(this.state.value1).toFixed(1)}: მდე</Text> 
+ <Slider
+ maximumValue={10}
+          value={this.state.value1}
+          onValueChange={(value) => this.setState({value1:value,imdbIsChanged:true})} /> */}
 </MaterialDialog>
             </View>
 

@@ -108,6 +108,7 @@ export default class Gridlayout extends Component {
                                                 luboi={true}
                                                 des={false}
                                                 search={true}
+                                                titleEn={item.title_en}
                                                 photo={"http://staticnet.adjara.com/moviecontent/" + item.id + "/covers/214x321-" +
                                                         item.id + ".jpg"}
                                                 series={false}

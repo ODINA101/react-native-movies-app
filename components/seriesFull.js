@@ -68,16 +68,8 @@ export default class fullseries extends Component {
   }
   componentWillMount() {
     setTimeout(() => {
-      AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
-      AdMobInterstitial
-          .requestAd(function(){
-              AdMobInterstitial.showAd()
-          })
-         
-          
+      AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());     
       }, 3000)
-      
-
 
 
 

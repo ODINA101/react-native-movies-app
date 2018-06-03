@@ -28,7 +28,7 @@ if(res["1"]) {
     
 }else{
     console.log("filmia")
-        this.props.navigation.navigate("full",{views:this.props.views,title:this.props.title,photo:this.props.photo,des:this.props.des,imdb:this.props.imdb,year:this.props.year,key:this.props.id});
+        this.props.navigation.navigate("full",{views:this.props.views,title:this.props.title,photo:this.props.photo,des:this.props.des,imdb:this.props.imdb,year:this.props.year,key:this.props.id,titleEn:this.props.titleEn});
     
 }
 
@@ -44,7 +44,7 @@ openPage() {
 
         this.props.navigation.navigate("fullseries",{views:this.props.views,title:this.props.title,photo:this.props.photo,url:this.props.url,des:this.props.des,key:this.props.id,imdb:this.props.imdb,year:this.props.year,id:this.props.key});
     }else{
-        this.props.navigation.navigate("full",{views:this.props.views,title:this.props.title,photo:this.props.photo,des:this.props.des,imdb:this.props.imdb,year:this.props.year,key:this.props.id});
+        this.props.navigation.navigate("full",{views:this.props.views,title:this.props.title,photo:this.props.photo,des:this.props.des,imdb:this.props.imdb,year:this.props.year,key:this.props.id,titleEn:this.props.titleEn});
 
     }
 }

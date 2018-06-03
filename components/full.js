@@ -28,7 +28,7 @@ import Ionicons from "react-native-vector-icons/Ionicons"
 import Orientation from 'react-native-orientation';
 import ActionSheet from 'react-native-actionsheet'
 import Actor from "./SingleActor";
-import {AdMobInterstitial, PublisherBanner} from 'react-native-admob'
+import { AdMobInterstitial } from 'react-native-admob'
 const downloadManager = require('react-native-simple-download-manager');
 import { Container, Header, Content, Tab, Tabs, Spinner } from 'native-base';
 var actors = [];
@@ -38,6 +38,8 @@ var VideoPlayer1 = require('react-native-native-video-player');
 import { WebView } from 'react-native';
 import NestedScrollView from 'react-native-nested-scroll-view';
  //var WebViewAndroid = require('react-native-webview-android');
+ const movieTrailer = require('movie-trailer');
+ import LikeThisMovies from "./LikeThisMovies"
 //import AutoHeightWebView from 'react-native-autoheight-webview';
 export default class Full extends React.Component {
 
@@ -88,7 +90,17 @@ export default class Full extends React.Component {
         //     Orientation.lockToPortrait();
 
         // }
+
+
+        this.openTrailer = this.openTrailer.bind(this)
     }
+
+
+    openTrailer() {
+        Linking.openURL(this.state.video).catch(err => console.error('An error occurred', err));
+    }
+
+
 
 dsc() {
     this.setState({enabled:false });
@@ -96,7 +108,21 @@ dsc() {
 
     componentWillMount() {
         actors = [];
-        
+        Orientation.addOrientationListener(this._orientationDidChange);
+ 
+        movieTrailer('Crash').then(console.log)
+
+
+        movieTrailer((this.props.navigation.state.params.titleEn).toString(), {year: this.props.navigation.state.params.year, multi: false} )
+        .then( response => {
+            this.setState({video:response})
+
+
+        } )
+            
+
+
+
         fetch(
             "http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key +
             "&reqId=getLangAndHd"
@@ -121,16 +147,9 @@ dsc() {
              this.setState({actors})
 console.log(actors)
                
-            fetch("http://net.adjara.com/Search/getTrailers?ajax=1&movie_id=" + this.props.navigation.state.params.key).then(res => res.json())
-            .then(res => {
+           
                 
-                
-                if(res[0]) {
-                  this.setState({video:res[0].trailer})
-
-                  console.log("http://85.117.37.136/storage/trailers/" + this.state.video)
-
-                }
+               
 
                 fetch(
                     "http://net.adjara.com/req/jsondata/req.php?id=" + this.props.navigation.state.params.key +
@@ -146,20 +165,14 @@ console.log(actors)
                         this.setState({des: res.desc[0],types:genres})
                         
                         setTimeout(() => {
-                            AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
-                            AdMobInterstitial
-                                .requestAd(function(){
-                                    AdMobInterstitial.showAd()
-                                })
-                               
+                            AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());
                                 
-                            }, 3000)
+                            }, 2000)
 
                             this.setState({pageIsLoaded:true})
                     })
                     
-            })
-
+            
 
 
                 
@@ -272,6 +285,11 @@ console.log(actors)
         isModalVisible: !this.state.isModalVisible
     });
   
+    _orientationDidChange = (orientation) => {
+       this.setState({dem:Dimensions.get("window").width})
+      }
+    
+
     render() {
 if(this.state.pageIsLoaded) {
         return (
@@ -284,7 +302,8 @@ if(this.state.pageIsLoaded) {
                 <Toolbar
                     home={false}
                     nav={this.props.navigation}
-                    title={this.props.navigation.state.params.title}/>
+                    title={this.props.navigation.state.params.title}
+                    id={this.props.navigation.state.params.key}/>
                 <NestedScrollView style={{
                         flex: 1
                     }} 	scrollEnabled={this.state.enabled}>
@@ -557,7 +576,7 @@ if(this.state.pageIsLoaded) {
           <Tab heading="მსახიობები" >
           {
                             
-                  <NestedScrollView style={{flex:1,height:200}}>
+                  <NestedScrollView style={{flex:1,height:300}}>
               <View style={{backgroundColor:'#3494e6'}}>
               {
                   this.state.actors? (
@@ -577,13 +596,14 @@ if(this.state.pageIsLoaded) {
                         }
                         
           </Tab>
-          <Tab heading="Trailer" style={{height:200}}>
+          <Tab heading="Trailer" style={{height:300}}>
             <View style={{flex:1}}>
        {
            this.state.video? (
                 
                  <View style={{backgroundColor:"black",flex:1,justifyContent:"center",alignItems:"center"}}>
-                 <Ripple onPress={() =>  VideoPlayer1.showVideoPlayer("http://85.117.37.136/storage/trailers/" + this.state.video) }>
+                 <Ripple onPress={() =>  { this.openTrailer() }} >
+ 
                   <View style={{width:70,height:70,backgroundColor:"#FFF",borderRadius:35,opacity:0.6,justifyContent:"center",alignItems:"center"}}>
                   <Ionicons name="md-play" color="#FFF" size={40} style={{marginLeft:10}}/>
                   
@@ -611,7 +631,21 @@ if(this.state.pageIsLoaded) {
           </Tab> 
            */}
         </Tabs>
+        <View style={{height:200,backgroundColor:"#9b59b6"}}>
+                
+                <LikeThisMovies nav={this.props.navigation} Id={this.props.navigation.state.params.key}/>
+
+              </View>   
+             
               </NestedScrollView>
+            
+             
+             
+             
+             
+             
+             
+             
                 <ActionSheet
                     ref={o => this.ActionSheet = o}
                     title={'აირჩიეთ ენა'}

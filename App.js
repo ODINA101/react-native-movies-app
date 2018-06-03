@@ -19,6 +19,7 @@ import Toolbar from './components/toolbar';
 import fbconfig from "./components/fbconfig";
 import  Orientation  from 'react-native-orientation';
 var VideoPlayer = require('react-native-native-video-player');
+import {AdMobInterstitial, PublisherBanner} from 'react-native-admob'
 
 
 
@@ -188,7 +189,6 @@ switch(cat) {
 
 
 
-
 if(cat == "მთავარი") {
 fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=1900&endYear=2018&offset=0&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=published&language=georgian&country=false&game=0&softs=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&trailers=0&episode=0&tvshow=0&flashgames=0")
 .then(res => res.json()).then(res => 
@@ -237,6 +237,10 @@ getDataSeries() {
 
 }
 
+componentDidMount() {
+  AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
+  
+}
 
 
  closeDrawer(title) {
