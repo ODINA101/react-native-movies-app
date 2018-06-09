@@ -2,48 +2,35 @@ import React from 'react';
 import {
     Text,
     View,
-    ScrollView,
-    StyleSheet,
-    BackHandler,
     Image,
-    Animated,
     TouchableOpacity,
-    TouchableNativeFeedback,
     Linking,
     Dimensions,
-    AsyncStorage
 } from 'react-native';
-import SingleItem from './singleItem'
 import Toolbar from './toolbar';
-import store from './store';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import RNFetchBlob from 'react-native-fetch-blob';
 import Ripple from "react-native-material-ripple"
-import RNFS from 'react-native-fs'
 import Modal from "react-native-modal";
-import * as Animatable from 'react-native-animatable'
 import StarRating from 'react-native-star-rating';
 import Ionicons from "react-native-vector-icons/Ionicons"
 import Orientation from 'react-native-orientation';
 import ActionSheet from 'react-native-actionsheet'
 import Actor from "./SingleActor";
 import { AdMobInterstitial } from 'react-native-admob'
-const downloadManager = require('react-native-simple-download-manager');
-import { Container, Header, Content, Tab, Tabs, Spinner } from 'native-base';
+import downloadManager  from 'react-native-simple-download-manager';
+import { Tab, Tabs, Spinner } from 'native-base';
 var actors = [];
-import VideoPlayer from 'react-native-video-controls';
 //import Video from 'react-native-af-video-player'
-var VideoPlayer1 = require('react-native-native-video-player');
-import { WebView } from 'react-native';
+import VideoPlayer1 from "react-native-native-video-player";
 import NestedScrollView from 'react-native-nested-scroll-view';
  //var WebViewAndroid = require('react-native-webview-android');
- const movieTrailer = require('movie-trailer');
+ import movieTrailer  from 'movie-trailer';
  import LikeThisMovies from "./LikeThisMovies"
 //import AutoHeightWebView from 'react-native-autoheight-webview';
 export default class Full extends React.Component {
 
-    constructor(props) {
+ constructor(props) {
         super(props);
         // setInterval(() => {
         //     const initial = Orientation.getInitialOrientation();
@@ -130,7 +117,7 @@ dsc() {
         .then(res => res.json())
         .then(res => {
             
-            info = Object
+            var info = Object
             .keys(res)
             .map(i => res[i])
 
@@ -141,7 +128,7 @@ dsc() {
                 this.setState({options: noption, link: info[0].url})
                 Object
                 .keys(res.cast)
-                .map(async (item,index) => {
+                .map(async (item) => {
                     actors.push({id:item,name:res.cast[item]})
                 })
              this.setState({actors})
@@ -285,7 +272,7 @@ console.log(actors)
         isModalVisible: !this.state.isModalVisible
     });
   
-    _orientationDidChange = (orientation) => {
+    _orientationDidChange = () => {
        this.setState({dem:Dimensions.get("window").width})
       }
     
@@ -527,7 +514,7 @@ if(this.state.pageIsLoaded) {
                                                 {
                                                    this.state.types.map(itm => {
                                                        return (
-                                                   <Text> {itm}, </Text>
+                                                   <Text key={itm}> {itm} </Text>
                                                        )
                                                    })
     
@@ -702,7 +689,7 @@ if(this.state.pageIsLoaded) {
                                     };
                                     
                                     
-                                    downloadManager.download(url, headers, config).then((response)=>{
+                                    downloadManager.download(url, headers, config).then(()=>{
                                       console.log('Download success!');
                                     }).catch(err=>{
                                       console.log(err);
@@ -715,7 +702,7 @@ if(this.state.pageIsLoaded) {
 
 
 
-                            };
+                            }
 
                         }
 

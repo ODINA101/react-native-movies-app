@@ -8,6 +8,9 @@
   },
   "dependencies": {
     "awesome-react-native-video-controls": "^1.0.7",
+    "babel-eslint": "^8.2.3",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
     "movie-trailer": "^2.0.3",
     "native-base": "^2.4.5",
     "prop-types": "^15.6.1",

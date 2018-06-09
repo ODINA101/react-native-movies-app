@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, ScrollView, StyleSheet, StatusBar} from 'react-native';
+import { View, ScrollView, StyleSheet, StatusBar} from 'react-native';
 import SingleItem from './singleItem';
 import Toolbar from './toolbar';
 import store from "./store"
@@ -9,8 +9,6 @@ const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
     return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
 };
 import {Spinner} from "native-base";
-import * as Animatable from 'react-native-animatable'
-var he = 50;
 import PremireMovies from "./PremireMovies"
 export default class Home extends React.Component {
 
@@ -59,9 +57,7 @@ export default class Home extends React.Component {
                             .databaseNum
                              ,Tag:store.getState().pageid})
 
-                    if (this.state.currentItems >= this.state.maxItems) {
-                        he = 0;
-                    }
+                    
 
 
             }
@@ -69,11 +65,7 @@ export default class Home extends React.Component {
         })
 
     }
-    _refresh() {
-        return new Promise((resolve) => {
-          setTimeout(()=>{resolve()}, 2000)
-        });
-       }
+   
     checkTitle(data) {
         if (data.title_ge !== "") {
             return (data.title_ge);
@@ -177,7 +169,7 @@ export default class Home extends React.Component {
                                                 this.setState({loader: true});
 
                                              //  setTimeout(() => {
-                                                    var changed = this.state.currentItems;
+                                                    changed = this.state.currentItems;
                                                      console.log("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=" + this.state.startYear + "&endYear=" + this.state.startYear + "&offset=" + (
                                                         this.state.x + 15
                                                     ) + "&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=pub" +
@@ -210,15 +202,13 @@ export default class Home extends React.Component {
                                               //  }, 1000)
                                             }
 
-                                            if (this.state.currentItems >= this.state.maxItems) {
-                                                he = 0;
-                                            }
+                                          
                                         }else{
                                                if (!this.state.loader) {
                                                 this.setState({loader: true});
 
                                             //    setTimeout(() => {
-                                                    var changed = this.state.currentItems;
+                                                    changed = this.state.currentItems;
                                                   
                                                     fetch(
                                                         "http://net.adjara.com/Search/SearchResults?ajax=1&searchTags%5B%5D=" + this.state.Tag + "&display=15&startYear=1900&endYear=2018&offset=" + (
@@ -241,9 +231,7 @@ export default class Home extends React.Component {
                                                // }, 1000)
                                             }
 
-                                            if (this.state.currentItems >= this.state.maxItems) {
-                                                he = 0;
-                                            }
+                                            
                                         }
 
                                     }

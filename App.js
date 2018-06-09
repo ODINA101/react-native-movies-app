@@ -2,24 +2,18 @@
 
 import React, { Component } from 'react';
 import {
- Platform,
- StyleSheet,
  Text,
  View,
  DrawerLayoutAndroid,
  ScrollView,
- TextInput
 
 } from 'react-native';
 import { Provider } from "react-redux"
 import HomeRouter from "./components/homeRouter";
-import { Container, Header, Content, Button  } from 'native-base';
+import { Button  } from 'native-base';
 import store from "./components/store";
-import Toolbar from './components/toolbar';
-import fbconfig from "./components/fbconfig";
 import  Orientation  from 'react-native-orientation';
-var VideoPlayer = require('react-native-native-video-player');
-import {AdMobInterstitial, PublisherBanner} from 'react-native-admob'
+import {AdMobInterstitial } from 'react-native-admob'
 
 
 
@@ -120,6 +114,7 @@ switch(cat) {
   break;
   case "სათავგადასავლო":
   Tag = 877;
+  break;
   case "დოკუმენტური":
   Tag = 883;
   break;
@@ -271,7 +266,7 @@ this.getData(title)
              return(
 
 
-               <Button transparent light block style={{height:50}} onPress={()=>this.closeDrawer(data)}>
+               <Button key={data} transparent light block style={{height:50}} onPress={()=>this.closeDrawer(data)}>
            <Text style={{color:"#000"}}>{data}</Text>
          </Button>
 
@@ -305,9 +300,4 @@ this.getData(title)
 
 
 
-const styles = StyleSheet.create({
- container: {
-   flex: 1,
- },
-
-});
+ 
