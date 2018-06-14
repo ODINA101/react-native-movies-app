@@ -1,8 +1,9 @@
 import React from "react";
-import { View,BackHandler } from "react-native";
+import { View,BackHandler,StatusBar } from "react-native";
 //import Video from 'react-native-af-video-player'
 //import Orientation from 'react-native-orientation';
 // import KeepAwake from 'react-native-keep-awake';
+import VideoPlayer from 'react-native-true-sight'
 export default class Movie extends React.Component {
 constructor(props){
   super(props);
@@ -24,11 +25,11 @@ constructor(props){
 
   render() {
     return (
-           <View style={{flex:1,backgroundColor:"black"}}>
-         
-        
- 
-            </View>
+          <View style={{ flex: 1, backgroundColor: 'black' }}>
+        <StatusBar   hidden={true}  />
+        <VideoPlayer source={this.props.navigation.state.params.url} />
+
+      </View>
       )
     }
 }

@@ -19,6 +19,7 @@ export default class Search extends Component {
                         textAlignVertical: 'center'
                     }}
                     placeholder="ძიება"
+                    ref="searchbar"
                     underlineColorAndroid={"transparent"}
                     placeholderTextColor="#F5F5F5"
                     tintColor={"#FFF"}

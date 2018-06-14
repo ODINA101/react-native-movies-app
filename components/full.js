@@ -22,7 +22,7 @@ import downloadManager  from 'react-native-simple-download-manager';
 import { Tab, Tabs, Spinner } from 'native-base';
 var actors = [];
 //import Video from 'react-native-af-video-player'
-import VideoPlayer1 from "react-native-native-video-player";
+//import VideoPlayer1 from "react-native-native-video-player";
 import NestedScrollView from 'react-native-nested-scroll-view';
  //var WebViewAndroid = require('react-native-webview-android');
  import movieTrailer  from 'movie-trailer';
@@ -658,15 +658,15 @@ if(this.state.pageIsLoaded) {
 
                             if (index !== (this.state.qoptions.length - 1)) {
                                  
-                                 VideoPlayer1.showVideoPlayer(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
-                                 "_" + this.getQuality(this.state.qoptions[index]) + ".mp4")
-                                // this
-                                //     .props
-                                //     .navigation
-                                //     .navigate("movie", {
-                                //         url: this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
-                                //                 "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
-                                //     })
+                                //  VideoPlayer1.showVideoPlayer(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                //  "_" + this.getQuality(this.state.qoptions[index]) + ".mp4")
+                                 this
+                                    .props
+                                    .navigation
+                                    .navigate("movie", {
+                                        url: this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                                "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
+                                    })
                             }
 
                         } else {

@@ -2,24 +2,18 @@ import React, {Component} from 'react'
 import {
   Text,
   View,
-  StyleSheet,
   ScrollView,
   Image,
-  Dimensions
 } from 'react-native';
 import Toolbar from './toolbar';
 import Ripple from 'react-native-material-ripple';
-import Icon from 'react-native-vector-icons/Entypo';
-import {Picker, List, ListItem} from 'native-base';
+import {Picker, ListItem} from 'native-base';
 import {Spinner} from "native-base";
 import StarRating from 'react-native-star-rating';
-import Ionicons from "react-native-vector-icons/Ionicons"
-import Orientation from 'react-native-orientation';
 import ActionSheet from 'react-native-actionsheet'
-import Video from 'react-native-af-video-player'
-var VideoPlayer = require('react-native-native-video-player');
+//var VideoPlayer = require('react-native-native-video-player');
 
-import {AdMobInterstitial, PublisherBanner} from 'react-native-admob'
+import {AdMobInterstitial } from 'react-native-admob'
 
 var seasons = [];
 var szn = [];
@@ -61,11 +55,7 @@ export default class fullseries extends Component {
       .playSerie
       .bind(this)
   }
-  seasonCompability(testSznNum) {
   
-   
-    
-  }
   componentWillMount() {
     setTimeout(() => {
       AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());     
@@ -98,7 +88,7 @@ export default class fullseries extends Component {
           .keys(res)
           .map(i => res[i])
         this.setState({link:myarr[myarr.length-1]})
-        myarr.forEach((item, index) => {
+        myarr.forEach((item) => {
           if (item[1]) {
             if (typeof(item) == "object") {
               if (Object.keys(item).length > 1) {
@@ -109,7 +99,7 @@ export default class fullseries extends Component {
 
             }
 
-          } else {}
+          }  
 
         })
 
@@ -133,8 +123,7 @@ szns =  Object
     return "";
   }
 
-  }else{
-  }
+  } 
 
 });
 
@@ -152,8 +141,7 @@ szns =  Object
     return "";
   }
 
-  }else{
-  }
+  } 
 
 });
 
@@ -208,7 +196,7 @@ szns =  Object
   // }
   qualitiesObjs = [];
   nnqu = [];
-   nqoption = quality.split(",")
+  var nqoption = quality.split(",")
    nqoption.push("უკან")
    nqoption.map(item => {
      qualitiesObjs.push({q:item})
@@ -425,9 +413,7 @@ szns =  Object
             if(index !== (this.state.options.length - 1)) {
 
               this.SeriePlay(this.state.options[index])
-            }else{
-
-            }
+            } 
         }}/>
 
         <ActionSheet
@@ -437,12 +423,10 @@ szns =  Object
           cancelButtonIndex={this.state.qoptions.length - 1}
           onPress={(index) => {
             if(index !== (this.state.qoptions.length - 1)) {
-              VideoPlayer.showVideoPlayer("http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + qualitiesObjs[index].q + ".mp4")
+            //  VideoPlayer.showVideoPlayer("http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + qualitiesObjs[index].q + ".mp4")
 
-             // this.props.navigation.navigate("movie", {url: "http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + qualitiesObjs[index].q + ".mp4"})
-            }else{
-
-            }
+              this.props.navigation.navigate("movie", {url: "http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + qualitiesObjs[index].q + ".mp4"})
+            } 
         }}/>
       </View>
     )
