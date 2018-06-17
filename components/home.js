@@ -11,7 +11,6 @@ const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
 import {Spinner} from "native-base";
 import PremireMovies from "./PremireMovies"
 export default class Home extends React.Component {
-
     constructor(props) {
         super(props);
 
@@ -203,6 +202,32 @@ export default class Home extends React.Component {
                                             }
 
                                           
+                                        }else if(store.getState().page == "ქართული"){
+                                            if (!this.state.loader) {
+                                                this.setState({loader: true});
+
+                                                    changed = this.state.currentItems;
+                                                  
+                                                    fetch(
+                                                        "http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=1900&endYear=2018&offset=" + (
+                                                            this.state.x + 15
+                                                        ) + "&isnew=0&needtags=0&orderBy=country&order%5Border%5D=desc&order%5Bdata%5D=published&language=georgian&country=ge&game=0&softs=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&trailers=0&episode=0&tvshow=0&flashgames=0"
+                                                    ) .then(res => res.json())
+                                                    .then(res => {
+                                                        changed = changed.concat(res.data);
+ 
+                                                        console.log(changed)
+                                                        this.setState({
+                                                            currentItems: changed,
+                                                            x: this.state.x + 15,
+                                                            loader: false
+                                                        })
+                                                        console.log(this.state.x)
+
+                                                    });              
+                                                  
+                                            }
+
                                         }else{
                                                if (!this.state.loader) {
                                                 this.setState({loader: true});
