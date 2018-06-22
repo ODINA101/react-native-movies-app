@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import {View,Text,StyleSheet,Image,TouchableNativeFeedback,ImageBackground,TouchableOpacity,Dimensions} from "react-native";
+import {View,Text,ImageBackground } from "react-native";
 import Ripple from 'react-native-material-ripple';
-import store from './store';
-import LinearGradient from 'react-native-linear-gradient';
-import {Transition} from "react-navigation-fluid-transitions"
 
 export default class SingleItem extends Component {
 
 
 constructor() {
   super()
-
-  this.openPage = this.openPage.bind(this)
+this.luboi = this.luboi.bind(this)
 }
 
 
@@ -38,17 +34,7 @@ if(res["1"]) {
 
 }
 
-openPage() {
-
-    if(this.props.series) {
-
-        this.props.navigation.navigate("fullseries",{views:this.props.views,title:this.props.title,photo:this.props.photo,url:this.props.url,des:this.props.des,key:this.props.id,imdb:this.props.imdb,year:this.props.year,id:this.props.key});
-    }else{
-        this.props.navigation.navigate("full",{views:this.props.views,title:this.props.title,photo:this.props.photo,des:this.props.des,imdb:this.props.imdb,year:this.props.year,key:this.props.id,titleEn:this.props.titleEn});
-
-    }
-}
-
+ 
 
     render() {
         if(!this.props.search) {
@@ -74,7 +60,7 @@ openPage() {
 
 
 
-   <Ripple rippleColor="#FFF" onPress={this.openPage}>
+   <Ripple rippleColor="#FFF" onPress={this.luboi}>
     
       <ImageBackground style={{width:150,height:250,borderTopLeftRadius:15,borderTopRightRadius:15,justifyContent:"flex-end",}}  source={{uri:this.props.photo}}>
    

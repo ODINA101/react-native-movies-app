@@ -1,7 +1,3 @@
-import React from 'react';
-import { Text,View,ScrollView,StyleSheet } from 'react-native';
-import SingleItem from './singleItem';
-import Toolbar from './toolbar';
 import {StackNavigator} from "react-navigation";
 import Home from './home';
 import Full from "./full"
@@ -11,6 +7,7 @@ import Gridlayout from "./grid"
 import Tutorial from "./tut"
 import Actor from "./SingleActor";
 import ActorFull from "./actorFull"
+import WatchLater from './watchLater';
 
 export default StackNavigator({
  
@@ -27,7 +24,9 @@ export default StackNavigator({
         screen:Full,
     },
    
-
+    WatchLater:{
+        screen:WatchLater
+    },
     movie:{
       screen:Movie
     },

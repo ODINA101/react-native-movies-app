@@ -101,8 +101,8 @@ android {
         applicationId "irakli.samniashvili.app"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 50031
-        versionName "61.0"
+        versionCode 50035
+        versionName "65.0"
         
         ndk {
             abiFilters "armeabi-v7a", "x86"
@@ -160,6 +160,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-snackbar')
     compile project(':react-native-share')        
     compile project(':react-native-admob')    
     compile project(':react-native-nested-scroll-view')    

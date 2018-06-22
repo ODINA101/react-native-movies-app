@@ -10,6 +10,7 @@ export default class Search extends Component {
             <View style={{
                     flex: 1
                 }}>
+                
                 <TextInput
                     style={{
                         paddingLeft: 15,

@@ -2,6 +2,7 @@ package com.myapp;
 
 import android.app.Application;
 import com.facebook.react.ReactApplication;
+import com.azendoo.reactnativesnackbar.SnackbarPackage;
 import cl.json.RNSharePackage;
 import com.sbugert.rnadmob.RNAdMobPackage;
 import com.rnnestedscrollview.RNNestedScrollViewPackage;
@@ -33,6 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new SnackbarPackage(),
             new RNSharePackage(),
             new RNAdMobPackage(),
             new RNNestedScrollViewPackage(),

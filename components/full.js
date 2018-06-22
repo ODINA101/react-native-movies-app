@@ -290,7 +290,8 @@ if(this.state.pageIsLoaded) {
                     home={false}
                     nav={this.props.navigation}
                     title={this.props.navigation.state.params.title}
-                    id={this.props.navigation.state.params.key}/>
+                    id={this.props.navigation.state.params.key}
+                    />
                 <NestedScrollView style={{
                         flex: 1
                     }} 	scrollEnabled={this.state.enabled}>

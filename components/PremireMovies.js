@@ -57,7 +57,7 @@ fetch("http://net.adjara.com/cache/cached_home_premiere.php?type=premiere&order=
             this.state.data.map(item => {
 
             return (
-               <Ripple style={{elevation:6}} onPress={() => {
+               <Ripple key={item.id}  style={{elevation:6}} onPress={() => {
                    
                 this.props.nav.push("full",{views:item.views,title:this.checkTitle(item),photo:item.poster,des:item.description,imdb:this.checkImdb(item),year:item.release_date,key:item.id,titleEn:item.title_en})
                 

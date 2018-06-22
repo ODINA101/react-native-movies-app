@@ -6,6 +6,7 @@ import {
  View,
  DrawerLayoutAndroid,
  ScrollView,
+ StatusBar
 
 } from 'react-native';
 import { Provider } from "react-redux"
@@ -13,7 +14,7 @@ import HomeRouter from "./components/homeRouter";
 import { Button  } from 'native-base';
 import store from "./components/store";
 import  Orientation  from 'react-native-orientation';
-import {AdMobInterstitial } from 'react-native-admob'
+import {AdMobInterstitial,  AdMobRewarded } from 'react-native-admob'
 
 
 
@@ -250,7 +251,7 @@ getDataSeries() {
 
 componentDidMount() {
   AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
-  
+  AdMobRewarded.setAdUnitID('ca-app-pub-6370427711797263~1015331954');
 }
 
 
@@ -274,6 +275,7 @@ this.getData(title)
  render() {
    var navigationView = (
      <View style={{flex: 1, backgroundColor: '#fff'}}>
+     <StatusBar backgroundColor="#3460e6" />
         <ScrollView style={{flex:1}}>
 
 

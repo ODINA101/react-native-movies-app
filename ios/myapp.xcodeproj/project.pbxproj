@@ -72,6 +72,7 @@
 		3068AEE2A619494F99A4BA2B /* libRNVideoPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8B29D07FFAB42A18D12AFC5 /* libRNVideoPlayer.a */; };
 		9103CFE0674841999DF2D184 /* libRNAdMobManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5CE19C9A47439194318F35 /* libRNAdMobManager.a */; };
 		209F00C01CF84B03A3E9F080 /* libRNShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E298E0808D74DAA9DD4C44A /* libRNShare.a */; };
+		1DCD2CC86B59452FA3F73FE0 /* libRNSnackbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB70FC6803A44F9CB07EB688 /* libRNSnackbar.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -424,6 +425,8 @@
 		BC5CE19C9A47439194318F35 /* libRNAdMobManager.a */ = {isa = PBXFileReference; name = "libRNAdMobManager.a"; path = "libRNAdMobManager.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		C02E75711E2F4505B551C286 /* RNShare.xcodeproj */ = {isa = PBXFileReference; name = "RNShare.xcodeproj"; path = "../node_modules/react-native-share/ios/RNShare.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		9E298E0808D74DAA9DD4C44A /* libRNShare.a */ = {isa = PBXFileReference; name = "libRNShare.a"; path = "libRNShare.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		7823D740094D4B30825755B6 /* RNSnackbar.xcodeproj */ = {isa = PBXFileReference; name = "RNSnackbar.xcodeproj"; path = "../node_modules/react-native-snackbar/ios/RNSnackbar.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		FB70FC6803A44F9CB07EB688 /* libRNSnackbar.a */ = {isa = PBXFileReference; name = "libRNSnackbar.a"; path = "libRNSnackbar.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +467,7 @@
 				3068AEE2A619494F99A4BA2B /* libRNVideoPlayer.a in Frameworks */,
 				9103CFE0674841999DF2D184 /* libRNAdMobManager.a in Frameworks */,
 				209F00C01CF84B03A3E9F080 /* libRNShare.a in Frameworks */,
+				1DCD2CC86B59452FA3F73FE0 /* libRNSnackbar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +666,7 @@
 				A8478620B54E4FE88BD6227B /* RNVideoPlayer.xcodeproj */,
 				D23D0E3B7BEF4A8B895199D9 /* RNAdMobManager.xcodeproj */,
 				C02E75711E2F4505B551C286 /* RNShare.xcodeproj */,
+				7823D740094D4B30825755B6 /* RNSnackbar.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1345,6 +1350,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1361,6 +1367,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-native-video-player\ios\RNVideoPlayer",
 					"$(SRCROOT)\..\node_modules\react-native-admob\ios",
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
 				);
 			};
 			name = Debug;
@@ -1383,6 +1390,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1399,6 +1407,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-native-video-player\ios\RNVideoPlayer",
 					"$(SRCROOT)\..\node_modules\react-native-admob\ios",
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
 				);
 			};
 			name = Release;
@@ -1433,6 +1442,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-native-video-player\ios\RNVideoPlayer",
 					"$(SRCROOT)\..\node_modules\react-native-admob\ios",
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
 				);
 			};
 			name = Debug;
@@ -1466,6 +1476,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-native-video-player\ios\RNVideoPlayer",
 					"$(SRCROOT)\..\node_modules\react-native-admob\ios",
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
 				);
 			};
 			name = Release;
@@ -1497,6 +1508,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1513,6 +1525,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-native-video-player\ios\RNVideoPlayer",
 					"$(SRCROOT)\..\node_modules\react-native-admob\ios",
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
 				);
 			};
 			name = Debug;
@@ -1544,6 +1557,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1560,6 +1574,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-native-video-player\ios\RNVideoPlayer",
 					"$(SRCROOT)\..\node_modules\react-native-admob\ios",
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
 				);
 			};
 			name = Release;
@@ -1590,6 +1605,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1606,6 +1622,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-native-video-player\ios\RNVideoPlayer",
 					"$(SRCROOT)\..\node_modules\react-native-admob\ios",
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
 				);
 			};
 			name = Debug;
@@ -1636,6 +1653,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1652,6 +1670,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-native-video-player\ios\RNVideoPlayer",
 					"$(SRCROOT)\..\node_modules\react-native-admob\ios",
 					"$(SRCROOT)\..\node_modules\react-native-share\ios",
+					"$(SRCROOT)\..\node_modules\react-native-snackbar\ios",
 				);
 			};
 			name = Release;

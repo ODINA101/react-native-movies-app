@@ -6,12 +6,7 @@ import {
     ScrollView,
     StyleSheet,
     TouchableNativeFeedback,
-    BackHandler,
-    BackAndroid,
-    TextInput
 } from 'react-native';
-import Ionicons from "react-native-vector-icons/Ionicons"
-import Search from "./search"
 import store from "./store"
 import GridView from 'react-native-super-grid';
 import SingleItem from './singleItem';

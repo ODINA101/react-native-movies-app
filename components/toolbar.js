@@ -4,31 +4,22 @@ import {
     Platform,
     Text,
     View,
-    ScrollView,
-    StyleSheet,
     TouchableNativeFeedback,
-    BackHandler,
-    BackAndroid,
-    TextInput,
-    TouchableHighlight,
-    Modal,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import store from "./store";
 
-import {StackNavigator} from 'react-navigation';
 import {connect} from "react-redux";
-import  Slider from 'react-native-slider';
 import Ionicons from "react-native-vector-icons/Ionicons"
 import Search from "./search"
 import Feather from "react-native-vector-icons/Feather"
 import MaterialIcons from "react-native-vector-icons/MaterialIcons"
 import { MaterialDialog } from 'react-native-material-dialog';
-import LinearGradient from "react-native-linear-gradient"
-import {Picker, List, ListItem,Item} from 'native-base';
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
+import {Picker, Item} from 'native-base';
 import Entypo from "react-native-vector-icons/Entypo"
-import Share, {ShareSheet, Button} from 'react-native-share';
+import Share from 'react-native-share';
+import LoveBtn from './favoriteBtn';
+import WatchLater from './watchLater';
 
 
 var lens = [{
@@ -77,7 +68,7 @@ var lens = [{
             this.background = TouchableNativeFeedback.Ripple('#fff', true)
         }
 
-        store.subscribe((data) => this.setState({
+        store.subscribe(() => this.setState({
             title: store
                 .getState()
                 .page,
@@ -317,7 +308,6 @@ this.state.title == "მთავარი"?(
                                                                             backgroundColor: "transparent",
                                                                             width: 50,
                                                                             marginRight:-15,
-                                                                            width: 50,
                                                                             alignItems:"center"
                                                                         }}>
                                                                         <MaterialIcons name="filter-list" color="white" size={25}/>
@@ -329,7 +319,39 @@ this.state.title == "მთავარი"?(
 )
 
                                                                 }
-                                                                
+                                                                {
+                                                                    this.props.WatchLater?(<View/>):(
+
+                                                                        <TouchableNativeFeedback
+                                                                        background={this.background}
+                                                                        onPress={() => {
+                                                                            this.setState({
+                                                                                search: !this.state.search
+                                                                            });
+                                                                            this
+                                                                                .props
+                                                                                .nav
+                                                                                .navigate("grid")
+                                                                        }}>
+    
+                                                                        <View
+                                                                            style={{
+                                                                                backgroundColor: "transparent",
+                                                                                width: 50,
+                                                                                marginRight:-15,
+                                                                                alignItems:"center"
+                                                                            }}>
+                                                                            <Feather name="search" color="white" size={25}/>
+                                                                        </View>
+                                                                    </TouchableNativeFeedback>
+
+                                                                    )
+                                                               
+                                                                }
+                                                                {this.props.WatchLater?(<View/>):(
+
+                                                        
+
                                                                 <TouchableNativeFeedback
                                                                     background={this.background}
                                                                     onPress={() => {
@@ -339,7 +361,7 @@ this.state.title == "მთავარი"?(
                                                                         this
                                                                             .props
                                                                             .nav
-                                                                            .navigate("grid")
+                                                                            .navigate("WatchLater")
                                                                     }}>
 
                                                                     <View
@@ -347,12 +369,12 @@ this.state.title == "მთავარი"?(
                                                                             backgroundColor: "transparent",
                                                                             width: 50,
                                                                             marginRight:-15,
-                                                                            width: 50,
                                                                             alignItems:"center"
                                                                         }}>
-                                                                        <Feather name="search" color="white" size={25}/>
+                                                                        <MaterialIcons name="watch-later" color="white" size={25}/>
                                                                     </View>
                                                                 </TouchableNativeFeedback>
+                                                                )}
                                                             </View>
 
                                                         )
@@ -363,9 +385,12 @@ this.state.title == "მთავარი"?(
                                                                 alignItems: "center",
                                                                 marginTop: 5
                                                             }}>
-                                                            {
-this.state.title == "მთავარი"?(
-<TouchableNativeFeedback
+
+ {
+     this.props.WatchLater?(<View/>):(
+
+
+                                                           <TouchableNativeFeedback
                                                                 background={this.background}
                                                                 onPress={() => {
                                                                     Share.open({
@@ -385,34 +410,26 @@ this.state.title == "მთავარი"?(
                                                                         backgroundColor: "transparent",
                                                                         width: 50,
                                                                         marginRight:-15,
-                                                                        width: 50,
                                                                         alignItems:"center"
                                                                     }}>
                                                                     <Entypo name="share" color="white" size={25}/>
                                                                 </View>
                                                             </TouchableNativeFeedback>
 
-):(
-<View />
-)
-
-                                                            }
+     )
+                                                                
                                                             
-                                                            <TouchableNativeFeedback
-                                                                background={this.background}
-                                                                 >
+                                                            }
+ 
+                                                            {
+                                                                this.props.WatchLater?(
 
-                                                                <View
-                                                                    style={{
-                                                                        backgroundColor: "transparent",
-                                                                        width: 50,
-                                                                        marginRight:-15,
-                                                                        width: 50,
-                                                                        alignItems:"center"
-                                                                    }}>
-                                                                    <MaterialCommunityIcons name="dots-vertical" color="white" size={25}/>
-                                                                </View>
-                                                            </TouchableNativeFeedback>
+                                                                    <View/>
+                                                                    
+                                                                ):(
+                                                                    <LoveBtn id={this.props.id} background={this.background} />
+                                                                )
+                                                            }
                                                         </View>)
                                                 }
                                                          
@@ -439,7 +456,7 @@ visible={this.state.visible}
   fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=" + this.state.startYear + "&endYear=" + this.state.endYear +"&offset=0&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=relised&language=georgian&country=false&game=0&softs=0&videos=0&xvideos=0&vvideos=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&trailers=0&episode=0&tvshow=0&flashgames=0")
   .then(res => res.json()).then(res => 
   {
-    databaseItems = res.data;
+    var databaseItems = res.data;
     store.dispatch({type:"database",payload:databaseItems})
     store.dispatch({type:"startYear",payload:this.state.startYear})
     store.dispatch({type:"endYear",payload:this.state.endYear})
@@ -481,7 +498,7 @@ onValueChange={this.onValueChange.bind(this)}>
 {
      Array.apply(null,Array(118)).map((item,i) => {
 return (
-<Item label={(1900 + i + 1).toString()} value={"key" + i} />
+<Item label={(1900 + i + 1).toString()} key={"te"} value={"key" + i} />
 );    
 
 })
@@ -508,7 +525,7 @@ onValueChange={this.onValueChange2.bind(this)}>
 {
     Array.apply(null,Array(118)).map((item,i) => {
 return (
-<Item label={(2018 - i).toString()} value={"key" + i} />
+<Item key={"la"} label={(2018 - i).toString()} value={"key" + i} />
 );    
 
 })
@@ -532,9 +549,9 @@ selectedValue={this.state.selected3}
 onValueChange={this.onValueChange3.bind(this)}>
 
 {
-    lens.map((item,i) => {
+    lens.map((item) => {
 return (
-<Item label={item.name} value={item.real} />
+<Item key={"si"} label={item.name} value={item.real} />
     
 )
 })
@@ -590,7 +607,7 @@ function mapStateToProps(state) {
     return {redux: state}
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps() {
     return {
         test: () => {}
     }
