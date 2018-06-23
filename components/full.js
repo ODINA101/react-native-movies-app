@@ -291,6 +291,14 @@ if(this.state.pageIsLoaded) {
                     nav={this.props.navigation}
                     title={this.props.navigation.state.params.title}
                     id={this.props.navigation.state.params.key}
+                    views={this.props.navigation.state.params.views}
+                    photo={this.props.navigation.state.params.photo}
+                    des={this.props.navigation.state.params.des}
+                    imdb={this.props.navigation.state.params.imdb}
+                    year={this.props.navigation.state.params.year}
+
+
+
                     />
                 <NestedScrollView style={{
                         flex: 1
@@ -450,7 +458,7 @@ if(this.state.pageIsLoaded) {
 
                             this.props.navigation.state.params.imdb
                                 ? (
-                                    <View style={{marginTop:10,paddong:10,width:Dimensions.get("window").width/1.5,}}>
+                                    <View style={{marginTop:10,padding:10,width:Dimensions.get("window").width/1.5,}}>
                                         <StarRating
                                             disabled={true}
                                             emptyStar={'star-o'}

@@ -427,7 +427,14 @@ this.state.title == "მთავარი"?(
                                                                     <View/>
                                                                     
                                                                 ):(
-                                                                    <LoveBtn id={this.props.id} background={this.background} />
+                                                                    <LoveBtn id={this.props.id}
+                                                                     background={this.background}
+                                                                     views={this.props.views}
+                                                                     photo={this.props.photo}
+                                                                     des={this.props.des}
+                                                                     imdb={this.props.imdb}
+                                                                     year={this.props.year}
+                                                                     title={this.props.title} />
                                                                 )
                                                             }
                                                         </View>)

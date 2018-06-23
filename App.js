@@ -6,7 +6,8 @@ import {
  View,
  DrawerLayoutAndroid,
  ScrollView,
- StatusBar
+ StatusBar,
+ AsyncStorage
 
 } from 'react-native';
 import { Provider } from "react-redux"
@@ -75,6 +76,15 @@ store.subscribe(()=>{
 
 
 this.getData("მთავარი")
+this.checkIsFirstime()
+
+}
+async checkIsFirstime(){
+
+var val = await AsyncStorage.getItem("favorites");
+if (val == null){
+AsyncStorage.setItem("favorites","[]")
+}
 
 
 }
@@ -89,7 +99,9 @@ switch(cat) {
   break;
   case "ფანტასტიკა":
   Tag = 878;
-  
+  break;
+  case "ისტორიული":
+  Tag = 881;
   break;
   case "კომედია":
   Tag = 876;

@@ -11,22 +11,60 @@ export default class LoveBtn extends Component {
           heartMode:"heart-outline"
       }
 this.like = this.like.bind(this)
+this.checkIfLiked = this.checkIfLiked.bind(this)
+
+
+this.checkIfLiked()
   }
   
-  
+async checkIfLiked() {
+    var favorites = await AsyncStorage.getItem('favorites');
+  favorites = JSON.parse(favorites)
+  favorites.forEach(item => {
+      if(this.props.id == item.id) {
+          this.setState({heartMode:"heart"})
+      }
+  })
+}  
+
+async getFavorites() {
+    var value = await AsyncStorage.getItem('favorites');
+   // alert(value.toString())
+    var added = JSON.parse(value)
+    added.push({id:this.props.id,views:this.props.views,photo:this.props.photo,des:this.props.des,imdb:this.props.imdb,year:this.props.year,title:this.props.title})
+ AsyncStorage.setItem("favorites",JSON.stringify(added));
+}
+async removeFavorite() {
+    var favorites = await AsyncStorage.getItem('favorites');
+  favorites = JSON.parse(favorites)
+  favorites.forEach((item,i) => {
+      if(this.props.id == item.id) {
+         favorites.splice(i,1); 
+        AsyncStorage.setItem("favorites",JSON.stringify(favorites));
+        this.setState({heartMode:"heart-outline"})
+      }
+  })
+    
+}
   
   like() {
 
 
 if(this.state.heartMode == "heart-outline") {
 this.setState({heartMode:"heart"})
-  AsyncStorage.setItem("favorites",(this.props.id).toString());
-  Snackbar.show({
+
+
+
+ this.getFavorites(this.props.id) 
+Snackbar.show({
     title: 'დაემატა მოგვიანებით სანახავებში',
     duration: Snackbar.LENGTH_LONG,
 });
+ 
+
+
 }else{
-    this.setState({heartMode:"heart-outline"})
+    this.removeFavorite();
 
 }
 
