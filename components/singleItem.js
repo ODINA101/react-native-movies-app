@@ -60,7 +60,7 @@ if(res["1"]) {
 
 
 
-   <Ripple rippleColor="#FFF" onPress={this.luboi}>
+   <Ripple rippleColor="#FFF" onPress={() => this.luboi(this.props.id)}>
     
       <ImageBackground style={{width:150,height:250,borderTopLeftRadius:15,borderTopRightRadius:15,justifyContent:"flex-end",}}  source={{uri:this.props.photo}}>
    

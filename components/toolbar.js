@@ -19,7 +19,7 @@ import {Picker, Item} from 'native-base';
 import Entypo from "react-native-vector-icons/Entypo"
 import Share from 'react-native-share';
 import LoveBtn from './favoriteBtn';
-import WatchLater from './watchLater';
+import  MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 var lens = [{
@@ -348,20 +348,37 @@ this.state.title == "მთავარი"?(
                                                                     )
                                                                
                                                                 }
-                                                                {this.props.WatchLater?(<View/>):(
+                                                                {/* {this.props.WatchLater?(<View/>):(
 
                                                         
 
-                                                                <TouchableNativeFeedback
+                                                                // <TouchableNativeFeedback
+                                                                //     background={this.background}
+                                                                //     onPress={() => {
+                                                                //         this.setState({
+                                                                //             search: !this.state.search
+                                                                //         });
+                                                                //         this
+                                                                //             .props
+                                                                //             .nav
+                                                                //             .navigate("WatchLater")
+                                                                //     }}>
+
+                                                                //     <View
+                                                                //         style={{
+                                                                //             backgroundColor: "transparent",
+                                                                //             width: 50,
+                                                                //             marginRight:-15,
+                                                                //             alignItems:"center"
+                                                                //         }}>
+                                                                //         <MaterialIcons name="watch-later" color="white" size={25}/>
+                                                                //     </View>
+                                                                // </TouchableNativeFeedback>
+                                                                )} */}
+                                                                  <TouchableNativeFeedback
                                                                     background={this.background}
                                                                     onPress={() => {
-                                                                        this.setState({
-                                                                            search: !this.state.search
-                                                                        });
-                                                                        this
-                                                                            .props
-                                                                            .nav
-                                                                            .navigate("WatchLater")
+                                                                     this.props.dots();
                                                                     }}>
 
                                                                     <View
@@ -371,10 +388,9 @@ this.state.title == "მთავარი"?(
                                                                             marginRight:-15,
                                                                             alignItems:"center"
                                                                         }}>
-                                                                        <MaterialIcons name="watch-later" color="white" size={25}/>
+                                                                        <MaterialCommunityIcons name="dots-vertical" color="white" size={25}/>
                                                                     </View>
                                                                 </TouchableNativeFeedback>
-                                                                )}
                                                             </View>
 
                                                         )
@@ -434,6 +450,7 @@ this.state.title == "მთავარი"?(
                                                                      des={this.props.des}
                                                                      imdb={this.props.imdb}
                                                                      year={this.props.year}
+                                                                     titleEn={this.props.titleEn}
                                                                      title={this.props.title} />
                                                                 )
                                                             }

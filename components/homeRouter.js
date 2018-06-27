@@ -1,4 +1,4 @@
-import {StackNavigator} from "react-navigation";
+import {createStackNavigator} from "react-navigation";
 import Home from './home';
 import Full from "./full"
 import Movie from "./movie"
@@ -8,8 +8,8 @@ import Tutorial from "./tut"
 import Actor from "./SingleActor";
 import ActorFull from "./actorFull"
 import WatchLater from './watchLater';
-
-export default StackNavigator({
+import Settings from "./settings"
+export default createStackNavigator({
  
     home:{
         screen:Home
@@ -18,7 +18,9 @@ export default StackNavigator({
     screen:Actor
     },
 
-
+    Settings:{
+        screen:Settings
+    },
    
     full:{
         screen:Full,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, StyleSheet, StatusBar} from 'react-native';
+import { View, ScrollView, StyleSheet, StatusBar,Text} from 'react-native';
 import SingleItem from './singleItem';
 import Toolbar from './toolbar';
 import store from "./store"
@@ -8,8 +8,16 @@ const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
     const paddingToBottom = 20;
     return layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
 };
+import Ionicons from "react-native-vector-icons/Ionicons"
 import {Spinner} from "native-base";
 import PremireMovies from "./PremireMovies"
+import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
+import { YellowBox } from 'react-native'
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated'])
+import MaterialIcons from "react-native-vector-icons/MaterialIcons"
+
+
+
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -22,7 +30,7 @@ export default class Home extends React.Component {
             maxItems: 0,
             Tag:'',
             startYear:"1900",
-            endYear:"2018"
+            endYear:"2018",
         }
         store.dispatch({type: "setNav", payload: props.navigation})
 
@@ -80,6 +88,17 @@ export default class Home extends React.Component {
             return (null);
         }
     }
+    setMenuRef = ref => {
+        this._menu = ref;
+      };
+    
+      hideMenu = () => {
+        this._menu.hide();
+      };
+    
+      showMenu = () => {
+        this._menu.show();
+      };
 
     render() {
 
@@ -111,11 +130,23 @@ export default class Home extends React.Component {
                     <Toolbar
                         drawer={() => store.getState().openDrawer()}
                         nav={this.props.navigation}
-                        home={true}/>
-                    
-                    
+                        home={true}
+                        dots={() => {
+                         this.showMenu()
+                        }}
+                        
+                        />
+                        <View style={{width:240,position:"absolute",right:0,marginTop:70}}>
+                        <Menu
+          ref={this.setMenuRef}
+          style={{width:240}}
+        >
+          <MenuItem onPress={() => {this.hideMenu();this.props.navigation.navigate("Settings")}}><Ionicons size={20} color="black" name="md-settings" style={{marginTop:25}} /> <Text>პარამეტრები</Text></MenuItem>
+          <MenuDivider />
+          <MenuItem  onPress={() => {this.hideMenu();this.props.navigation.navigate("WatchLater") }}><MaterialIcons size={20} color="black" name="watch-later"   /> <Text>მოგვიანებით სანახავი</Text></MenuItem>
+        </Menu>
                    
- 
+   </View>
 
 
                     <View
@@ -169,12 +200,7 @@ export default class Home extends React.Component {
 
                                              //  setTimeout(() => {
                                                     changed = this.state.currentItems;
-                                                     console.log("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=" + this.state.startYear + "&endYear=" + this.state.startYear + "&offset=" + (
-                                                        this.state.x + 15
-                                                    ) + "&isnew=0&needtags=0&orderBy=date&order%5Border%5D=desc&order%5Bdata%5D=pub" +
-                                                    "lished&language=georgian&country=false&game=0&softs=0&videos=0&xvideos=0&vvide" +
-                                                    "os=0&dvideos=0&xphotos=0&vphotos=0&dphotos=0&trailers=0&episode=0&tvshow=0&fla" +
-                                                    "shgames=0")
+                                                    
                                                     fetch(
                                                         "http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=" + this.state.startYear + "&endYear=" + this.state.endYear + "&offset=" + (
                                                             this.state.x + 15
@@ -301,6 +327,7 @@ store.getState()
                                                             year={item.release_date}
                                                             imdb={this.checkImdb(item)}
                                                             series={true}
+                                                            
                                                             des={item.description}
                                                             title={this.checkTitle(item)}
                                                             navigation={this.props.navigation}/>

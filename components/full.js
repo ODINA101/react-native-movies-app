@@ -6,6 +6,7 @@ import {
     TouchableOpacity,
     Linking,
     Dimensions,
+    AsyncStorage
 } from 'react-native';
 import Toolbar from './toolbar';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -27,6 +28,7 @@ import NestedScrollView from 'react-native-nested-scroll-view';
  //var WebViewAndroid = require('react-native-webview-android');
  import movieTrailer  from 'movie-trailer';
  import LikeThisMovies from "./LikeThisMovies"
+ import VideoPlayer1 from "react-native-native-video-player"
 //import AutoHeightWebView from 'react-native-autoheight-webview';
 export default class Full extends React.Component {
 
@@ -58,9 +60,13 @@ export default class Full extends React.Component {
             types:[],
             enabled:true,
             he:200,
-            pageIsLoaded:false
+            pageIsLoaded:false,
+            player:"შიდა"
+
             
         }
+        this.getPlayerData = this.getPlayerData.bind(this)
+        this.getPlayerData()
         this.playMovie = this
             .playMovie
             .bind(this)
@@ -80,6 +86,8 @@ export default class Full extends React.Component {
 
 
         this.openTrailer = this.openTrailer.bind(this)
+
+
     }
 
 
@@ -87,7 +95,14 @@ export default class Full extends React.Component {
         Linking.openURL(this.state.video).catch(err => console.error('An error occurred', err));
     }
 
+   async getPlayerData() {
+   var data = await AsyncStorage.getItem("player")
+    this.setState({player:data})
+    var data2 = await AsyncStorage.getItem("quality")
+    this.setState({quality:data2})
+   }
 
+  
 
 dsc() {
     this.setState({enabled:false });
@@ -259,12 +274,45 @@ console.log(actors)
         //     });
 
     }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
     MoviePlay(lang) {
         this.setState({lang})
-        this
-            .qActionSheet
-            .show();
+        if(this.state.quality == "არჩევითი") {
+        this.qActionSheet.show();
+        }else if(this.state.quality == "sd"){
+             console.log(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+             "_" + this.getQuality("sd") + ".mp4")
+            if(this.state.player == "შიდა") {
+                this
+                    .props
+                    .navigation
+                    .navigate("movie", {
+                        url: this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                "_" + this.getQuality("sd") + ".mp4"
+                    })
+                }else{
+                    VideoPlayer1.showVideoPlayer(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                     "_" + this.getQuality("sd") + ".mp4")
+                }
+
+
+        }else{
+            console.log(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+            "_" + this.getQuality("sd") + ".mp4")
+            if(this.state.player == "შიდა") {
+                this
+                    .props
+                    .navigation
+                    .navigate("movie", {
+                        url: this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                "_" + this.getQuality("hd") + ".mp4"
+                    })
+                }else{
+                    VideoPlayer1.showVideoPlayer(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                     "_" + this.getQuality("hd") + ".mp4")
+                }
+
+        }
 
     }
 
@@ -290,6 +338,8 @@ if(this.state.pageIsLoaded) {
                     home={false}
                     nav={this.props.navigation}
                     title={this.props.navigation.state.params.title}
+                    titleEn={this.props.navigation.state.params.titleEn}
+
                     id={this.props.navigation.state.params.key}
                     views={this.props.navigation.state.params.views}
                     photo={this.props.navigation.state.params.photo}
@@ -669,13 +719,23 @@ if(this.state.pageIsLoaded) {
                                  
                                 //  VideoPlayer1.showVideoPlayer(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
                                 //  "_" + this.getQuality(this.state.qoptions[index]) + ".mp4")
-                                 this
+                                
+                                if(this.state.player == "შიდა") {
+                                this
                                     .props
                                     .navigation
                                     .navigate("movie", {
                                         url: this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
                                                 "_" + this.getQuality(this.state.qoptions[index]) + ".mp4"
                                     })
+                                }else{
+                                    VideoPlayer1.showVideoPlayer(this.state.link + this.props.navigation.state.params.key + "_" + this.state.lang +
+                                     "_" + this.getQuality(this.state.qoptions[index]) + ".mp4")
+                                }
+
+
+
+
                             }
 
                         } else {

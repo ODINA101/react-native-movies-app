@@ -1,5 +1,5 @@
 import React from "react";
-import { View,BackHandler,StatusBar } from "react-native";
+import { View,BackHandler,StatusBar, } from "react-native";
 //import Video from 'react-native-af-video-player'
 //import Orientation from 'react-native-orientation';
  import KeepAwake from 'react-native-keep-awake';

@@ -31,7 +31,8 @@ async getFavorites() {
     var value = await AsyncStorage.getItem('favorites');
    // alert(value.toString())
     var added = JSON.parse(value)
-    added.push({id:this.props.id,views:this.props.views,photo:this.props.photo,des:this.props.des,imdb:this.props.imdb,year:this.props.year,title:this.props.title})
+
+    added.push({id:this.props.id,views:this.props.views,photo:this.props.photo,des:this.props.des,imdb:this.props.imdb,year:this.props.year,title:this.props.title,titleEn:this.props.titleEn})
  AsyncStorage.setItem("favorites",JSON.stringify(added));
 }
 async removeFavorite() {

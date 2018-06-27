@@ -51,7 +51,7 @@ async componentDidMount(){
                                                 luboi={true}
                                                 des={false}
                                                  
-                                                titleEn={item.title_en}
+                                                titleEn={item.titleEn}
                                                 photo={"http://staticnet.adjara.com/moviecontent/" + item.id + "/covers/214x321-" +
                                                         item.id + ".jpg"}
                                                 series={false}

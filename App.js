@@ -35,7 +35,8 @@ export default class App extends Component {
 this.state = {
  title:"მთავარი",
  drawerlock:"unlocked",
- categories:["მთავარი",
+ categories:[
+ "მთავარი",
  "სერიალები",
  "კომედია",
  "ქართული",
@@ -51,16 +52,16 @@ this.state = {
  "საშინელებათა",
  "ვესტერნი",
  "დრამა",
-  "მიუზიკლი",
-  "სპორტული",
+ "მიუზიკლი",
+ "სპორტული",
  "მძაფრ-სიუჟეტიანი",
  "საომარი",
  "სათავგადასავლო",
-"მუსიკალური",
-"მოკლემეტრაჟიანი",
-"სამოყვარულო",
-"ფენტეზი",
-"საოჯახო"],
+ "მუსიკალური",
+ "მოკლემეტრაჟიანი",
+ "სამოყვარულო",
+ "ფენტეზი",
+ "საოჯახო"],
  
 
  items:[],
@@ -77,6 +78,9 @@ store.subscribe(()=>{
 
 this.getData("მთავარი")
 this.checkIsFirstime()
+this.checkIsFirstime1()
+this.checkIsFirstime2()
+
 
 }
 async checkIsFirstime(){
@@ -89,6 +93,22 @@ AsyncStorage.setItem("favorites","[]")
 
 }
 
+async checkIsFirstime1(){
+
+  var val = await AsyncStorage.getItem("player");
+  if (val == null){
+  AsyncStorage.setItem("player","შიდა")
+  }
+  }
+
+  async checkIsFirstime2(){
+
+    var val = await AsyncStorage.getItem("quality");
+    if (val == null){
+    AsyncStorage.setItem("quality","არჩევითი")
+    }
+    }
+  
 
  getData(cat) {
 var Tag = "";
@@ -241,8 +261,10 @@ fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=19
 
 
 
-
-
+/////////http://adjaranet.com/req/jsondata/req.php?reqId=getCollections
+//http://adjaranet.com/req/jsondata/req.php?reqId=getCollections
+//http://adjaranet.com/req/jsondata/req.php?reqId=getCollections
+//http://adjaranet.com/req/jsondata/req.php?reqId=getCollections
 }
 
 
@@ -263,7 +285,7 @@ getDataSeries() {
 
 componentDidMount() {
   AdMobInterstitial.setAdUnitID('ca-app-pub-6370427711797263/7435578378');
-  AdMobRewarded.setAdUnitID('ca-app-pub-6370427711797263~1015331954');
+  AdMobRewarded.setAdUnitID('ca-app-pub-6370427711797263/5458913307');
 }
 
 
@@ -296,8 +318,8 @@ this.getData(title)
              return(
 
 
-               <Button key={data} transparent light block style={{height:50}} onPress={()=>this.closeDrawer(data)}>
-           <Text style={{color:"#000"}}>{data}</Text>
+               <Button key={data} transparent light block style={{height:50,justifyContent: "flex-start"}} onPress={()=>this.closeDrawer(data)}>
+           <Text style={{color:"#000",marginLeft:20}}>{data}</Text>
          </Button>
 
 

@@ -4,6 +4,7 @@ import {
   View,
   ScrollView,
   Image,
+  AsyncStorage
 } from 'react-native';
 import Toolbar from './toolbar';
 import Ripple from 'react-native-material-ripple';
@@ -11,7 +12,7 @@ import {Picker, ListItem} from 'native-base';
 import {Spinner} from "native-base";
 import StarRating from 'react-native-star-rating';
 import ActionSheet from 'react-native-actionsheet'
-//var VideoPlayer = require('react-native-native-video-player');
+import VideoPlayer from 'react-native-native-video-player';
 
 import {AdMobInterstitial } from 'react-native-admob'
 
@@ -44,11 +45,14 @@ export default class fullseries extends Component {
       link: '',
       serieI:'',
       downloadLink:'',
-      des:''
+      des:'',
+      player:"",
+      quality:"sd"
 
     };
  
-
+    this.getPlayerData = this.getPlayerData.bind(this)
+    this.getPlayerData()
 
     //  this.getSeason = this.getSeason.bind(this)
     this.playSerie = this
@@ -161,9 +165,46 @@ szns =  Object
   SeriePlay(lang)
   {
     this.setState({lang})
-    this
-      .qActionSheet
-      .show();
+
+
+
+   this.setState({lang})
+        if(this.state.quality == "არჩევითი") {
+        this.qActionSheet.show();
+        }else if(this.state.quality == "sd"){
+         
+            if(this.state.player == "შიდა") {
+                this
+                    .props
+                    .navigation
+                    .navigate("movie", {
+                        url: "http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + 300 + ".mp4"
+                    })
+                }else{
+                    VideoPlayer.showVideoPlayer("http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + 300 + ".mp4")
+                }
+
+
+        }else{
+          
+            if(this.state.player == "შიდა") {
+                this
+                    .props
+                    .navigation
+                    .navigate("movie", {
+                        url: "http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + 1500 + ".mp4"
+                    })
+                }else{
+                    VideoPlayer.showVideoPlayer("http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + 1500 + ".mp4")
+                }
+
+        }
+
+
+
+
+
+
 
   }
   getq(data) {
@@ -221,7 +262,13 @@ szns =  Object
       .show()
 
   }
-
+  async getPlayerData() {
+    var data = await AsyncStorage.getItem("player")
+     this.setState({player:data})
+     var data2 = await AsyncStorage.getItem("quality")
+     this.setState({quality:data2})
+ 
+    }
   getSeason(value) {
     var datiko = [];
     var sss = seasons[parseInt(value.substr(value.length - 1))];
@@ -252,7 +299,17 @@ szns =  Object
         <Toolbar
           home={false}
           nav={this.props.navigation}
-          title={this.props.navigation.state.params.title}/>
+          title={this.props.navigation.state.params.title}
+          id={this.props.navigation.state.params.key}
+          views={this.props.navigation.state.params.views}
+          photo={this.props.navigation.state.params.photo}
+          des={this.props.navigation.state.params.des}
+          imdb={this.props.navigation.state.params.imdb}
+          year={this.props.navigation.state.params.year}
+          
+          
+          
+          />
         <ScrollView style={{
           flex: 1
         }}>
@@ -423,9 +480,13 @@ szns =  Object
           cancelButtonIndex={this.state.qoptions.length - 1}
           onPress={(index) => {
             if(index !== (this.state.qoptions.length - 1)) {
-            //  VideoPlayer.showVideoPlayer("http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + qualitiesObjs[index].q + ".mp4")
+              if(this.state.player == "შიდა") {
+                
+                this.props.navigation.navigate("movie", {url: "http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + qualitiesObjs[index].q + ".mp4"})
+              }else{
+                VideoPlayer.showVideoPlayer("http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + qualitiesObjs[index].q + ".mp4")
 
-              this.props.navigation.navigate("movie", {url: "http://" + this.state.link +  this.props.navigation.state.params.key+ "_" + this.getNum(parseInt(this.state.selected1.substr(this.state.selected1.length - 1))) + "_" + this.getNum(this.state.serieI) + "_" + this.state.lang + "_" + qualitiesObjs[index].q + ".mp4"})
+              }
             } 
         }}/>
       </View>
