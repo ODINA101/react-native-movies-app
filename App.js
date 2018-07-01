@@ -26,7 +26,7 @@ export default class App extends Component {
  constructor() {
    super();
   Orientation.unlockAllOrientations()
-   
+  console.disableYellowBox = true;
    this.openDrawer = this.openDrawer.bind(this);
    this.closeDrawer = this.closeDrawer.bind(this);
  
@@ -262,9 +262,8 @@ fetch("http://net.adjara.com/Search/SearchResults?ajax=1&display=15&startYear=19
 
 
 /////////http://adjaranet.com/req/jsondata/req.php?reqId=getCollections
-//http://adjaranet.com/req/jsondata/req.php?reqId=getCollections
-//http://adjaranet.com/req/jsondata/req.php?reqId=getCollections
-//http://adjaranet.com/req/jsondata/req.php?reqId=getCollections
+//http://adjaranet.com/req/jsondata/req.php?reqId=getCollections&id=
+//http://adjaranet.com/req/jsondata/req.php?reqId=getCollections&id=
 }
 
 

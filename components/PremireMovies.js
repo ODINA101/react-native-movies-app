@@ -18,7 +18,6 @@ fetch("http://net.adjara.com/cache/cached_home_premiere.php?type=premiere&order=
 .then(res => {
     
     
-    console.log(res)
    this.setState({loaded:true,data:res})
 
 })

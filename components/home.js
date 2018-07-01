@@ -15,6 +15,7 @@ import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 import { YellowBox } from 'react-native'
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated'])
 import MaterialIcons from "react-native-vector-icons/MaterialIcons"
+import Collections from './collections';
 
 
 
@@ -141,9 +142,9 @@ export default class Home extends React.Component {
           ref={this.setMenuRef}
           style={{width:240}}
         >
-          <MenuItem onPress={() => {this.hideMenu();this.props.navigation.navigate("Settings")}}><Ionicons size={20} color="black" name="md-settings" style={{marginTop:25}} /> <Text>პარამეტრები</Text></MenuItem>
-          <MenuDivider />
           <MenuItem  onPress={() => {this.hideMenu();this.props.navigation.navigate("WatchLater") }}><MaterialIcons size={20} color="black" name="watch-later"   /> <Text>მოგვიანებით სანახავი</Text></MenuItem>
+          <MenuDivider />
+          <MenuItem onPress={() => {this.hideMenu();this.props.navigation.navigate("Settings")}}><Ionicons size={20} color="black" name="md-settings" style={{marginTop:25}} /> <Text>პარამეტრები</Text></MenuItem>
         </Menu>
                    
    </View>
@@ -299,6 +300,14 @@ store.getState()
             <View style={{height:200,padding:10,backgroundColor:"transparent"}}>
 
 <PremireMovies nav={this.props.navigation}/>
+</View>   
+
+
+<View style={{height:1,backgroundColor:"#000",marginTop:8}} />
+
+<View style={{height:200,padding:10,backgroundColor:"transparent"}}>
+
+<Collections nav={this.props.navigation}/>
 </View>   
 <View style={{height:1,backgroundColor:"#000",marginTop:8}} />
       </View>          

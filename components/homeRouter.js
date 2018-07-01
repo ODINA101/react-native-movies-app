@@ -9,6 +9,9 @@ import Actor from "./SingleActor";
 import ActorFull from "./actorFull"
 import WatchLater from './watchLater';
 import Settings from "./settings"
+import FullCollectionList from './FullCollectionsList';
+import SingleCollectionList from './SingleCollectionList';
+
 export default createStackNavigator({
  
     home:{
@@ -17,7 +20,12 @@ export default createStackNavigator({
     SingleActor:{
     screen:Actor
     },
-
+    Fullcollectionlist:{
+        screen:FullCollectionList
+    },
+    SingleCollectionList:{
+       screen:SingleCollectionList
+    },
     Settings:{
         screen:Settings
     },

@@ -4,11 +4,12 @@ import {
   View,
   ScrollView,
   Image,
-  AsyncStorage
+  AsyncStorage,
+  Dimensions
 } from 'react-native';
 import Toolbar from './toolbar';
 import Ripple from 'react-native-material-ripple';
-import {Picker, ListItem} from 'native-base';
+import {Picker, ListItem,} from 'native-base';
 import {Spinner} from "native-base";
 import StarRating from 'react-native-star-rating';
 import ActionSheet from 'react-native-actionsheet'
@@ -47,19 +48,25 @@ export default class fullseries extends Component {
       downloadLink:'',
       des:'',
       player:"",
-      quality:"sd"
+      quality:"sd",
+      saved:Boolean,
+      savedSelectedIndex:'',
+      savedSelectedIndexSzn:''
 
     };
  
     this.getPlayerData = this.getPlayerData.bind(this)
-    this.getPlayerData()
-
+   this.getPlayerData()
     //  this.getSeason = this.getSeason.bind(this)
     this.playSerie = this
       .playSerie
       .bind(this)
+      this.save = this.save.bind(this)
   }
   
+
+
+
   componentWillMount() {
     setTimeout(() => {
       AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());     
@@ -161,11 +168,24 @@ szns =  Object
       })
 
   }
+  
+  
+  
+async save(sezoni,ind,indSezon) { 
  
+  this.setState({selected1:sezoni,savedSelectedIndex:ind,savedSelectedIndexSzn:indSezon})
+  await AsyncStorage.setItem((this.props.navigation.state.params.key).toString(),JSON.stringify({season:sezoni,serie:{ind:ind,season:indSezon}}))
+
+ 
+
+  }
+
+
+
+
   SeriePlay(lang)
   {
     this.setState({lang})
-
 
 
    this.setState({lang})
@@ -230,6 +250,8 @@ szns =  Object
     var noption = lang.split(",")
     this.setState({serieI});
     noption.push("უკან")
+
+
   // if(quality == "300,1500") {
 
   // }else if(quality == "1500") {
@@ -243,12 +265,12 @@ szns =  Object
      qualitiesObjs.push({q:item})
      nnqu.push(this.getq(item))
     })
-   
 
-
-
-  this.setState({qoptions: nqoption,qualitiesObjs:qualitiesObjs,nnqu:nnqu})
-
+    
+    
+    this.setState({qoptions: nqoption,qualitiesObjs:qualitiesObjs,nnqu:nnqu,serieI})
+    
+    this.save(this.state.selected1,serieI,this.state.selected1)
 
 
 
@@ -267,7 +289,11 @@ szns =  Object
      this.setState({player:data})
      var data2 = await AsyncStorage.getItem("quality")
      this.setState({quality:data2})
- 
+     var data3 = await AsyncStorage.getItem((this.props.navigation.state.params.key).toString())
+   // alert(data3)
+    var asyncdat = JSON.parse(data3)
+        this.setState({selected1:asyncdat.season,savedSelectedIndex:asyncdat.serie.ind,savedSelectedIndexSzn:asyncdat.serie.season})
+        this.getSeason(asyncdat.season)
     }
   getSeason(value) {
     var datiko = [];
@@ -283,12 +309,25 @@ szns =  Object
         }
 
       })
+      
     this.setState({series: datiko, isLoading: false})
 
   }
   onValueChange(value) {
     this.getSeason(value)
     this.setState({selected1: value});
+    if(this.state.savedSelectedIndex) {
+   if(this.state.savedSelectedIndexSzn) {
+    this.save(value,this.state.savedSelectedIndex,this.state.savedSelectedIndexSzn)
+
+   }else{
+    this.save(value,this.state.savedSelectedIndex,null)
+
+   }
+    }else{
+
+      this.save(value,null,null)
+    }
   }
   render() {
     return (
@@ -350,27 +389,34 @@ szns =  Object
             source={{
             uri: this.props.navigation.state.params.photo
           }}/>
+              {
+                            this.props.navigation.state.params.title?(
+                              <View style={{padding:20}}>
+                             <Text style={{color:"#000",fontSize:20}}>{this.props.navigation.state.params.title}</Text>
+                             </View>
+                            ):(<View/>)
+                        }
 
           <View
             style={{
             backgroundColor: "#FFF",
             padding: 20,
-            marginTop: 25
+            alignItems:"center"
           }}>
             {this.props.navigation.state.params.imdb
               ? (
-                <View>
+                <View  style={{padding:10,width:Dimensions.get("window").width/1.5,}}>
                   <StarRating
                     disabled={true}
-                    emptyStar={'ios-star-outline'}
-                    fullStar={'ios-star'}
-                    halfStar={'ios-star-half'}
-                    iconSet={'Ionicons'}
+                    emptyStar={'star-o'}
+                                            fullStar={'star'}
+                                            halfStar={'star-half'}
+                                            iconSet={'FontAwesome'}
                     maxStars={5}
                     rating={parseFloat(this.props.navigation.state.params.imdb * (1 / 2))}
                     fullStarColor={'red'}
-                    starSize={50}/>
-
+                    starSize={40}/>
+                            
                 </View>
               )
               : (<View/>)
@@ -415,9 +461,9 @@ szns =  Object
                   padding: 8
                 }}>
                   <View style={{
-                    flex: 0.8
+                    flex: 1
                   }}>
-                    <Text>აირჩიეთ სეზონი</Text>
+                    <Text style={{marginLeft:10}}>    აირჩიე სეზონი</Text>
                   </View>
                   <Picker
                     mode="dropdown"
@@ -433,7 +479,11 @@ szns =  Object
                       .state
                       .seasons
                       .map((data, index) => {
-                        return (<Picker.Item key={0} label={"სეზონი " + (index + 1)} value={"key" + index}/>)
+                        return (
+                          <Picker.Item key={0} label={"სეზონი " + (index + 1)} value={"key" + index}/>
+                      
+
+                      )
                       })
 }
 
@@ -445,13 +495,47 @@ szns =  Object
                     .state
                     .series
                     .map((item, index) => {
-                      return (
+          
+                      if(this.state.savedSelectedIndex !== '') {
+                        if(this.state.savedSelectedIndexSzn == this.state.selected1) {
+                        
+                        if(index == this.state.savedSelectedIndex) {
+                          return (
+                            <Ripple key={index}   onPress={() => this.playSerie(item.lang,index,item.quality)}>
+                            <ListItem  style={{backgroundColor:"#3494e6",borderRadius:10,paddingLeft:10}}>
+                              <Text style={{color:"#FFF"}}>{(index + 1) + "." + item.name}</Text>
+                            </ListItem>
+                          </Ripple>
+                         )
+                        }else{
+                          return(
+                            <Ripple key={index} onPress={() => this.playSerie(item.lang,index,item.quality)}>
+                            <ListItem>
+                              <Text>{(index + 1) + "." + item.name}</Text>
+                            </ListItem>
+                          </Ripple>
+                          )
+                        } 
+                    
+                     }else{
+                      return(
                         <Ripple key={index} onPress={() => this.playSerie(item.lang,index,item.quality)}>
-                          <ListItem>
-                            <Text>{(index + 1) + "." + item.name}</Text>
-                          </ListItem>
-                        </Ripple>
+                        <ListItem>
+                          <Text>{(index + 1) + "." + item.name}</Text>
+                        </ListItem>
+                      </Ripple>
                       )
+                     } 
+                    }else{
+                      return(
+                        <Ripple key={index} onPress={() => this.playSerie(item.lang,index,item.quality)}>
+                        <ListItem>
+                          <Text>{(index + 1) + "." + item.name}</Text>
+                        </ListItem>
+                      </Ripple>
+                      )
+                    }
+
                     })
 }
 

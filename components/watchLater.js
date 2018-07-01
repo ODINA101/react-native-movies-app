@@ -26,7 +26,7 @@ this.state = {
 async componentDidMount(){
   //AsyncStorage.setItem('favorites',"[]")
   var value = await AsyncStorage.getItem('favorites');
-  this.setState({data:JSON.parse(value)})
+  this.setState({data:JSON.parse(value).reverse()})
  // alert(value)
 }
 
